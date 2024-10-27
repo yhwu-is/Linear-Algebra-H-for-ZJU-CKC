@@ -1,4 +1,4 @@
-\chapter{多重线性映射与张量的计算}
+\chapter{多重线性映射与张量的计算} \label{chap:多重线性映射与张量的计算}
 
 在定义了线性性之后，我们不难联想到微积分中一元函数到多元函数的推广过程. 因此，我们自然地想要将线性映射推广到多重线性映射. 这时，我们顺理成章地也就完成了对向量和矩阵的推广，也就是所谓的张量. 张量的运算在几何的背景下具备明确的意义，在本讲中，我们会简要介绍张量的计算法则. 因为张量在物理学中的普遍使用，数学家、科普作家 Lillian R. Lieber 将张量誉为 the fact of universe，可见其重要性.
 
@@ -49,7 +49,7 @@ f_i (v_2) = f(e_i, v_2)
 \]
 则它就是一个 $V_2 \to W$ 的线性映射. 设它所对应的矩阵为 $M_i$，考虑 $V_1$ 中的向量 $v_1 = \lambda_1 e_1 + \lambda_2 e_2 + \cdots \lambda_n e_n$，其中 $n = \dim V_1$，则
 \[
-f(v_1, v_2) = f(\lambda_1 e_1 + \lambda_2 e_2 + \dots + \lambda_n e_n, v_2) = \lambda_1 f_1 (v_2) + \lambda_2 f_2 (v_2) + \cdots + \lambda_n f_n (v_2)
+f(v_1, v_2) = f(\lambda_1 e_1 + \lambda_2 e_2 + \ldots + \lambda_n e_n, v_2) = \lambda_1 f_1 (v_2) + \lambda_2 f_2 (v_2) + \cdots + \lambda_n f_n (v_2)
 \]
 将线性映射翻译成矩阵，我们就有：
 \[
@@ -85,7 +85,7 @@ f(v_1, v_2) = \lambda_1 M_1 v_2 + \lambda_2 M_2 v_2 + \cdots + \lambda_n M_n v_2
 实际上，这个命题的证明无非就是把我们在最开始所做的关于多重线性映射的表示的讨论重述一遍.
 
 \begin{proof}
-    设 $V$ 有一组基 $\{e_1, e_2, \dots, e_n\}$，$f \in \mathcal{L}(V, W^*; \R)$. 记
+    设 $V$ 有一组基 $\{e_1, e_2, \ldots, e_n\}$，$f \in \mathcal{L}(V, W^*; \R)$. 记
     \[
     f_i (\rho) = f(e_i, \rho), \forall \rho \in W^*
     \]
