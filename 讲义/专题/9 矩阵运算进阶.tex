@@ -4,11 +4,11 @@
 
 \subsection{对角矩阵}
 
-我们一般记主对角矩阵为$\diag(d_1,d_2,\ldots,d_n)$，准对角矩阵为$\diag(A_1,A_2,\ldots,A_n)$.
+我们一般记主对角矩阵为 $\diag(d_1,d_2,\ldots,d_n)$，准对角矩阵为 $\diag(A_1,A_2,\ldots,A_n)$.
 \begin{theorem}{}{对角矩阵的性质}
     设$A$是一个$s \times n$矩阵，把$A$写成列向量与行向量的形式，分别为
 
-    \[ A = \begin{pmatrix}\alpha_1 & \alpha_2 & \cdots & \alpha_n\end{pmatrix} = \begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_n \end{pmatrix} \]
+    \[ A = \begin{pmatrix}\alpha_1 & \alpha_2 & \cdots & \alpha_n\end{pmatrix} = \begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_s \end{pmatrix} \]
     则
     \begin{gather*}
         \begin{pmatrix}\alpha_1 & \alpha_2 & \cdots & \alpha_n\end{pmatrix}
@@ -22,11 +22,11 @@
             d_1 &     &        &     \\
                 & d_2 &        &     \\
                 &     & \ddots &     \\
-                &     &        & d_n
-        \end{pmatrix} \begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_n \end{pmatrix} = \begin{pmatrix} d_1\beta_1 \\ d_2\beta_2 \\ \vdots \\ d_n\beta_n \end{pmatrix}
+                &     &        & d_s
+        \end{pmatrix} \begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_s \end{pmatrix} = \begin{pmatrix} d_1\beta_1 \\ d_2\beta_2 \\ \vdots \\ d_s\beta_s \end{pmatrix}
     \end{gather*}
 
-    即$A$右乘对角矩阵$\diag(d_1,d_2,\ldots,d_n)$相当于给$A$的第$i$列元素都乘以$d_i$，$A$左乘对角矩阵$\diag(d_1,d_2,\ldots,d_n)$相当于给$A$的第$i$行元素都乘以$d_i$，其中 $i=1,2,\ldots,n$.
+    即$A$右乘对角矩阵 $\diag(d_1,d_2,\ldots,d_n)$ 相当于给 $A$ 的第 $j(j = 1, \ldots, n)$ 列元素都乘以 $d_j$，$A$ 左乘对角矩阵 $\diag(d_1,d_2,\ldots,d_s)$ 相当于给 $A$ 的第 $i(i = 1, 2, \ldots, s)$ 行元素都乘以 $d_i$.
 \end{theorem}
 
 \begin{theorem}{}{}
@@ -221,7 +221,7 @@
 \end{example}
 
 \begin{proof}
-    事实上$E=E+A^3=(E+A)(E-A+A^2)$，因此$E+A$可逆（因为可以写出$(E+A)^{-1}=E-A+A^2$），同理$E=E-A^3=(E-A)(E+A+A^2)$，因此$E-A$可逆（因为可以写出$(E-A)^{-1}=E+A-A^2$）.
+    事实上$E=E+A^3=(E+A)(E-A+A^2)$，因此$E+A$可逆（因为可以写出$(E+A)^{-1}=E-A+A^2$），同理$E=E-A^3=(E-A)(E+A+A^2)$，因此$E-A$可逆（因为可以写出$(E-A)^{-1} = E + A + A^2$）.
 \end{proof}
 
 \begin{example}{}{}
