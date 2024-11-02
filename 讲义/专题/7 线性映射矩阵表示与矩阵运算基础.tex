@@ -850,6 +850,13 @@
     事实上由于$A\cdot A=A\cdot A$，因此$f(A)g(A)=g(A)f(A)$只是上面证明的结论的特例.
 \end{solution}
 
+最后，我们介绍三类经典的矩阵，它们可以视为三个矩阵多项式的``零点''：
+\begin{enumerate}
+    \item 幂等矩阵：满足 $A^2 = A$，即 $A$ 的平方等于自身，满足 $A^2 - A = O$. 显然的性质是对于任意的 $k \in \mathbf{N}^+$ 都有 $A^k = A$，对 $k$ 做数学归纳法即可证明；
+    \item 幂零矩阵：存在 $k \in \mathbf{N}^+$ 使得 $A^k = O$，即 $A$ 的 $k$ 次幂为零矩阵. 一个显然的性质是对于任意的 $m \in \mathbf{N}$ 都有 $A^{m+k} = O$；
+    \item 对合矩阵：满足 $A^2 = E$，即 $A$ 的平方等于单位矩阵，满足 $A^2 - E = O$. 显然的性质是对于任意的 $k \in \mathbf{N}^+$ 都有 $A^{2k} = E$，$A^{2k+1} = A$.
+\end{enumerate}
+
 \subsection{一组例题}
 
 在介绍了矩阵乘法后，我们可以进一步审视线性映射矩阵表示的定义. 我们来看一组初学时可能混淆或者不理解的例子，从而加深对概念的理解：
@@ -1837,32 +1844,16 @@
             \end{enumerate}
         \end{answer}
 
-        \item 设$A$为$n$阶可逆矩阵，$A$的每行各元素之和都等于$k$，证明：$k \neq 0$且$A^{-1}$的每行各元素之和都等于$\vphantom{\cfrac{1}{k}}\dfrac{1}{k}$.
-        \begin{answer}
-            为使得``每行元素之和''的条件有用，我们用 $\alpha=\begin{pmatrix}1 \\ 1 \\ \vdots \\ 1\end{pmatrix}$ 去乘以 $A$. 则 $A\alpha=\begin{pmatrix}k \\ k \\ \vdots \\ k\end{pmatrix}=k\alpha$. 因为 $A$ 可逆所以 $k\neq 0$，同时由上面的式子有 $\alpha=kA^{-1}\alpha$，得 $A^{-1}\alpha=\dfrac{1}{k}\alpha\enspace(k\neq 0)$. 故 $A^{-1}$ 每行和为 $\dfrac{1}{k}$ 成立.
-        \end{answer}
-
-        \item 已知矩阵$A=\begin{pmatrix}1 & 2 & a  \\
-               1 & 3 & 0  \\
-               2 & 7 & -a\end{pmatrix}$可以通过初等列变换转化为矩阵$B=\begin{pmatrix}1  & a & 2 \\
-               0  & 1 & 1 \\
-               -1 & 1 & 1\end{pmatrix}$.
+        \item 设$A$为$n$阶矩阵，$A$的每行各元素之和都等于$k$，证明：
         \begin{enumerate}
-            \item 求常数$a$；
-
-            \item 求满足$AP=B$的可逆矩阵$P$.
+            \item 若 $A$ 可逆，则 $k \neq 0$ 且$A^{-1}$的每行各元素之和都等于$\vphantom{\cfrac{1}{k}}\dfrac{1}{k}$；
+            \item $A^i$（其中 $i$ 为正整数）每行元素之和为 $k^i$.
         \end{enumerate}
+
         \begin{answer}
             \begin{enumerate}
-                \item 由题意 $r(A)=r(B)$. $A$ 可由初等变换为 $\begin{pmatrix}1 & 2 & a \\ 1 & 3 & 0 \\ 0 & 0 & 0\end{pmatrix}$，$B$ 可由初等变换为 $\begin{pmatrix}1 & a & 2 \\ 0 & 1 & 1 \\ 0 & 0 & 2-a\end{pmatrix}$. 由于秩相同故 $2-a=0,a=2$.
-
-                \item $(A,B)=\begin{pmatrix}1 & 2 & a & 1 & a & 2 \\ 1 & 3 & 0 & 0 & 1 & 1 \\ 2 & 7 & -a & -1 & 1 & 1\end{pmatrix}\rightarrow\begin{pmatrix}1 & 0 & 6 & 3 & 4 & 4 \\ 0 & 1 & -2 & -1 & -1 & -1 \\ 0 & 0 & 0 & 0 & 0 & 0\end{pmatrix}$
-
-                        $X = \begin{pmatrix}-6k_1+3 \\ 2k_1-1 \\ k_1\end{pmatrix},Y = \begin{pmatrix}-6k_2+4 \\ 2k_2-1 \\ k_2\end{pmatrix},Z = \begin{pmatrix}-6k_3+4 \\ 2k_3-1 \\ k_3\end{pmatrix}$
-
-                        $\begin{pmatrix}-6k_1+3 & -6k_2+4 & -6k_3+4 \\ 2k_1-1 & 2k_2-1 & 2k_3-1 \\ k_1 & k_2 & k_3\end{pmatrix}\rightarrow \begin{pmatrix}1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & k_3-k_2\end{pmatrix}$
-
-                        因为 $P$ 可逆，所以 $k_2\neq k_3$，故 $P=\begin{pmatrix}-6k_1+3 & -6k_2+4 & -6k_3+4 \\ 2k_1-1 & 2k_2-1 & 2k_3-1 \\ k_1 & k_2 & k_3\end{pmatrix},k_2\neq k_3,\enspace k_1,k_2,k_3 \in \mathbf{R}$.
+                \item 为使得``每行元素之和''的条件有用，我们用 $\alpha=\begin{pmatrix}1 \\ 1 \\ \vdots \\ 1\end{pmatrix}$ 去乘以 $A$. 则 $A\alpha=\begin{pmatrix}k \\ k \\ \vdots \\ k\end{pmatrix}=k\alpha$. 因为 $A$ 可逆所以 $k\neq 0$，同时由上面的式子有 $\alpha=kA^{-1}\alpha$，得 $A^{-1}\alpha=\dfrac{1}{k}\alpha\enspace(k\neq 0)$. 故 $A^{-1}$ 每行和为 $\dfrac{1}{k}$ 成立；
+                \item 略.
             \end{enumerate}
         \end{answer}
 
@@ -1877,15 +1868,6 @@
 
         \item 证明以下两个命题：
         \begin{enumerate}
-            \item 设$A$为$m\times n$阶实矩阵，则$A^\mathrm{T}A=O$的充要条件为$A=O$.
-            \item 设$A$为$m\times n$阶复矩阵，则$\overline{A^\mathrm{T}}A=O$的充要条件为$A=O$.
-        \end{enumerate}
-        \begin{answer}
-
-        \end{answer}
-
-        \item 证明以下两个命题：
-        \begin{enumerate}
             \item 设$A$为$n$阶对称矩阵，证明：$A$是零矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
             \item 设$A$为$n$阶方阵，证明：$A$为反对称矩阵的充要条件为对任意的$n$维向量$\alpha$，都有$\alpha^\mathrm{T}A\alpha=0$.
         \end{enumerate}
@@ -1893,12 +1875,12 @@
 
         \end{answer}
 
-        \item 证明：设$A$是实对称矩阵，若$A^2=O$，则$A=O$.
+        \item 设$A$为$n$阶实反对称矩阵，证明：$E-A$ 可逆.
         \begin{answer}
-
+            反证法，假设不可逆，则存在非零实向量$x=(x_1,\cdots,x_n)^\mathrm{T}$使得$(E-A)x=0$，即$Ax=x$，又反对称矩阵有一个性质，即对任意的$x$，$x^\mathrm{T}Ax=0$，而$x^\mathrm{T}Ax=x^\mathrm{T}x=x_1^2+\cdots+x_n^2$，又由实数条件可知$x$为零向量，矛盾.
         \end{answer}
 
-        \item 设$A,B$为$n$阶方阵，证明：
+        \item 设 $A, B$ 为 $n$ 阶方阵，证明：
         \begin{enumerate}
             \item 若$A,B$为对称矩阵，则$AB$为对称矩阵的充要条件为$AB=BA$，$AB$为反对称矩阵的充要条件为$AB=-BA$.
             \item 若$A$为对称矩阵，$B$为反对称矩阵，则$AB$为反对称矩阵的充要条件为$AB=BA$，$AB$为对称矩阵的充要条件为$AB=-BA$.
@@ -2019,31 +2001,20 @@
                 \item $W_1\cap W_2=\left\{\begin{pmatrix}x&-x\\-x&y\end{pmatrix} \mid x,y\in \mathbf{F}\right\}$. 则一组基为$E_1=\begin{pmatrix}1&-1\\-1&0\end{pmatrix},E_2=\begin{pmatrix}0&0\\0&1\end{pmatrix}$. $A$ 的坐标即为 $(3,1)$.
             \end{enumerate}
         \end{answer}
+
+        \item 设 $B$ 为 $n$ 阶可逆矩阵，$C = \begin{pmatrix}
+            1 & 2 & \cdots & n \\
+            0 & 0 & \cdots & 0 \\
+            0 & 0 & \cdots & 0
+        \end{pmatrix}$，求一矩阵 $A$ 使得 $A\begin{pmatrix}
+            B \\ C
+        \end{pmatrix} = E_n$.
+        \begin{answer}
+
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
-        \item 设$V$是域$\mathbf{F}$上的$n$阶对称矩阵关于矩阵加法和数乘运算构成的线性空间，令
-        \[U=\{A\in V \mid \tr(A)=0\},\enspace W=\{\lambda E \mid \lambda\in\mathbf{F}\}.\]
-        \begin{enumerate}
-            \item 证明：$U,W$为$V$的子空间；
-
-            \item 分别求$U,W$的一组基和维数；
-
-            \item 证明：$V=U\oplus W$.
-        \end{enumerate}
-        \begin{answer}
-            注：$\tr$是矩阵的迹，定义为矩阵对角元素之和.
-            \begin{enumerate}
-                \item 根据定义可知$\tr$是线性的，有 $\tr(\lambda A+\mu B)=\lambda\tr(A)+\mu\tr(B)=0$，则$U$是封闭的，又$W$封闭是显然的，则 $U,W$ 是 $V$ 的子空间.
-
-                \item 对于$W$,基为$\{E\}$，$\dim W=1$. 对于$u$,设$E_{ij}$是 $a_{ij}=1$，其余元素为0的$n$阶方阵. 则由于$u$是对称矩阵，在非对角线元素上，$u$的基包含$E_{12}+E_{21},E_{13}+E_{31},\ldots ,E_{(n-1)n}+E_{n(n-1)}$. 对于对角线元素 $a_{11}+\cdots +a_{nn}=0$. 方程解为
-                      \[\begin{pmatrix}a_{11}\\ \vdots\\ a_{nn}	\end{pmatrix}=k_1\begin{pmatrix}1 \\ -1 \\ 0\\ \vdots \\0	\end{pmatrix}=k_2\begin{pmatrix}1 \\ 0 \\ -1\\ \vdots \\0	\end{pmatrix}+\cdots+k_{n-1}\begin{pmatrix}1 \\ 0 \\ 0\\ \vdots \\-1	\end{pmatrix}.\]
-                      则还有$n-1$个基$E_{11}-E_{22},E_{11}-E_{33},\ldots ,E_{11}-E_{nn}$. 故 $\dim U=\dfrac{n^2-n}2+n-2=\dfrac{n^2+n-2}2$.
-
-                \item 设$V'=U+W$. 先证明直和，即$U\cap W=\{0\}$. 这是显然的，因为$\tr(\lambda E)=n\lambda$，仅当 $\lambda=0$ 时 $\lambda E\in U$ 即 $U\cap W=\{0\}$得证. 又$\dim U+\dim W=\dim V'=n=\dim V$，则$V=V'=U\oplus W$得证.
-            \end{enumerate}
-        \end{answer}
-
         \item 若$n$阶方阵$A_1,A_2,\ldots,A_m$满足$A_i^2\neq O\enspace(i=1,2,\ldots,m)$，且当$i\neq j$时$A_iA_j=O$，证明：$m\leqslant n$.
         \begin{answer}
             首先设
