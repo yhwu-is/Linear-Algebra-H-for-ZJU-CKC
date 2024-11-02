@@ -1248,8 +1248,8 @@
                 \item 当 $ \xi = \theta $ 时，显然满足 $ \xi \tau = \theta $. 当 $ \xi \neq \theta $ 时，
                       \[ \xi \tau(x_1, x_2) = \xi(x_1 - x_2, x_2 - x_1) = (0, 0) \]
                       记 $ y_1 = x_1 - x_2,\enspace y_2 = x_2 - x_1 $. 由于 $ y_1 + y_2 = 0 $，
-                      \[ \tau(y_1, y_2) = (y_1 + y_2, y_1 + y_2) \]
-                      即 $ \tau(x_1, x_2) = (x_1 + x_2, x_1 + x_2) $ 满足 $ \xi \tau = \theta $.
+                      \[ \xi(y_1, y_2) = (y_1 + y_2, y_1 + y_2) \]
+                      即 $ \xi(x_1, x_2) = (x_1 + x_2, x_1 + x_2) $ 满足 $ \xi \tau = \theta $.
             \end{enumerate}
 
         \end{answer}
@@ -1269,10 +1269,10 @@
         \begin{answer}
             \begin{enumerate}
                 \item \begin{align*}
-                          r(\theta)   & = 1                          \\
+                          r(\sigma)   & = 1                          \\
                           r(\tau)     & = 2                          \\
-                          \im \theta  & = \spa(\vec{e}_1)            \\
-                          \ker \theta & = \spa(\vec{e}_1, \vec{e}_2)
+                          \im \sigma  & = \spa(\vec{e}_1)            \\
+                          \ker \sigma & = \spa(\vec{e}_1, \vec{e}_2)
                       \end{align*}
 
                 \item \begin{gather*}
@@ -1428,7 +1428,7 @@
         \begin{enumerate}
             \item 由$r(\sigma)+\dim\ker\sigma=n$可知$V=\ker\sigma+\im \sigma$；
 
-            \item 若有$\im T \cap \ker T = \{0\}$，则$V=\ker\sigma+\im \sigma$成立；
+            \item 若有$\im \sigma \cap \ker \sigma = \{0\}$，则$V=\ker\sigma+\im \sigma$成立；
 
             \item 因为$\forall \alpha \in V$有$(\sigma_1+\sigma_2)(\alpha)=\sigma_1(\alpha)+\sigma_2(\alpha)$，所以$(\sigma_1+\sigma_2)(V)=\sigma_1(V)+\sigma_2(V)$；
 
