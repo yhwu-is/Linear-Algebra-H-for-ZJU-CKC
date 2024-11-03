@@ -1500,9 +1500,9 @@
             \end{enumerate}
         \end{answer}
 
-        \item 设$c_1,c_2,\ldots,c_n$是$n$个互异的实常数. 证明：$\mathbf{R}[x]_n$到$\mathbf{R}$的一个映射$\sigma$：
+        \item 设$c_1,c_2,\ldots,c_n$是$n$个互异的实常数. 证明：$\mathbf{R}[x]_n$到$\mathbf{R}^n$的一个映射$\sigma$：
         \[\sigma(p(x))=(p(c_1),p(c_2),\ldots,p(c_n))\]
-        是$\mathbf{R}[x]_n$到$\mathbf{R}$的一个同构映射.
+        是$\mathbf{R}[x]_n$到$\mathbf{R}^n$的一个同构映射.
         \begin{answer}
             我们仅对 $ n = 3 $ 的情况给出证明. % TODO P117/7
 
@@ -1558,7 +1558,7 @@
     \begin{exgroup}
         \item 设 $V(\mathbf{F})$ 是一个 $n$ 维线性空间，$\sigma \in \mathcal{L}(V,V)$. 证明：
         \begin{enumerate}
-            \item 在 $\mathbf{F}[x]$ 中有一个次数不高于 $n^2$ 的多项式 $p(x)$ 使 $p(\sigma) = \theta$；
+            \item 在 $\mathbf{F}[x]$ 中有一个次数不高于 $n^2$ 且非零的多项式 $p(x)$ 使 $p(\sigma) = \theta$；
 
             \item $\sigma$ 可逆$\iff$有一常数项不为 0 的多项式 $p(x)$ 使 $p(\sigma) = \theta$.
         \end{enumerate}
@@ -1594,7 +1594,7 @@
         \item 已知$\sigma_1,\sigma_2,\ldots,\sigma_s$是线性空间$V$上的$s$个两两不同的线性变换，证明：在$V$中必存在向量$\alpha$使得$\sigma_1(\alpha),\sigma_2(\alpha),\ldots,\sigma_s(\alpha)$也两两不同.
         \begin{answer}
             $\alpha \in V$使得$\sigma_i(\alpha) \neq \sigma_j(\alpha)$当且仅当$\alpha \notin \ker(\sigma_i - \sigma_j)$,我们可以只考虑该核空间不是零空间的情况，因为我们所取出的$\alpha$显然不可能是零，
-            又因为我们的线性映射是两两不相同的，所以该核空间一定是一个真子空间，对于$m$个非平凡子空间，我们总可以取到一个不属于任意一个这些子空间的向量(相关的习题在第四章A组第5题已经给出)\autoref{eg:4:A:5}，这样我们就找到了所需要的$\alpha$
+            又因为我们的线性映射是两两不相同的，所以该核空间一定是一个真子空间. 对于$m$个非平凡子空间，我们总可以取到一个不属于任意一个这些子空间的向量(定理4.2)，这样我们就找到了所需要的$\alpha$.
         \end{answer}
         \item 设$V$是一个$n$维线性空间，$V=W_1\oplus W_2,\enspace\sigma\in \mathcal{L}(V,V)$. 证明：$\sigma$可逆$\iff V=\sigma(W_1)+\sigma(W_2)$.
         \begin{answer}
@@ -1651,9 +1651,9 @@
                                        & \leqslant \dim \sigma(V_1) + \dim \tau(V_1)
           \end{align*}
         \end{answer}
-        \item 设$\sigma\in \mathcal{L}(V,V)$，$\dim V_1=n$，且$\sigma^2=\sigma$，$I$是$V$上的恒等变换. 证明：
+        \item 设$\sigma\in \mathcal{L}(V,V)$，$\dim V=n$，且$\sigma^2=\sigma$，$I$是$V$上的恒等变换. 证明：
         \begin{enumerate}
-            \item $(I-\sigma)(V) \in \ker\sigma$；
+            \item $(I-\sigma)(V) \subseteq \ker\sigma$；
 
             \item $r(I-\sigma)+r(\sigma)=n$.
         \end{enumerate}
@@ -1668,7 +1668,7 @@
                       \end{gather*}
                       而由于 $ \sigma^2 = \sigma $，所以 $ \sigma(\alpha) = \vec{0} $，于是 $ \alpha \in \ker \sigma $，因此 $ (I - \sigma)(V) \subseteq \ker \sigma $.
 
-                \item 利用 $ r(\sigma + \tau) \leqslant r(\sigma) + r(\tau) $ 和 $ r(\sigma) + \dim \ker \sigma = n $，由 \ref*{item:6:C:4:1} 可得
+                \item 利用 $ r(\sigma + \tau) \leqslant r(\sigma) + r(\tau) $ 和 $ r(\sigma) + \dim \ker \sigma = n $，由 \ref*{item:5:C:6:1} 可得
                       \begin{equation} \label{eq:5:C:6:2:1}
                           r(I - \sigma) + r(\sigma) \leqslant n
                       \end{equation}
@@ -1681,9 +1681,9 @@
         \end{answer}
 
 
-        \item 已知$V$为有限维线性空间，$\sigma\in \mathcal{L}(V,V)$，且$\sigma^2=\theta$（零映射）. 证明：
+        \item 设$V$是一个$n$维线性空间，$\sigma\in \mathcal{L}(V,V)$，且$\sigma^2=\theta$（零映射）. 证明：
         \begin{enumerate}
-            \item $\sigma$的像空间维数不超过$\dfrac{n}{2}$；
+            \item $ \dim \im \sigma \leqslant \dfrac{n}{2} $；
 
             \item 设$A$是$\sigma$在某组基下的矩阵，则方程组$AX=0$的基础解系至少有$\dfrac{n}{2}$个解.
         \end{enumerate}
