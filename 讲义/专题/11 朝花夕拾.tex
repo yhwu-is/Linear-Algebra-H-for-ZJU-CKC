@@ -142,19 +142,6 @@
 
 因此通过上述定理我们首先了解了线性方程组有无解的一般准则，然后讨论了有解前提下唯一解、无穷解对应于什么情况，并且给出了方阵情况下的情况，以及有解时的求解的方法. 事实上，有关线性方程组解的情况的讨论至此文意已尽. 无论是理论层面或是解决题目的方面，上述定理都为我们提供了足量的信息.
 
-下面这一例子非常重要，一方面是 Cramer 法则的应用，更重要的是我们将引入``对角占优矩阵''，这是一个在现实应用中非常常见的矩阵类型.
-\begin{example}{对角占优}{对角占优}
-    设 $A = (a_{ij})_{n \times n}$ 是一个 $n$ 阶矩阵，若 $|a_{ii}| > \displaystyle\sum_{j \neq i}|a_{ij}|$（即满足对角占优条件），证明：$|A|\neq 0$.
-\end{example}
-故这一例子告诉我们，对角占优矩阵一定可逆.
-\begin{proof}
-    采用反证法证明. 设 $\lvert A \rvert = 0$，则线性方程组 $AX = 0$ 有非零解，设为 $X_0 = (x_1, x_2, \ldots, x_n)^{\mathrm{T}}$，记
-    \[\lvert x_k \rvert = \max \{\lvert x_1 \rvert, \lvert x_2 \rvert, \ldots, \lvert x_n \rvert\}.\]
-    由 $X_0 \neq 0$ 可知 $\lvert x_k \rvert > 0$，考虑 $AX = 0$ 的第 $k$ 个方程，有 $\displaystyle\sum_{j=1}^n a_{kj}x_j = 0$，于是
-    \[\lvert a_{kk} \rvert \lvert x_k \rvert = \lvert -\displaystyle\sum_{j \neq k}a_{kj}x_j \rvert \leqslant \sum_{j \neq k}\lvert a_{kj} \rvert \lvert x_k \rvert.\]
-    这里同时使用了三角不等式和 $x_k$ 的定义. 约去 $\lvert x_k \rvert$ 后可得 $\lvert a_{kk} \rvert \leqslant \displaystyle\sum_{j \neq k} \lvert a_{kj} \rvert$，这与条件矛盾. 所以 $\lvert A \rvert \neq 0$.
-\end{proof}
-
 \subsection{齐次线性方程组解的一般理论}
 
 接下来我们将分别针对齐次和非齐次线性方程组的情况展开关于解的结构性质的讨论. 回顾\autoref{ex:常见子空间} 中的讨论，对于齐次线性方程组$AX=0$，我们有：

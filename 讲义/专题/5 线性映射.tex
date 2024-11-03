@@ -1460,7 +1460,9 @@
                           (\sigma_1 + \sigma_2)(V) = \spa(\vec{e}_1, \vec{e}_2 + \vec{e}_3) \neq \mathbf{R}^3
                       \end{gather*}
 
-                \item 错误. $ (I - \sigma)(V) + \sigma(V) \subseteq V $，等号不一定成立，原因同 \ref*{item:6:B:2:3}，此时只需将 $ I - \sigma $ 视作 $ \sigma_1 $，将 $ \sigma $ 视作 $ \sigma_2 $.
+                \item 正确. $(I - \sigma)(V) + \sigma(V) \subseteq V$ 是显然的，另一个方向上，$ \forall \alpha \in V $ 有
+                      \[ \alpha = (I - \sigma)(\alpha) + \sigma(\alpha) \in (I - \sigma)(V) + \sigma(V) \]
+                      所以 $ V \subseteq (I - \sigma)(V) + \sigma(V) $. 综上有 $ V = (I - \sigma)(V) + \sigma(V) $.
             \end{enumerate}
         \end{answer}
 
@@ -1558,7 +1560,7 @@
     \begin{exgroup}
         \item 设 $V(\mathbf{F})$ 是一个 $n$ 维线性空间，$\sigma \in \mathcal{L}(V,V)$. 证明：
         \begin{enumerate}
-            \item 在 $\mathbf{F}[x]$ 中有一个次数不高于 $n^2$ 且非零的多项式 $p(x)$ 使 $p(\sigma) = \theta$；
+            \item 在 $\mathbf{F}[x]$ 中有一个次数不高于 $n^2$ 的非零多项式 $p(x)$ 使 $p(\sigma) = \theta$；
 
             \item $\sigma$ 可逆$\iff$有一常数项不为 0 的多项式 $p(x)$ 使 $p(\sigma) = \theta$.
         \end{enumerate}
