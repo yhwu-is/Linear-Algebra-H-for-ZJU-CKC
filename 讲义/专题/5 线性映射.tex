@@ -1596,7 +1596,7 @@
         \item 已知$\sigma_1,\sigma_2,\ldots,\sigma_s$是线性空间$V$上的$s$个两两不同的线性变换，证明：在$V$中必存在向量$\alpha$使得$\sigma_1(\alpha),\sigma_2(\alpha),\ldots,\sigma_s(\alpha)$也两两不同.
         \begin{answer}
             $\alpha \in V$使得$\sigma_i(\alpha) \neq \sigma_j(\alpha)$当且仅当$\alpha \notin \ker(\sigma_i - \sigma_j)$,我们可以只考虑该核空间不是零空间的情况，因为我们所取出的$\alpha$显然不可能是零，
-            又因为我们的线性映射是两两不相同的，所以该核空间一定是一个真子空间. 对于$m$个非平凡子空间，我们总可以取到一个不属于任意一个这些子空间的向量(定理4.2)，这样我们就找到了所需要的$\alpha$.
+            又因为我们的线性映射是两两不相同的，所以该核空间一定是一个真子空间. 根据覆盖定理，对于$m$个非平凡子空间，我们总可以取到一个不属于任意一个这些子空间的向量，这样我们就找到了所需要的$\alpha$.
         \end{answer}
         \item 设$V$是一个$n$维线性空间，$V=W_1\oplus W_2,\enspace\sigma\in \mathcal{L}(V,V)$. 证明：$\sigma$可逆$\iff V=\sigma(W_1)+\sigma(W_2)$.
         \begin{answer}
