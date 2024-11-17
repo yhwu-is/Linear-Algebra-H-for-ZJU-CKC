@@ -1079,35 +1079,7 @@
     \item[5.] 请不要忘记验证逆的运算性质的一般方法，我们只需要看到$(A^{-1})^\mathrm{T}A^\mathrm{T}=(AA^{-1})^\mathrm{T}=E$，这里第一个等号运用了上面第4点转置乘法的性质. 从这一式中我们看到$(A^{-1})^\mathrm{T}$是$A^\mathrm{T}$的逆矩阵，因此利用逆的唯一性即可得到$(A^\mathrm{T})^{-1}=(A^{-1})^\mathrm{T}$；
 \end{itemize}
 
-在熟悉了矩阵的基本运算性质后，我们可以来看下面这个例题进行综合练习：
-\begin{example}{}{}
-    已知矩阵 $A=\begin{pmatrix}a & b & c \\ d & e & f \\ h & x & y\end{pmatrix}$ 的逆是 $A^{-1}=\begin{pmatrix}-1 & -2 & -1 \\ 2 & 1 & 0 \\ 0 & -3 & -1\end{pmatrix}$，\\
-    $B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{pmatrix}$. 求矩阵 $X$ 满足：
-
-    \[X+\left(B(A^\mathrm{T}B^2)^{-1}A^\mathrm{T}\right)^{-1}=X\left(A^2(B^\mathrm{T}A)^{-1}B^\mathrm{T}\right)^{-1}(A+B)\]
-\end{example}
-
-\begin{solution}
-    注意到
-    \[B=A\begin{pmatrix}
-            1 &  & \\ 2 & 1 & \\ & & 1
-        \end{pmatrix} \begin{pmatrix}
-            1 &  & \\ & 1 & \\ & -3 & 1
-        \end{pmatrix} \begin{pmatrix}
-            1 &  & \\ & 1 & \\ & & -1
-        \end{pmatrix},\]
-    从而 $B$ 由 $A$ 经过有限次初等变换得到，因 $A$ 可逆，故 $B$ 可逆. 一方面
-    \[\textbf{LHS}=X+\left(B\left(A^{T} B^{2}\right)^{-1} A^{T}\right)^{-1}=X+B,\]
-    另一方面
-    \[\textbf{RHS}=X\left(A^{2}\left(B^{T} A\right)^{-1} B^{T}\right)^{-1}(A+B)=X A^{-1}(A+B),\]
-    于是 $X=A=(A^{-1})^{-1}=\begin{pmatrix}
-            -\frac{1}{3} & \frac{1}{3} & \frac{1}{3}  \\
-            \frac{2}{3}  & \frac{1}{3} & -\frac{2}{3} \\
-            -2           & -1          & 1
-        \end{pmatrix}$.
-\end{solution}
-
-关于转置我们有一个重要的例题需要读者掌握：
+关于转置有一个经典的例题需要读者掌握，是一种矩阵求幂的基本技巧：
 \begin{example}{}{转置求幂}
     设$\alpha=(1,-1,2)^\mathrm{T},\enspace\beta=(3,1,-2)^\mathrm{T},\enspace A=\alpha\beta^\mathrm{T}$，求$A^n$.
 \end{example}

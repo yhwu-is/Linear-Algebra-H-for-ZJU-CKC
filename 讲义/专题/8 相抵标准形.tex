@@ -523,7 +523,35 @@
           总结而言就是$P$为初等矩阵，则$PA$和$AP^\mathrm{T}$表示的变换除了行/列的名字外同名.
 \end{enumerate}
 
-关于初等矩阵我们有一个相当重要的定理，这一定理在之后很多讨论和解题中都扮演关键角色：
+初等矩阵的可逆性结合可逆矩阵的乘积性质表明，任何可逆矩阵乘以初等矩阵后仍然是可逆矩阵. 下面这个例题综合了初等矩阵的性质以及此前学到的矩阵运算性质，是一个有价值的练习：
+\begin{example}{}{}
+    已知矩阵 $A=\begin{pmatrix}a & b & c \\ d & e & f \\ h & x & y\end{pmatrix}$ 的逆是 $A^{-1}=\begin{pmatrix}-1 & -2 & -1 \\ 2 & 1 & 0 \\ 0 & -3 & -1\end{pmatrix}$，\\
+    $B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{pmatrix}$. 求矩阵 $X$ 满足：
+
+    \[X+\left(B(A^\mathrm{T}B^2)^{-1}A^\mathrm{T}\right)^{-1}=X\left(A^2(B^\mathrm{T}A)^{-1}B^\mathrm{T}\right)^{-1}(A+B)\]
+\end{example}
+
+\begin{solution}
+    注意到
+    \[B=A\begin{pmatrix}
+            1 &  & \\ -2 & 1 & \\ & & 1
+        \end{pmatrix} \begin{pmatrix}
+            1 &  & \\ & 1 & \\ & -3 & 1
+        \end{pmatrix} \begin{pmatrix}
+            1 &  & \\ & 1 & \\ & & -1
+        \end{pmatrix},\]
+    从而 $B$ 由 $A$ 经过有限次初等变换得到，因 $A$ 可逆，故 $B$ 可逆. 一方面
+    \[\textbf{LHS}=X+\left(B\left(A^{T} B^{2}\right)^{-1} A^{T}\right)^{-1}=X+B,\]
+    另一方面
+    \[\textbf{RHS}=X\left(A^{2}\left(B^{T} A\right)^{-1} B^{T}\right)^{-1}(A+B)=X A^{-1}(A+B),\]
+    于是 $X=A=(A^{-1})^{-1}=\begin{pmatrix}
+            -\frac{1}{3} & \frac{1}{3} & \frac{1}{3}  \\
+            \frac{2}{3}  & \frac{1}{3} & -\frac{2}{3} \\
+            -2           & -1          & 1
+        \end{pmatrix}$.
+\end{solution}
+
+初等矩阵的可逆性是平凡的结论，但反过来，可逆矩阵是否都可以表达为初等矩阵的乘积则显得更为有趣. 事实上答案是肯定的，我们将其写在下述定理中，这是一个相当重要的定理，在之后很多讨论和解题中都扮演关键角色：
 \begin{theorem}{}{可逆与初等变换}
     任意可逆矩阵都可以被表示为若干个初等矩阵的乘积.
 \end{theorem}
