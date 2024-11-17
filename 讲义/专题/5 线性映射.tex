@@ -412,7 +412,7 @@
           当然读者可能质疑其合理性，因为与定义不完全一致. 我们可以证明这一方法是合理的，即线性映射在出发空间一组基下像的线性扩张就是其像空间.
 
           \begin{proof}
-              首先我们知道$\sigma(V_1)$包含$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n)$，并且是$V_2$的子空间. 又根据\autoref{thm:线性扩张构造子空间}，$\sigma(V_1)$是包含$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n)$的最小子空间，因此我们可以得到$\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))\subseteq\sigma(V_1)$.
+              首先我们知道$\sigma(V_1)$包含$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n)$，并且是$V_2$的子空间. 又根据\autoref{thm:线性扩张构造子空间}，$\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))$是包含$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n)$的最小子空间，因此我们可以得到$\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))\subseteq\sigma(V_1)$.
 
               接下来证明另一半包含. 根据线性扩张定义可知只需证$V_1$中任意元素的像都可以被$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n)$线性表示. 任取$\alpha\in V_1$，则$\alpha$可由$V_1$一组基$\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$线性表示为$\alpha=\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_n\alpha_n$，于是，
               \[\sigma(\alpha)=\sigma(\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_n\alpha_n)=\lambda_1\sigma(\alpha_1)+\lambda_2\sigma(\alpha_2)+\cdots+\lambda_n\sigma(\alpha_n)\]
@@ -773,7 +773,7 @@
           \begin{proof}
               这一结论的证明需要结合两个维数公式. 事实上，由线性空间维数公式有
               \[\dim(\ker\sigma+\im \sigma)=\dim\ker\sigma+\dim\im \sigma-\dim(\ker\sigma \cap \im \sigma)=n-\dim(\ker\sigma \cap \im \sigma)\]
-              因此只需证明$\dim(\ker\sigma+\im \sigma) \leqslant \dfrac{n}{2}$.
+              因此只需证明$\dim(\ker\sigma \cap \im \sigma) \leqslant \dfrac{n}{2}$.
 
               我们用反证法，我们知道$\ker\sigma\cap \im \sigma$是$\ker\sigma$和$\im\sigma$的子空间，因此
               \begin{gather*}
@@ -813,12 +813,12 @@
 \subsection{线性空间同构的概念}
 
 \begin{definition}{同构}{} \index{tonggou@同构 (isomorphism)}
-    如果由线性空间$V_1(\mathbf{F})$到$V_2(\mathbf{F})$存在一个线性双射$\sigma$，则称$V_1(\mathbf{F})$和$V_2(\mathbf{F})$是\term{同构的}，记作$V_1(\mathbf{F}) \cong V_2(\mathbf{F})$. $\sigma$称为$V_1(\mathbf{F})$到$V_2(\mathbf{F})$的一个\term{同构映射}\index{tonggou!yingshe@映射 (isomorphism map)}.
+    如果由线性空间$V_1(\mathbf{F})$到$V_2(\mathbf{F})$存在一个线性双射$\sigma$，则称$V_1(\mathbf{F})$和$V_2(\mathbf{F})$是\term{同构的}，记作$V_1(\mathbf{F}) \cong V_2(\mathbf{F})$. $\sigma$称为$V_1(\mathbf{F})$到$V_2(\mathbf{F})$的一个\term{同构映射}\index{tonggou!yingshe@映射 (isomorphism map)}（或\term{同构}）.
 \end{definition}
 
 根据定义我们发现，同构映射实际上就是线性双射. 关于同构的概念，我们有以下几点需要强调：
 \begin{enumerate}
-    \item 特别注意：同构是线性空间之间的关系，同构映射才是描述线性映射的；
+    \item 根据上述定义，同构这一名词有时表达线性空间之间的关系，有时也可以作为同构映射的简称，读者在阅读时需要根据上下文来理解；
 
     \item 在线性映射的语境下，双射与可逆是完全等价的. 这一点与函数双射可逆等价性没有区别，因此这里不再赘述. 所以我们说的线性双射也就是线性可逆映射，因此证明同构映射时，在线性性的基础之上，我们可以证明双射性，也可以通过找到逆映射来证明；
 
