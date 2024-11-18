@@ -1441,7 +1441,7 @@
     \end{exgroup}
 
     \begin{exgroup}
-        \item 设$B=\{\beta_1,\beta_2,\ldots,\beta_n\}$是实数域$\mathbf{R}$上的线性空间$V$的一组基，$T \in L(V),\enspace T(\beta_1)=\beta_2,T(\beta_2)=\beta_3,\ldots,T(\beta_{n-1})=T(\beta_n),T(\beta_n)=\displaystyle\sum_{i=1}^{n}a_i\beta_i(a_i \in \mathbf{R})$，求$T$关于基$B$的表示矩阵，并求在什么条件下$T$是同构映射.
+        \item 设$B=\{\beta_1,\beta_2,\ldots,\beta_n\}$是实数域$\mathbf{R}$上的线性空间$V$的一组基，$T \in \mathcal{L}(V),\enspace T(\beta_1)=\beta_2,T(\beta_2)=\beta_3,\ldots,T(\beta_{n-1})=T(\beta_n),T(\beta_n)=\displaystyle\sum_{i=1}^{n}a_i\beta_i(a_i \in \mathbf{R})$，求$T$关于基$B$的表示矩阵，并求在什么条件下$T$是同构映射.
         \begin{answer}
             $ T(\beta_1, \beta_2, \ldots, \beta_n) = (\beta_1, \beta_2, \ldots, \beta_n)A $，其中
             \[ A = \begin{pmatrix}
@@ -1769,13 +1769,13 @@
             \end{enumerate}
         \end{answer}
 
-        \item 已知$V$为有限维线性空间，$\sigma\in \mathcal{L}(V,V)$，且$\ker\sigma=\im \sigma$，证明：
+        \item 已知$V$为$n$维线性空间，$\sigma\in \mathcal{L}(V,V)$，且$\ker\sigma=\im \sigma$，证明：
         \begin{enumerate}
             \item $n$为偶数；
 
             \item 存在$V$的一组基$\alpha_1,\ldots,\alpha_n$使得
                   \[\sigma(\alpha_1,\ldots,\alpha_n)=(\alpha_1,\ldots,\alpha_n)\begin{pmatrix}
-                          0 & E_{\frac{n}{2}} \\ 0 & 0
+                          O & E_{\frac{n}{2}} \\ O & O
                       \end{pmatrix}.\]
         \end{enumerate}
 
@@ -1803,7 +1803,7 @@
                           f(\lambda_1) & 0 \\ 0 & f(\lambda_2)
                       \end{pmatrix}$；
 
-            \item 若$A=P^{-1}BP$，证明：$f(A)=Pf(B)P^{-1}$.
+            \item 若$A=PBP^{-1}$，证明：$f(A)=Pf(B)P^{-1}$.
         \end{enumerate}
         \begin{answer}
             \begin{enumerate}
@@ -1990,6 +1990,11 @@
     \begin{exgroup}
         \item 若$n$阶方阵$A_1,A_2,\ldots,A_m$满足$A_i^2\neq O\enspace(i=1,2,\ldots,m)$，且当$i\neq j$时$A_iA_j=O$，证明：$m\leqslant n$.
         \begin{answer}
+            
+        \end{answer}
+
+        \item 设 $A,B,C$ 为二阶复方阵，且 $A,B,C$ 在 $\mathbf{M}_2(\mathbf{C})$ 中线性无关. 证明：存在$z_1,z_2,z_3 \in \mathbf{C}$使得 $z_1A+z_2B+z_3C$ 为可逆矩阵.
+        \begin{answer}
             首先设
             \[A=\begin{pmatrix}a_1 & a_2 \\ a_3 & a_4\end{pmatrix},B=\begin{pmatrix}b_1 & b_2 \\ b_3 & b_4\end{pmatrix},C=\begin{pmatrix}c_1 & c_2 \\ c_3 & c_4\end{pmatrix}.\]
             由于 $A,B,C$ 在 $\mathbf{M}_2(\mathbf{C})$ 中线性无关，所以将 $A,B,C$ 的元素排为一列，可知矩阵
@@ -2005,11 +2010,6 @@
             其系数矩阵为 $D$，这是一个可逆矩阵，所以上述方程存在唯一解，不妨记为 $(x_1',x_2',x_3')$，此时就有 $\lvert x_1'A+x_2'B+x_3'C \rvert = \begin{vmatrix}0 & 1 \\ 1 & \ast\end{vmatrix} = -1$.
 
             所以 $x_1'A+x_2'B+x_3'C$ 为可逆矩阵.
-        \end{answer}
-
-        \item 设 $A,B,C$ 为二阶复方阵，且 $A,B,C$ 在 $\mathbf{M}_2(\mathbf{C})$ 中线性无关. 证明：存在$z_1,z_2,z_3 \in \mathbf{C}$使得 $z_1A+z_2B+z_3C$ 为可逆矩阵.
-        \begin{answer}
-
         \end{answer}
     \end{exgroup}
 
