@@ -1423,6 +1423,33 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
     \[ D_n=(x_1+x_2+\cdots+x_n) \prod_{1 \leqslant j<i \leqslant n}(x_i-x_j). \]
 \end{solution}
 
+\begin{example}{}{}
+    计算 $n + 1$ 阶矩阵 $A$ 的行列式：
+    \[ A = \begin{pmatrix}
+        (a_0 + b_0)^n & (a_0 + b_1)^n & \cdots & (a_0 + b_n)^n \\
+        (a_1 + b_0)^n & (a_1 + b_1)^n & \cdots & (a_1 + b_n)^n \\
+        \vdots        & \vdots        & \ddots & \vdots        \\
+        (a_n + b_0)^n & (a_n + b_1)^n & \cdots & (a_n + b_n)^n
+    \end{pmatrix}. \]
+\end{example}
+
+\begin{solution}
+    观察 $A$ 的特点，我们发现 $A$ 的每一项二项式展开都是 $n + 1$ 个表达式的求和，因此我们可以期待将其分解为两个 $n + 1$ 阶矩阵的乘积：
+    \[ A = \begin{pmatrix}
+        1 & \text{C}_n^1 a_0 & \text{C}_n^2 a_0^2 & \cdots & \text{C}_n^n a_0^n \\
+        1 & \text{C}_n^1 a_1 & \text{C}_n^2 a_1^2 & \cdots & \text{C}_n^n a_1^n \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1 & \text{C}_n^1 a_n & \text{C}_n^2 a_n^2 & \cdots & \text{C}_n^n a_n^n
+    \end{pmatrix} \begin{pmatrix}
+        b_0^n & b_1^n & \cdots & b_n^n \\
+        b_0^{n - 1} & b_1^{n - 1} & \cdots & b_n^{n - 1} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        1 & 1 & \cdots & 1
+    \end{pmatrix}. \]
+    显然，上式左边矩阵的行列式每一列可以提出一个公因子就是 Vandermonde 行列式，而右边矩阵的行列式也类似于 Vandermonde 行列式，所以
+    \[ |A| = \text{C}_n^0 \text{C}_n^1 \cdots \text{C}_n^n \prod\limits_{0 \leqslant i < j \leqslant n}(a_j - a_i)(b_i - b_j). \]
+\end{solution}
+
 \subsection{利用$|E_m-AB|=|E_n-BA|$} \label{sec:利用|E_m-AB|=|E_n-BA|}
 
 \begin{example}{}{}
@@ -3502,6 +3529,11 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 
     \begin{exgroup}
         \item 证明：无法定义非方阵的行列式，使其与方阵行列式的定义相容.
+        \begin{answer}
+
+        \end{answer}
+
+        \item 设 $A$ 为 $n$ 阶可逆矩阵，证明：只用倍加变换可以将 $A$ 变成 $\diag(1,\ldots,1,|A|)$.
         \begin{answer}
 
         \end{answer}

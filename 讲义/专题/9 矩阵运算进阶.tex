@@ -4,11 +4,11 @@
 
 \subsection{对角矩阵}
 
-我们一般记主对角矩阵为$\diag(d_1,d_2,\ldots,d_n)$，准对角矩阵为$\diag(A_1,A_2,\ldots,A_n)$.
+我们一般记主对角矩阵为 $\diag(d_1,d_2,\ldots,d_n)$，准对角矩阵为 $\diag(A_1,A_2,\ldots,A_n)$.
 \begin{theorem}{}{对角矩阵的性质}
     设$A$是一个$s \times n$矩阵，把$A$写成列向量与行向量的形式，分别为
 
-    \[ A = \begin{pmatrix}\alpha_1 & \alpha_2 & \cdots & \alpha_n\end{pmatrix} = \begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_n \end{pmatrix} \]
+    \[ A = \begin{pmatrix}\alpha_1 & \alpha_2 & \cdots & \alpha_n\end{pmatrix} = \begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_s \end{pmatrix} \]
     则
     \begin{gather*}
         \begin{pmatrix}\alpha_1 & \alpha_2 & \cdots & \alpha_n\end{pmatrix}
@@ -22,11 +22,11 @@
             d_1 &     &        &     \\
                 & d_2 &        &     \\
                 &     & \ddots &     \\
-                &     &        & d_n
-        \end{pmatrix} \begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_n \end{pmatrix} = \begin{pmatrix} d_1\beta_1 \\ d_2\beta_2 \\ \vdots \\ d_n\beta_n \end{pmatrix}
+                &     &        & d_s
+        \end{pmatrix} \begin{pmatrix} \beta_1 \\ \beta_2 \\ \vdots \\ \beta_s \end{pmatrix} = \begin{pmatrix} d_1\beta_1 \\ d_2\beta_2 \\ \vdots \\ d_s\beta_s \end{pmatrix}
     \end{gather*}
 
-    即$A$右乘对角矩阵$\diag(d_1,d_2,\ldots,d_n)$相当于给$A$的第$i$列元素都乘以$d_i$，$A$左乘对角矩阵$\diag(d_1,d_2,\ldots,d_n)$相当于给$A$的第$i$行元素都乘以$d_i$，其中 $i=1,2,\ldots,n$.
+    即$A$右乘对角矩阵 $\diag(d_1,d_2,\ldots,d_n)$ 相当于给 $A$ 的第 $j(j = 1, \ldots, n)$ 列元素都乘以 $d_j$，$A$ 左乘对角矩阵 $\diag(d_1,d_2,\ldots,d_s)$ 相当于给 $A$ 的第 $i(i = 1, 2, \ldots, s)$ 行元素都乘以 $d_i$.
 \end{theorem}
 
 \begin{theorem}{}{}
@@ -89,26 +89,44 @@
     证毕.
 \end{proof}
 
-\subsection{基本矩阵}
+\subsection{自然基与基本矩阵}
 
-只有一个元素为1，其余元素全为0的矩阵称为基本矩阵，第$i$行第$j$列元素为1的基本矩阵记为$E_{ij}$，它们具有如下性质（可以联系左右乘对应行列变换进行记忆）：
+回顾 $\mathbf{R}^n$ 中的自然基 $e_1,e_2,\ldots,e_n$，我们知道 $e_i$ 是一个 $n$ 维列向量，其第 $i$ 个元素为 $1$，其余元素为 $0$. 其运算性质我们可以总结如下，读者应当不难验证：
 \begin{theorem}{}{}
-    基本矩阵计算具有如下性质：
+    自然基的运算性质：
     \begin{enumerate}
-        \item $AE_{ij}$的结果就是把$A$的第$i$列移到第$j$列的位置，其余元素都为0的矩阵；
+        \item $e_i^{\mathrm{T}}e_j = \begin{cases}
+                      1 & i = j    \\
+                      0 & i \neq j
+                  \end{cases}$；
 
-        \item $E_{ij}B$的结果就是把$B$的第$j$行移到第$i$行的位置，其余元素都为0的矩阵；
+        \item 若 $A$ 是 $m \times n$ 矩阵，$\mathbf{R}^n$ 中的自然基记为 $e_1,e_2,\ldots,e_n$，$\mathbf{R}^m$ 中的自然基记为 $f_1,f_2,\ldots,f_m$，则
+        \begin{enumerate}
+            \item $Ae_j$ 是 $A$ 的第 $j$ 列；
+            \item $f_i^{\mathrm{T}}A$ 是 $A$ 的第 $i$ 行；
+            \item $f_i^{\mathrm{T}}Ae_j$ 是 $A$ 的第 $i$ 行第 $j$ 列元素.
+        \end{enumerate}
+    \end{enumerate}
+\end{theorem}
 
+我们已经讨论了自然基的运算性质，这是只有一个元素为 $1$，其余元素全为 $0$ 的向量，接下来我们考虑只有一个元素为 $1$，其余元素全为 $0$ 的矩阵，即基本矩阵的运算性质. 第$i$行第$j$列元素为1的基本矩阵记为$E_{ij}$，它们具有如下性质（可以联系左右乘对应行列变换进行记忆）：
+\begin{theorem}{}{}
+    基本矩阵计算具有如下性质（接下来的 $A$ 均表示 $n$ 阶矩阵 $(a_{ij})_{n \times n}$）：
+    \begin{enumerate}
+        \item $A = \sum\limits_{i=1}^n\sum\limits_{j=1}^na_{ij}E_{ij}$；
         \item $E_{ik}E_{lj} = \begin{cases}
                       E_{ij} & k = l    \\
                       O      & k \neq l
-                  \end{cases}$.
+                  \end{cases}$；
+        \item $AE_{ij}$ 的结果就是把 $A$ 的第 $i$ 列移到第 $j$ 列的位置，其余元素都为 $0$ 的矩阵；
+        \item $E_{ij}A$ 的结果就是把 $A$ 的第 $j$ 行移到第 $i$ 行的位置，其余元素都为 $0$ 的矩阵；
+        \item $E_{ij}AE_{kl} = a_{jk}E_{il}$.
     \end{enumerate}
 \end{theorem}
 
 \subsection{其他矩阵}
 
-其他特殊矩阵如正交矩阵、置换矩阵、幂等矩阵、幂零矩阵等，我们将在后续讲义合适的位置描述它们的性质，那时我们的讨论不局限于本节的运算性质，会有更多的其它性质.
+其他特殊矩阵如正交矩阵、幂等矩阵、幂零矩阵等，我们将在后续讲义合适的位置描述它们的性质，那时我们的讨论不局限于本节的运算性质，会有更多的其它性质. 除此之外，在习题中我们也会看到一些特殊矩阵的进阶性质，感兴趣的读者可以尝试.
 
 \section{矩阵可交换问题}
 
@@ -211,17 +229,89 @@
 
 除此之外我们还有一些和特殊的矩阵可交换的结论，我们将在习题中见到它们. 因为技巧性过强正文中不展开叙述，感兴趣的同学可以参考习题C组进行了解.
 
+\section{矩阵的迹}
+
+在\autoref{def:迹}中我们已经定义了方阵的迹，迹有很多优良的性质，并且能帮助我们解决一些有趣的问题，因此本节我们将对其展开讨论.
+
+\begin{theorem}{}{}
+    设 $A$ 和 $B$ 为 $n$ 阶方阵，则
+    \begin{enumerate}
+        \item $\tr(A + B) = \tr(A) + \tr(B)$；
+        \item $\tr(kA) = k\tr(A)$；
+        \item $\tr(A^{\mathrm{T}}) = \tr(A)$；
+        \item $\tr(AB) = \tr(BA)$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    前三条的证明是显然的，我们这里证明最后一条的一种推广形式. 设 $A = (a_{ij})_{m \times n}$，$B = (b_{ij})_{n \times m}$，则 $AB = (c_{ij})_{m \times m}$，$BA = (d_{ij})_{n \times n}$，于是
+    \begin{gather*}
+        \tr(AB) = \sum\limits_{i=1}^m c_{ii} = \sum\limits_{i=1}^m \sum\limits_{j=1}^n a_{ij}b_{ji}, \\
+        \tr(BA) = \sum\limits_{j=1}^n d_{jj} = \sum\limits_{j=1}^n \sum\limits_{i=1}^m b_{ji}a_{ij}.
+    \end{gather*}
+    根据求和符号交换性，我们有 $\tr(AB) = \tr(BA)$.
+\end{proof}
+
+上述性质分别被称为迹的线性性（第 1、2 条）、对称性（第 3 条）和交换性（第 4 条）. 其中交换性非常重要，将来讨论矩阵相似的时候我们会讨论：$\tr(P^{-1}AP) = \tr(PP^{-1}A) = \tr(A)$（第一个等号将 $P^{-1}A$ 视为一个整体，与 $P$ 交换即可得到），这里 $P$ 是可逆矩阵，这表明矩阵的迹在相似变换下保持不变. 下面我们给出另一个应用：
+\begin{example}{}{}
+    证明：不存在 $n$ 阶矩阵 $A,B$ 使得 $AB - BA = kE_n$，其中 $k \neq 0$.
+\end{example}
+\begin{proof}
+    假设存在这样的 $A, B$，则 $\tr(AB - BA) = \tr(kE_n) = kn$，但由迹的性质 $\tr(AB - BA) = \tr(AB) - \tr(BA) = 0$，因此 $kn = 0$，故 $k = 0$，矛盾.
+\end{proof}
+
+矩阵的迹结合矩阵转置、对称矩阵可以得到一些有趣的性质，我们来看一个例子：
+\begin{example}{}{}
+    证明以下两个命题：
+    \begin{enumerate}
+        \item 设 $A$ 为 $m \times n$ 阶实矩阵，则 $A^\mathrm{T}A = O$ 的充要条件为 $A = O$；
+        \item 设 $A$ 为 $m \times n$ 阶复矩阵，则 $\overline{A^\mathrm{T}}A = O$ 的充要条件为 $A = O$.
+    \end{enumerate}
+\end{example}
+\begin{proof}
+    \begin{enumerate}
+        \item 我们只需要观察 $A^\mathrm{T}A$ 的迹即可，设 $A = (a_{ij})_{m \times n}$，则
+        \[ \tr(A^\mathrm{T}A) = \sum\limits_{i=1}^m \sum\limits_{j=1}^n a_{ij}^2 = 0 \]
+        由于 $A$ 为实矩阵，故 $a_{ij} = 0$，即 $A = O$.
+        \item 类似地，我们观察 $\overline{A^\mathrm{T}}A$ 的迹，设 $A = (a_{ij})_{m \times n}$，则
+        \[ \tr(\overline{A^\mathrm{T}}A) = \sum\limits_{i=1}^m \sum\limits_{j=1}^n \overline{a_{ji}}a_{ij} = \sum\limits_{i=1}^m \sum\limits_{j=1}^n |a_{ij}|^2 = 0 \]
+        显然只能有 $A = O$.
+    \end{enumerate}
+\end{proof}
+
+从这一例子的证明过程中我们可以得到一个显然的推论，它表明了迹的正定性：
+\begin{corollary}{}{}
+    \begin{enumerate}
+        \item 设 $A$ 为 $m \times n$ 阶实矩阵，则 $\tr(A^\mathrm{T}A) \geqslant 0$，且 $\tr(A^\mathrm{T}A) = 0$ 当且仅当 $A = O$；
+        \item 设 $A$ 为 $m \times n$ 阶复矩阵，则 $\tr(\overline{A^\mathrm{T}}A) \geqslant 0$，且 $\tr(\overline{A^\mathrm{T}}A) = 0$ 当且仅当 $A = O$.
+    \end{enumerate}
+\end{corollary}
+
+下面这一例子综合运用了前面推导的迹的性质，得到的结论也是简单而有趣的：
+\begin{example}{}{}
+    设 $A$ 为 $n$ 阶实矩阵，证明：$\tr(A^2) \leqslant \tr(A^{\mathrm{T}}A)$，等号成立当且仅当 $A$ 为对称矩阵.
+\end{example}
+\begin{proof}
+    由迹的线性性、对称性、交换性和正定性，我们有
+    \begin{align*}
+        \tr((A - A^\mathrm{T})(A - A^\mathrm{T})^\mathrm{T}) & = \tr((A - A^\mathrm{T})(A^\mathrm{T} - A)) \\
+        & = \tr(AA^\mathrm{T} - A^2 - A^{\mathrm{T}2} + A^{\mathrm{T}}A) \\
+        & = 2\tr(AA^{\mathrm{T}}) - 2\tr(A^2) \geqslant 0.
+    \end{align*}
+    故要证的不等式成立. 等号成立条件由正定性可知必有 $A = A^\mathrm{T}$，即 $A$ 为对称矩阵.
+\end{proof}
+
 \section{矩阵的逆进阶求法}
 
-\subsection{给定多项式求逆矩阵}
+\subsection{凑因子法}
 
-此类题目出现最为频繁，实际上就是通过一些初中所学的因式分解等基本变换得到需要求逆的矩阵与另一个矩阵相乘可以得到单位矩阵（的一个倍数）.
+此类题目出现比较频繁，实际上就是通过一些初中所学的因式分解等基本变换，得到需要求逆的矩阵与另一个矩阵相乘等于单位矩阵（的一个倍数），这样就相当于凑出了逆矩阵. 我们来看一个简单的例子：
 \begin{example}{}{}
     设$A$为非零矩阵，且$A^3=O$，证明：$E+A$和$E-A$都可逆.
 \end{example}
 
 \begin{proof}
-    事实上$E=E+A^3=(E+A)(E-A+A^2)$，因此$E+A$可逆（因为可以写出$(E+A)^{-1}=E-A+A^2$），同理$E=E-A^3=(E-A)(E+A+A^2)$，因此$E-A$可逆（因为可以写出$(E-A)^{-1}=E+A-A^2$）.
+    事实上$E=E+A^3=(E+A)(E-A+A^2)$，因此$E+A$可逆（因为可以写出$(E+A)^{-1}=E-A+A^2$），同理$E=E-A^3=(E-A)(E+A+A^2)$，因此$E-A$可逆（因为可以写出$(E-A)^{-1} = E + A + A^2$）.
 \end{proof}
 
 \begin{example}{}{}
@@ -249,47 +339,66 @@
     \end{enumerate}
 \end{proof}
 
-\subsection{利用分块矩阵初等变换}
+凑因子法可以更具技巧性，下面的例子展示了这一点：
 
-在分块矩阵中，我们已经讲解了分块矩阵初等变换打洞法的基础题型，这里再给出一些更一般的例子：
-\begin{example}{}{打洞法求逆1}
-    设$A,B$为$n$阶矩阵，证明：$E\pm AB$可逆$\iff E\pm BA$可逆.
+\begin{example}{}{凑因子3}
+    设 $A, B$ 分别是 $n \times m$ 和 $m \times n$ 的矩阵，且 $E_n \pm AB$ 可逆，则 $E_m \pm BA$ 可逆.
 \end{example}
 
+这一例子我们将多次使用：\autoref{ex:分式求逆2}是完全一致的，\autoref{ex:打洞法求逆1} 是 $A,B$ 为方阵时的特例. 但使用凑因子法不仅可以证明逆矩阵存在，还可以直接给出逆矩阵的表达式.
+
 \begin{proof}
-    根据分块矩阵初等变换不改变矩阵的秩，我们有
-    \[r\begin{pmatrix}
-            E\pm BA & O \\ A & E
-        \end{pmatrix}=r\begin{pmatrix}
-            E & \mp B \\ A & E
-        \end{pmatrix}=r\begin{pmatrix}
-            E & \mp B \\ O & E\pm AB
-        \end{pmatrix},\]
-    故$E\pm AB$可逆$\iff E\pm BA$可逆（因为此时上式所有矩阵都可逆）.
+    我们证明加法的情况，减法的情况同理. 这里 $A$ 和 $B$ 的位置交换，一个常用的观察是 $A(E_m + BA) = (E_n + AB)A$，由于 $E_n + AB$ 可逆，故有
+    \[(E_n + AB)^{-1}A(E_m + BA) = A,\]
+    于是 $B(E_n + AB)^{-1}A(E_m + BA) = BA$，从而
+    \begin{align*}
+        E_m &= E_m + BA - BA \\
+           & = (E_m + BA) - B(E_n + AB)^{-1}A(E_m + BA) \\
+           & = (E_m + BA)(E_m - B(E_n + AB)^{-1}A).
+    \end{align*}
+    因此 $E_m + BA$ 可逆，且 $(E_m + BA)^{-1} = E_m - B(E_n + AB)^{-1}A$.
 \end{proof}
+
+有了这一结果后，我们可以证明一个计算数学中非常常见的公式：Sherman-Morrison-Woodbury公式.
+\begin{example}{}{}
+    设 $A$ 为 $n$ 阶可逆矩阵，考虑 $B = A + XRY$，其中 $X$ 是 $n \times r$ 矩阵，$Y$ 是 $r \times n$ 矩阵，而 $R$ 是 $r \times r$ 的可逆矩阵. 若 $R^{-1} + YA^{-1}X$ 可逆，则
+    \[B^{-1}=A^{-1}-A^{-1}X(R^{-1}+YA^{-1}X)^{-1}YA^{-1}.\]
+\end{example}
+
+\begin{solution}
+    注意到 $B = A + XRY = A(E + A^{-1}XRY)$，将 $A^{-1}X$ 和 $RY$ 分别视为整体，因为 $E + RYA^{-1}X = R(R^{-1} + YA^{-1}X)$ 可逆，根据\autoref{ex:凑因子3}，则有 $E + A^{-1}XRY$ 可逆，并且
+    \begin{align*}
+        (E + A^{-1}XRY)^{-1} & = E - A^{-1}X(E + RYA^{-1}X)^{-1}RY \\
+                             & = E - A^{-1}X(R^{-1} + YA^{-1}X)^{-1}Y.
+    \end{align*}
+    因此 $B^{-1} = (E + A^{-1}XRY)^{-1}A^{-1} = A^{-1} - A^{-1}X(R^{-1} + YA^{-1}X)^{-1}YA^{-1}$.
+\end{solution}
+
+初看这一公式想必一定会发出``这么复杂的公式为什么有用''的感叹. 事实上，我们考虑$r$比$n$小很多的情况，那么这个时候对$R$和$R^{-1}+YA^{-1}X$求逆会更容易，因为它们的阶数会低很多，计算量也小很多. 考虑极端情况，若$x$和$y$是非零列向量，取$X=x$，$Y=y^\mathrm{T}$，$R=(1)$，且满足$1+y^\mathrm{T}A^{-1}x\neq 0$，我们可以得到Sherman-Morrison-Woodbury公式的一个特殊情形（称为Sherman-Morrison公式）：
+\[(A+xy^\mathrm{T})^{-1}=A^{-1}-(1+y^\mathrm{T}A^{-1}x)^{-1}A^{-1}xy^\mathrm{T}A^{-1}.\]
+这也称为``秩 1 校正''，因为 $xy^\mathrm{T}$ 是一个秩 1 矩阵，在最优化理论中是常见的.
 
 \begin{example}{}{}
-    设$A$为$n$阶矩阵，$B,C$分别为$n \times m$和$m \times n$阶矩阵. 证明：$E_m+CA^{-1}B$可逆$\iff A+BC$可逆.
+    求 $n$ 阶矩阵 $A = \begin{pmatrix}
+        0 & 1 & 1 & \cdots & 1 \\
+        1 & 0 & 1 & \cdots & 1 \\
+        1 & 1 & 0 & \cdots & 1 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        1 & 1 & 1 & \cdots & 0
+    \end{pmatrix}$ 的逆矩阵.
 \end{example}
-
-\begin{proof}
-    类似于上例，有
-    \[r\begin{pmatrix}
-            A+BC & B \\ O & E_m
-        \end{pmatrix}=r\begin{pmatrix}
-            A & B \\ -C & E_m
-        \end{pmatrix}=r\begin{pmatrix}
-            A & B \\ O & E_m+CA^{-1}B
-        \end{pmatrix},\]
-    故$E_m+CA^{-1}B$可逆$\iff A+BC$可逆.
-\end{proof}
-
-事实上，总结上述两题的解决方法，都是将待证明的一个矩阵构成分块矩阵的一部分，然后利用初等变换变出另一个矩阵，使得这两个矩阵的可逆性相同，从而得到结论.
+\begin{solution}
+    不难观察到这一矩阵与秩为 $1$ 的元素全为 $1$ 的矩阵之间只差一个单位矩阵，因此令 $\alpha = (1,1,\ldots,1)^\mathrm{T}$，则 $A = -E_n + \alpha\alpha^\mathrm{T}$，由 Sherman-Morrison 公式，我们有
+    \begin{align*}
+        A^{-1} &= -E_n - (1 + \alpha^\mathrm{T}(-E_n)\alpha)^{-1}(-E_n)\alpha\alpha^\mathrm{T}(-E_n) \\
+                &= -E_n + \dfrac{1}{n-1}\alpha\alpha^\mathrm{T}.
+    \end{align*}
+\end{solution}
 
 \subsection{求逆的分式思想}
 
 虽然矩阵没有除法运算，但是我们如果将$(E-A)^{-1}$写成$\dfrac{E}{E-A}$，再类比泰勒展开
-\[\frac{1}{1-x}=1+\sum_{n=1}^\infty x^n \qquad x\in (-1,1)\]
+\[\frac{1}{1-x}=1+\sum\limits_{n=1}^\infty x^n \qquad x\in (-1,1)\]
 我们可以得到（不严谨！只能用来解题的时候当作初步的思路！）
 \[(E-A)^{-1}=\frac{E}{E-A}=E+A+A^2+\cdots\]
 
@@ -305,10 +414,9 @@
     因此$(E-A)^{-1}=E+A+A^2+\cdots+A^{k-1}$.
 \end{solution}
 
-\begin{example}{}{}
+\begin{example}{}{分式求逆2}
     设$A,B$分别是$n \times m$和$m \times n$的矩阵，且$E_n \pm AB$可逆，则$E_m \pm BA$可逆.
 \end{example}
-不难发现这一例是\autoref{ex:打洞法求逆1} 的推广，因为此处不再限制方阵.
 
 \begin{proof}
     我们猜测
@@ -328,9 +436,11 @@
 \end{example}
 
 \begin{proof}
-    由于$(E-A^{-1})^{-1}=(A^{-1}(A-E))^{-1}=(A-E)^{-1}A$，因此
+    因为没有关于矩阵减法的逆的公式，$(E - A^{-1})^{-1}$ 无法直接化简，我们可以考虑将其提逆，提出一个 $A^{-1}$：$(E-A^{-1})^{-1} = (A^{-1}(A-E))^{-1} = (A-E)^{-1}A$，从而
     \[(E-A^{-1})^{-1}+(E-A)^{-1}=(A-E)^{-1}A+(E-A)^{-1}=(E-A)^{-1}(E-A)=E.\]
 \end{proof}
+
+最后，除了上述介绍的方法之外，在接下来介绍了分块矩阵初等变换之后，我们还会介绍其它与逆矩阵相关的一些技巧.
 
 \section{矩阵的幂} \label{sec:矩阵的幂}
 
@@ -363,11 +473,54 @@
                   \end{pmatrix}$.
           \end{solution}
 
-          还有一种找规律基于幂等矩阵（满足$A^2=A$的矩阵，根据数学归纳法可证明$A$的任意次方都是$A$），显然幂等矩阵的任意次方都与其本身相等是很好的性质，另一种找规律基于对合矩阵，即平方等于单位矩阵的矩阵，我们这里主要与大家分享另一种关于幂零矩阵（矩阵某次幂可以得到零矩阵）的方法，例子如下：
+          还有一种找规律基于幂等矩阵，显然幂等矩阵的任意次方都与其本身相等是很好的性质，另一种找规律基于对合矩阵，偶数次方等于单位矩阵，奇数次方等于本身，这显然也可以直接利用. 这里主要与大家分享两类特殊矩阵的幂的性质，这些性质在矩阵的幂的计算中是非常有用的.
+          \begin{example}{}{}
+            证明如下两个矩阵的幂的性质：
+            \begin{enumerate}
+                \item 设矩阵 $A$ 为 $n$ 阶基础循环矩阵，即
+                \[ A=\begin{pmatrix}
+                        0      & 1      & 0      & \cdots & 0      \\
+                        0      & 0      & 1      & \cdots & 0      \\
+                        \vdots & \vdots & \vdots & \ddots & \vdots \\
+                        0      & 0      & 0      & \cdots & 1      \\
+                        1      & 0      & 0      & \cdots & 0
+                    \end{pmatrix}, \]
+                则 $A^k = \begin{pmatrix}
+                    O & E_{n-k} \\ E_k & O
+                \end{pmatrix}$，其中 $1 \leqslant k \leqslant n$.
+                \item 设矩阵 $A$ 为上（下）三角矩阵且主对角线元素全为 $0$，则 $A^n = O$. 特别地，若 $A$ 为 $n$ 阶若当块矩阵，即
+                \[ A=\begin{pmatrix}
+                        0 & 1 & 0 & \cdots & 0      \\
+                        0 & 0 & 1 & \cdots & 0      \\
+                        \vdots & \vdots & \vdots & \ddots & \vdots \\
+                        0 & 0 & 0 & \cdots & 1      \\
+                        0 & 0 & 0 & \cdots & 0
+                    \end{pmatrix}, \]
+                则 $A^k = \begin{pmatrix}
+                    O & E_{n-k} \\ O & O
+                \end{pmatrix}$，其中 $1 \leqslant k \leqslant n$.
+            \end{enumerate}
+          \end{example}
+          \begin{proof}
+            \begin{enumerate}
+                \item 可以将 $A$ 写成 $A = (e_n, e_1, e_2, \cdots, e_{n-1})$ 的形式，并且注意到 $Ae_i$ 就是 $A$ 的第 $i$ 列，于是有
+                \[A^2 = A(e_n, e_1, e_2, \cdots, e_{n-1}) = (e_{n-1}, e_n, e_1, \cdots, e_{n-2}).\]
+                如此不断操作即可得到结论.
+                \item 我们证明上三角的情况，下三角类似. 设 $A = (a_{ij})_{n \times n}$，由于 $A$ 为上三角矩阵且对角线上元素全为 $0$，则 $i \geqslant j$ 时有 $a_{ij} = 0$. 将 $A$ 表示为基本矩阵之和，即 $A = \sum\limits_{i < j}^na_{ij}E_{ij}$.
+
+                由于 $j \neq k$ 时有 $E_{ij}E_{kl} = O$，因此 $A^n$ 中不为 $0$ 的项只可能为 $E_{ij_1}E_{j_1j_2}\cdots E_{j_{n-1}j_n}$，其中 $1 \leqslant i < j_1 < j_2 < \cdots < j_n \leqslant n$，但显然这是不可能的，因此 $A^n = O$.
+
+                特别地，对于若当块 $A = (0,e_1,e_2,\cdots,e_{n-1})$，并且注意到 $Ae_i$ 就是 $A$ 的第 $i$ 列，于是有
+                \[A^2 = A(0,e_1,e_2,\cdots,e_{n-1}) = (0, 0, e_1, \cdots, e_{n-2}).\]
+                如此不断操作即可得到结论.
+            \end{enumerate}
+          \end{proof}
+
+          下面的例子应用了上述结论：
           \begin{example}{}{}
               求$A=\begin{pmatrix}a & 1 & 0 & 0 \\ 0 & a & 1 & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a \end{pmatrix}^n$.
           \end{example}
-          在上例中，我们采用将矩阵分为$A=tE+B$的方法，会发现矩阵$B$为上三角矩阵且对角线上全为0，这是需要读者记忆的典型的幂零矩阵，未来在幂零矩阵的讨论中我们将严格证明这一点，现在我们只需利用这一性质快速解题.
+          我们采用将矩阵分为 $A = aE + B$ 的方式，因为这样矩阵 $B$ 为上三角矩阵且对角线上全为 0，甚至是若当块矩阵——我们已经证明这是典型的幂零矩阵.
 
           \begin{solution}
               设$B=\begin{pmatrix}
@@ -460,16 +613,16 @@
 
                   \item 当$b\neq 0$时有
                         \begin{align*}
-                            (aE+M)^n & =\sum_{k=0}^nC_n^ka^{n-k}M^k                                    \\
-                                     & =\sum_{k=0}^nC_n^ka^{n-k}b^{k-1}M                               \\
-                                     & =a^nE+\dfrac{1}{b}\sum_{k=1}^nC_n^ka^{n-k}b^kM                  \\
-                                     & =a^nE+\dfrac{1}{b}\left(\sum_{k=0}^nC_n^ka^{n-k}b^k-a^n\right)M \\
+                            (aE+M)^n & =\sum\limits_{k=0}^nC_n^ka^{n-k}M^k                                    \\
+                                     & =\sum\limits_{k=0}^nC_n^ka^{n-k}b^{k-1}M                               \\
+                                     & =a^nE+\dfrac{1}{b}\sum\limits_{k=1}^nC_n^ka^{n-k}b^kM                  \\
+                                     & =a^nE+\dfrac{1}{b}\left(\sum\limits_{k=0}^nC_n^ka^{n-k}b^k-a^n\right)M \\
                                      & =a^nE+\dfrac{(a+b)^n-a^n}{b}M
                         \end{align*}
               \end{enumerate}
           \end{solution}
 
-          针对本例我们可以给出一个更加具体的例子供读者练习：
+          针对本例我们可以给出一个更加具体的例子供读者练习，读者可以从中感受观察矩阵特点然后凑出秩为 $1$ 矩阵的技巧.
           \begin{example}{}{}
               求矩阵的幂$A^n=\begin{pmatrix}
                       1  & -1 & -1 & -1 \\
@@ -496,6 +649,8 @@
                       1 & 1 & \cdots & 1
                   \end{pmatrix}$然后现场推导）.
           \end{solution}
+
+          解答中看出秩 $1$ 矩阵的分解需要一定的灵光一现与经验，日后行列式中我们还会遇到很多需要将矩阵分解为两个向量或矩阵乘积的情况，这里只是一个开始.
 
           \begin{example}{}{}
               已知$A$是数域$P$上的一个2阶方阵，且存在正整数$l$使得$A^l=O$，证明：$A^2=O$.
@@ -584,7 +739,7 @@
 
 事实上我们并不需要特别记忆，因为这和之前普通的初等变换并无本质区别，只需要注意左乘右乘即可. 除此之外，上述矩阵的逆矩阵也是同理可得的，只需要思考什么样的逆变换能变回单位矩阵即可，此处不再赘述，后面会有例题进行练习.
 
-\subsection{分块矩阵求逆}
+\subsection{分块矩阵与逆矩阵求解}
 
 分块矩阵初等行变换的一个重要的应用就是``打洞法''，常用于分块矩阵求逆的运算，在之后行列式的一些技巧性处理中也很常见. 这一方法非常形象，因为打洞就是使得矩阵出现一些零分块，成为分块对角矩阵（或者分块三角矩阵）后更加易于处理，例如：
 \begin{enumerate}
@@ -659,19 +814,40 @@
     \end{pmatrix}.\]
 我们在之后讨论分块矩阵行列式的相关运算技巧时还会遇到Schur补，由此可见其在矩阵计算中的重要性. 我们会在很多习题中遇到类似于Schur补的形式，希望读者都能认出并指明其本质只是为了打洞而做初等变换得到的.
 
-接下来的例子是一个在计算数学中非常常见的公式——Sherman-Morrison-Woodbury公式.
-\begin{example}{}{}
-    设$A$为可逆矩阵，已知其逆矩阵为$A^{-1}$，我们考虑$B=A+XRY$，其中$X$是$n\times r$矩阵，$Y$是$r\times n$矩阵，而$R$是$r\times r$的可逆矩阵. 若$R$和$R^{-1}+YA^{-1}X$可逆，则
-    \[B^{-1}=A^{-1}-A^{-1}X(R^{-1}+YA^{-1}X)^{-1}YA^{-1}.\]
+
+\begin{example}{}{打洞法求逆1}
+    设$A,B$为$n$阶矩阵，证明：$E\pm AB$可逆$\iff E\pm BA$可逆.
 \end{example}
 
-\begin{solution}
+\begin{proof}
+    根据分块矩阵初等变换不改变矩阵的秩，我们有
+    \[r\begin{pmatrix}
+            E\pm BA & O \\ A & E
+        \end{pmatrix}=r\begin{pmatrix}
+            E & \mp B \\ A & E
+        \end{pmatrix}=r\begin{pmatrix}
+            E & \mp B \\ O & E\pm AB
+        \end{pmatrix},\]
+    故$E\pm AB$可逆$\iff E\pm BA$可逆（因为此时上式所有矩阵都可逆）.
+\end{proof}
 
-\end{solution}
+\begin{example}{}{}
+    设$A$为$n$阶矩阵，$B,C$分别为$n \times m$和$m \times n$阶矩阵. 证明：$E_m+CA^{-1}B$可逆$\iff A+BC$可逆.
+\end{example}
 
-初看这一公式想必一定会发出``这么复杂的公式为什么有用''的感叹. 事实上，我们考虑$r$比$n$小很多的情况，那么这个时候对$R$和$R^{-1}+YA^{-1}X$求逆会更容易，因为它们的阶数会低很多，计算量也小很多. 考虑极端情况，若$x$和$y$是非零列向量，取$X=x$，$Y=y^\mathrm{T}$，$R=(1)$，且满足$1+y^\mathrm{T}A^{-1}x\neq 0$，我们可以得到Sherman-Morrison-Woodbury公式的一个特殊情形（称为Sherman-Morrison公式）：
-\[(A+xy^\mathrm{T})^{-1}=A^{-1}-(1+y^\mathrm{T}A^{-1}x)^{-1}A^{-1}xy^\mathrm{T}A^{-1}.\]
-这也称为``秩 1 校正''，因为 $xy^\mathrm{T}$ 是一个秩 1 矩阵，在最优化理论中是常见的.
+\begin{proof}
+    类似于上例，有
+    \[r\begin{pmatrix}
+            A+BC & B \\ O & E_m
+        \end{pmatrix}=r\begin{pmatrix}
+            A & B \\ -C & E_m
+        \end{pmatrix}=r\begin{pmatrix}
+            A & B \\ O & E_m+CA^{-1}B
+        \end{pmatrix},\]
+    故$E_m+CA^{-1}B$可逆$\iff A+BC$可逆.
+\end{proof}
+
+事实上，总结上述两题的解决方法，都是将待证明的一个矩阵构成分块矩阵的一部分，然后利用初等变换变出另一个矩阵，使得这两个矩阵的可逆性相同，从而得到结论.
 
 \subsection{分块矩阵与数学归纳法}
 
@@ -1154,6 +1330,14 @@
             \end{enumerate}
         \end{answer}
 
+        \item \begin{enumerate}
+            \item 若$n$阶方阵$A$满足$A^2=E$，若$A$还满足$E+A$可逆，证明：$A=E$；
+            \item 若$n$阶方阵$A$满足$A^2=A$，证明：$E+A$可逆.
+        \end{enumerate}
+        \begin{answer}
+
+        \end{answer}
+
         \item 若$A,B$为两个$n$阶矩阵且满足$A+B=AB$，证明：
         \begin{enumerate}
             \item $A-E$和$B-E$均可逆；
@@ -1411,6 +1595,50 @@
             \end{enumerate}
         \end{answer}
 
+        \item 设$V$是域$\mathbf{F}$上的$n$阶对称矩阵关于矩阵加法和数乘运算构成的线性空间，令
+        \[U=\{A\in V \mid \tr(A)=0\},\enspace W=\{\lambda E \mid \lambda\in\mathbf{F}\}.\]
+        \begin{enumerate}
+            \item 证明：$U,W$为$V$的子空间；
+
+            \item 分别求$U,W$的一组基和维数；
+
+            \item 证明：$V=U\oplus W$.
+        \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 根据定义可知$\tr$是线性的，有 $\tr(\lambda A+\mu B)=\lambda\tr(A)+\mu\tr(B)=0$，则$U$是封闭的，又$W$封闭是显然的，则 $U,W$ 是 $V$ 的子空间.
+
+                \item 对于$W$,基为$\{E\}$，$\dim W=1$. 对于$u$,设$E_{ij}$是 $a_{ij}=1$，其余元素为0的$n$阶方阵. 则由于$u$是对称矩阵，在非对角线元素上，$u$的基包含$E_{12}+E_{21},E_{13}+E_{31},\ldots ,E_{(n-1)n}+E_{n(n-1)}$. 对于对角线元素 $a_{11}+\cdots +a_{nn}=0$. 方程解为
+                      \[\begin{pmatrix}a_{11}\\ \vdots\\ a_{nn}	\end{pmatrix}=k_1\begin{pmatrix}1 \\ -1 \\ 0\\ \vdots \\0	\end{pmatrix}=k_2\begin{pmatrix}1 \\ 0 \\ -1\\ \vdots \\0	\end{pmatrix}+\cdots+k_{n-1}\begin{pmatrix}1 \\ 0 \\ 0\\ \vdots \\-1	\end{pmatrix}.\]
+                      则还有$n-1$个基$E_{11}-E_{22},E_{11}-E_{33},\ldots ,E_{11}-E_{nn}$. 故 $\dim U=\dfrac{n^2-n}2+n-2=\dfrac{n^2+n-2}2$.
+
+                \item 设$V'=U+W$. 先证明直和，即$U\cap W=\{0\}$. 这是显然的，因为$\tr(\lambda E)=n\lambda$，仅当 $\lambda=0$ 时 $\lambda E\in U$ 即 $U\cap W=\{0\}$得证. 又$\dim U+\dim W=\dim V'=n=\dim V$，则$V=V'=U\oplus W$得证.
+            \end{enumerate}
+        \end{answer}
+
+        \item 证明如下两个命题：
+        \begin{enumerate}
+            \item 设 $A$ 是实对称矩阵，若 $A^2 = O$，则 $A = O$；
+            \item 设 $A_1, A_2, \cdots, A_k$ 是实对称矩阵且 $A_1^2 + A_2^2 + \cdots + A_k^2 = O$，则 $A_1 = A_2 = \cdots = A_k = O$.
+        \end{enumerate}
+        \begin{answer}
+
+        \end{answer}
+
+        \item 证明如下两个命题：
+        \begin{enumerate}
+            \item 设 $n$ 阶实矩阵 $A$ 满足 $A^\mathrm{T} = -A$，如果存在同阶实矩阵 $B$ 使得 $AB = B$，则 $B = O$；
+            \item 设 $n$ 阶复矩阵 $A$ 满足 $\overline{A^\mathrm{T}} = -A$，如果存在同阶复矩阵 $B$ 使得 $AB = B$，则 $B = O$.
+        \end{enumerate}
+        \begin{answer}
+
+        \end{answer}
+
+        \item 设 $A, B$ 是两个 $n$ 阶矩阵，且 $\tr(ABC) = \tr(CBA)$ 对任意的 $n$ 阶矩阵 $C$ 成立，证明 $AB = BA$.
+        \begin{answer}
+
+        \end{answer}
+
         \item 设$A$是$n$阶矩阵，$A^k=O$对某个正整数$k$成立，求证下列方阵可逆，并求它们的逆：
         \begin{enumerate}
             \item $E+A$；
@@ -1497,6 +1725,34 @@
                             -\dfrac{1}{n+1} & -\dfrac{1}{n+1} & \cdots & \dfrac{n}{n+1}
                         \end{pmatrix}.
                     \]
+            \end{enumerate}
+        \end{answer}
+
+        \item 设$A,B,A+B$都是可逆矩阵，求证：$A^{-1}+B^{-1}$也是可逆矩阵.
+        \begin{answer}
+            这里我们遇到的加法和逆在一起的情况，因此我们使用提逆法，不难得到 $A^{-1}+B^{-1}=A^{-1}(A+B)B^{-1}$，由此可知其逆为 $B(A+B)^{-1}A$.
+        \end{answer}
+
+        \item 已知矩阵$A=\begin{pmatrix}1 & 2 & a  \\
+            1 & 3 & 0  \\
+            2 & 7 & -a\end{pmatrix}$可以通过初等列变换转化为矩阵$B=\begin{pmatrix}1  & a & 2 \\
+            0  & 1 & 1 \\
+            -1 & 1 & 1\end{pmatrix}$.
+        \begin{enumerate}
+            \item 求常数$a$；
+            \item 求满足$AP=B$的可逆矩阵$P$.
+        \end{enumerate}
+        \begin{answer}
+            \begin{enumerate}
+                \item 由题意 $r(A)=r(B)$. $A$ 可由初等变换为 $\begin{pmatrix}1 & 2 & a \\ 1 & 3 & 0 \\ 0 & 0 & 0\end{pmatrix}$，$B$ 可由初等变换为 $\begin{pmatrix}1 & a & 2 \\ 0 & 1 & 1 \\ 0 & 0 & 2-a\end{pmatrix}$. 由于秩相同故 $2-a=0,a=2$.
+
+                \item $(A,B)=\begin{pmatrix}1 & 2 & a & 1 & a & 2 \\ 1 & 3 & 0 & 0 & 1 & 1 \\ 2 & 7 & -a & -1 & 1 & 1\end{pmatrix}\rightarrow\begin{pmatrix}1 & 0 & 6 & 3 & 4 & 4 \\ 0 & 1 & -2 & -1 & -1 & -1 \\ 0 & 0 & 0 & 0 & 0 & 0\end{pmatrix}$
+
+                        $X = \begin{pmatrix}-6k_1+3 \\ 2k_1-1 \\ k_1\end{pmatrix},Y = \begin{pmatrix}-6k_2+4 \\ 2k_2-1 \\ k_2\end{pmatrix},Z = \begin{pmatrix}-6k_3+4 \\ 2k_3-1 \\ k_3\end{pmatrix}$
+
+                        $\begin{pmatrix}-6k_1+3 & -6k_2+4 & -6k_3+4 \\ 2k_1-1 & 2k_2-1 & 2k_3-1 \\ k_1 & k_2 & k_3\end{pmatrix}\rightarrow \begin{pmatrix}1 & 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & k_3-k_2\end{pmatrix}$
+
+                        因为 $P$ 可逆，所以 $k_2\neq k_3$，故 $P=\begin{pmatrix}-6k_1+3 & -6k_2+4 & -6k_3+4 \\ 2k_1-1 & 2k_2-1 & 2k_3-1 \\ k_1 & k_2 & k_3\end{pmatrix},k_2\neq k_3,\enspace k_1,k_2,k_3 \in \mathbf{R}$.
             \end{enumerate}
         \end{answer}
 
@@ -1597,9 +1853,9 @@
                                   \vdots & \vdots & \ddots & \vdots \\
                                   b_{n1} & b_{n2} & \cdots & b_{nn}
                               \end{pmatrix} \\
-                           &= \left( \sum_{i=1}^n b_{i1} \alpha_i, \sum_{i=1}^n b_{i2} \alpha_i, \ldots, \sum_{i=1}^n b_{in} \alpha_i \right).
+                           &= \left( \sum\limits_{i=1}^n b_{i1} \alpha_i, \sum\limits_{i=1}^n b_{i2} \alpha_i, \ldots, \sum\limits_{i=1}^n b_{in} \alpha_i \right).
                     \end{align*}
-                    设 $\gamma_j = \sum_{i=1}^n b_{ij} \alpha_i$. 由于 $r(A) = r(AB)$，$\alpha_1, \alpha_2, \ldots, \alpha_n$ 与 $\gamma_1, \gamma_2, \ldots, \gamma_n$ 等价，故存在 $C = (k_{ij})_{n \times n}$，使得
+                    设 $\gamma_j = \sum\limits_{i=1}^n b_{ij} \alpha_i$. 由于 $r(A) = r(AB)$，$\alpha_1, \alpha_2, \ldots, \alpha_n$ 与 $\gamma_1, \gamma_2, \ldots, \gamma_n$ 等价，故存在 $C = (k_{ij})_{n \times n}$，使得
                     \begin{align*}
                         (\alpha_1, \alpha_2, \ldots, \alpha_n)
                         &= (\gamma_1, \gamma_2, \ldots, \gamma_n) \begin{pmatrix}
@@ -1667,6 +1923,23 @@
     \end{exgroup}
 
     \begin{exgroup}
+        \item 求证：任一 $n$ 阶矩阵均可表示为形如 $I_n + a_{ij}E_{ij}$ 这样的矩阵之积，其中 $E_{ij}$ 是 $n$ 阶基本矩阵.
+        \begin{answer}
+
+        \end{answer}
+
+        \item 本题我们给出迹的另一种公理化的刻画，即我们可以从迹的性质出发，定义迹. 设 $f$ 是数域 $\mathbf{F}$ 上 $n$ 阶矩阵构成的空间到 $\mathbf{F}$ 的一个映射，满足
+        \begin{enumerate}
+            \item 对任意的 $n$ 阶矩阵 $A, B$，有 $f(A+B) = f(A) + f(B)$；
+            \item 对任意的 $n$ 阶矩阵 $A$ 和数域中的数 $k$，有 $f(kA) = kf(A)$；
+            \item 对任意的 $n$ 阶矩阵 $A, B$，有 $f(AB) = f(BA)$；
+            \item $f(E_n) = n$.
+        \end{enumerate}
+        证明：存在唯一的映射 $f$ 满足上述性质，且 $f(A) = \tr(A)$（提示：根据线性性，我们确定了 $f$ 在一组基上的像即可确定 $f$）.
+        \begin{answer}
+
+        \end{answer}
+
         \item 已知数列$\{a_n\},\{b_n\}$满足$a_0=-1,\enspace b_0=3$，且
         \[\begin{cases}
                 a_n=3a_{n-1}+b_{n-1}+2^{n-1} \\

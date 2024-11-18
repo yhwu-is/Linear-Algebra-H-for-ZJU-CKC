@@ -412,7 +412,7 @@
           当然读者可能质疑其合理性，因为与定义不完全一致. 我们可以证明这一方法是合理的，即线性映射在出发空间一组基下像的线性扩张就是其像空间.
 
           \begin{proof}
-              首先我们知道$\sigma(V_1)$包含$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n)$，并且是$V_2$的子空间. 又根据\autoref{thm:线性扩张构造子空间}，$\sigma(V_1)$是包含$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n)$的最小子空间，因此我们可以得到$\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))\subseteq\sigma(V_1)$.
+              首先我们知道$\sigma(V_1)$包含$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n)$，并且是$V_2$的子空间. 又根据\autoref{thm:线性扩张构造子空间}，$\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))$是包含$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n)$的最小子空间，因此我们可以得到$\spa(\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n))\subseteq\sigma(V_1)$.
 
               接下来证明另一半包含. 根据线性扩张定义可知只需证$V_1$中任意元素的像都可以被$\sigma(\alpha_1),\sigma(\alpha_2),\ldots,\sigma(\alpha_n)$线性表示. 任取$\alpha\in V_1$，则$\alpha$可由$V_1$一组基$\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$线性表示为$\alpha=\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_n\alpha_n$，于是，
               \[\sigma(\alpha)=\sigma(\lambda_1\alpha_1+\lambda_2\alpha_2+\cdots+\lambda_n\alpha_n)=\lambda_1\sigma(\alpha_1)+\lambda_2\sigma(\alpha_2)+\cdots+\lambda_n\sigma(\alpha_n)\]
@@ -662,8 +662,8 @@
 作为线性映射基本定理的一个应用，我们将重新证明商空间的维数公式\autoref{thm:商空间的维数公式}. 注意到在原证明中，我们的证明思想与线性映射基本定理的思想相同，可以料想两者之间会存在某种联系，这一联系需要首先定义商映射的概念.
 
 \begin{definition}{}{}
-    设$U$是$V$的子空间，商映射$\pi$是如下定义的线性映射$\pi:V\to V/U$：对任意的$\alpha\in V$，
-    \[\pi(v)=v+U.\]
+    设 $U$ 是 $V$ 的子空间，商映射 $\pi$ 是如下定义的线性映射$\pi : V \to V/U$：对任意的 $v \in V$，
+    \[\pi(v) = v + U.\]
 \end{definition}
 
 回顾等价类的讨论，实际上这一定义就是基于原集合（线性空间）和商集（商空间）之间的自然映射，它将原集合（线性空间）中的元素（向量）映射到它所在的等价类（仿射子集）. 因为所有向量的等价类都在像空间中，因此这一映射的像空间就是商空间 $V/U$，因此如果我们要得到商空间的维数，直接使用线性映射基本定理即可：
@@ -773,7 +773,7 @@
           \begin{proof}
               这一结论的证明需要结合两个维数公式. 事实上，由线性空间维数公式有
               \[\dim(\ker\sigma+\im \sigma)=\dim\ker\sigma+\dim\im \sigma-\dim(\ker\sigma \cap \im \sigma)=n-\dim(\ker\sigma \cap \im \sigma)\]
-              因此只需证明$\dim(\ker\sigma+\im \sigma) \leqslant \dfrac{n}{2}$.
+              因此只需证明$\dim(\ker\sigma \cap \im \sigma) \leqslant \dfrac{n}{2}$.
 
               我们用反证法，我们知道$\ker\sigma\cap \im \sigma$是$\ker\sigma$和$\im\sigma$的子空间，因此
               \begin{gather*}
@@ -813,12 +813,12 @@
 \subsection{线性空间同构的概念}
 
 \begin{definition}{同构}{} \index{tonggou@同构 (isomorphism)}
-    如果由线性空间$V_1(\mathbf{F})$到$V_2(\mathbf{F})$存在一个线性双射$\sigma$，则称$V_1(\mathbf{F})$和$V_2(\mathbf{F})$是\term{同构的}，记作$V_1(\mathbf{F}) \cong V_2(\mathbf{F})$. $\sigma$称为$V_1(\mathbf{F})$到$V_2(\mathbf{F})$的一个\term{同构映射}\index{tonggou!yingshe@映射 (isomorphism map)}.
+    如果由线性空间$V_1(\mathbf{F})$到$V_2(\mathbf{F})$存在一个线性双射$\sigma$，则称$V_1(\mathbf{F})$和$V_2(\mathbf{F})$是\term{同构的}，记作$V_1(\mathbf{F}) \cong V_2(\mathbf{F})$. $\sigma$称为$V_1(\mathbf{F})$到$V_2(\mathbf{F})$的一个\term{同构映射}\index{tonggou!yingshe@映射 (isomorphism map)}（或\term{同构}）.
 \end{definition}
 
 根据定义我们发现，同构映射实际上就是线性双射. 关于同构的概念，我们有以下几点需要强调：
 \begin{enumerate}
-    \item 特别注意：同构是线性空间之间的关系，同构映射才是描述线性映射的；
+    \item 根据上述定义，同构这一名词有时表达线性空间之间的关系，有时也可以作为同构映射的简称，读者在阅读时需要根据上下文来理解；
 
     \item 在线性映射的语境下，双射与可逆是完全等价的. 这一点与函数双射可逆等价性没有区别，因此这里不再赘述. 所以我们说的线性双射也就是线性可逆映射，因此证明同构映射时，在线性性的基础之上，我们可以证明双射性，也可以通过找到逆映射来证明；
 
@@ -1248,8 +1248,8 @@
                 \item 当 $ \xi = \theta $ 时，显然满足 $ \xi \tau = \theta $. 当 $ \xi \neq \theta $ 时，
                       \[ \xi \tau(x_1, x_2) = \xi(x_1 - x_2, x_2 - x_1) = (0, 0) \]
                       记 $ y_1 = x_1 - x_2,\enspace y_2 = x_2 - x_1 $. 由于 $ y_1 + y_2 = 0 $，
-                      \[ \tau(y_1, y_2) = (y_1 + y_2, y_1 + y_2) \]
-                      即 $ \tau(x_1, x_2) = (x_1 + x_2, x_1 + x_2) $ 满足 $ \xi \tau = \theta $.
+                      \[ \xi(y_1, y_2) = (y_1 + y_2, y_1 + y_2) \]
+                      即 $ \xi(x_1, x_2) = (x_1 + x_2, x_1 + x_2) $ 满足 $ \xi \tau = \theta $.
             \end{enumerate}
 
         \end{answer}
@@ -1269,10 +1269,10 @@
         \begin{answer}
             \begin{enumerate}
                 \item \begin{align*}
-                          r(\theta)   & = 1                          \\
+                          r(\sigma)   & = 1                          \\
                           r(\tau)     & = 2                          \\
-                          \im \theta  & = \spa(\vec{e}_1)            \\
-                          \ker \theta & = \spa(\vec{e}_1, \vec{e}_2)
+                          \im \sigma  & = \spa(\vec{e}_1)            \\
+                          \ker \sigma & = \spa(\vec{e}_1, \vec{e}_2)
                       \end{align*}
 
                 \item \begin{gather*}
@@ -1428,7 +1428,7 @@
         \begin{enumerate}
             \item 由$r(\sigma)+\dim\ker\sigma=n$可知$V=\ker\sigma+\im \sigma$；
 
-            \item 若有$\im T \cap \ker T = \{0\}$，则$V=\ker\sigma+\im \sigma$成立；
+            \item 若有$\im \sigma \cap \ker \sigma = \{0\}$，则$V=\ker\sigma+\im \sigma$成立；
 
             \item 因为$\forall \alpha \in V$有$(\sigma_1+\sigma_2)(\alpha)=\sigma_1(\alpha)+\sigma_2(\alpha)$，所以$(\sigma_1+\sigma_2)(V)=\sigma_1(V)+\sigma_2(V)$；
 
@@ -1460,7 +1460,9 @@
                           (\sigma_1 + \sigma_2)(V) = \spa(\vec{e}_1, \vec{e}_2 + \vec{e}_3) \neq \mathbf{R}^3
                       \end{gather*}
 
-                \item 错误. $ (I - \sigma)(V) + \sigma(V) \subseteq V $，等号不一定成立，原因同 \ref*{item:6:B:2:3}，此时只需将 $ I - \sigma $ 视作 $ \sigma_1 $，将 $ \sigma $ 视作 $ \sigma_2 $.
+                \item 正确. $(I - \sigma)(V) + \sigma(V) \subseteq V$ 是显然的，另一个方向上，$ \forall \alpha \in V $ 有
+                      \[ \alpha = (I - \sigma)(\alpha) + \sigma(\alpha) \in (I - \sigma)(V) + \sigma(V) \]
+                      所以 $ V \subseteq (I - \sigma)(V) + \sigma(V) $. 综上有 $ V = (I - \sigma)(V) + \sigma(V) $.
             \end{enumerate}
         \end{answer}
 
@@ -1500,9 +1502,9 @@
             \end{enumerate}
         \end{answer}
 
-        \item 设$c_1,c_2,\ldots,c_n$是$n$个互异的实常数. 证明：$\mathbf{R}[x]_n$到$\mathbf{R}$的一个映射$\sigma$：
+        \item 设$c_1,c_2,\ldots,c_n$是$n$个互异的实常数. 证明：$\mathbf{R}[x]_n$到$\mathbf{R}^n$的一个映射$\sigma$：
         \[\sigma(p(x))=(p(c_1),p(c_2),\ldots,p(c_n))\]
-        是$\mathbf{R}[x]_n$到$\mathbf{R}$的一个同构映射.
+        是$\mathbf{R}[x]_n$到$\mathbf{R}^n$的一个同构映射.
         \begin{answer}
             我们仅对 $ n = 3 $ 的情况给出证明. % TODO P117/7
 
@@ -1558,7 +1560,7 @@
     \begin{exgroup}
         \item 设 $V(\mathbf{F})$ 是一个 $n$ 维线性空间，$\sigma \in \mathcal{L}(V,V)$. 证明：
         \begin{enumerate}
-            \item 在 $\mathbf{F}[x]$ 中有一个次数不高于 $n^2$ 的多项式 $p(x)$ 使 $p(\sigma) = \theta$；
+            \item 在 $\mathbf{F}[x]$ 中有一个次数不高于 $n^2$ 的非零多项式 $p(x)$ 使 $p(\sigma) = \theta$；
 
             \item $\sigma$ 可逆$\iff$有一常数项不为 0 的多项式 $p(x)$ 使 $p(\sigma) = \theta$.
         \end{enumerate}
@@ -1594,7 +1596,7 @@
         \item 已知$\sigma_1,\sigma_2,\ldots,\sigma_s$是线性空间$V$上的$s$个两两不同的线性变换，证明：在$V$中必存在向量$\alpha$使得$\sigma_1(\alpha),\sigma_2(\alpha),\ldots,\sigma_s(\alpha)$也两两不同.
         \begin{answer}
             $\alpha \in V$使得$\sigma_i(\alpha) \neq \sigma_j(\alpha)$当且仅当$\alpha \notin \ker(\sigma_i - \sigma_j)$,我们可以只考虑该核空间不是零空间的情况，因为我们所取出的$\alpha$显然不可能是零，
-            又因为我们的线性映射是两两不相同的，所以该核空间一定是一个真子空间，对于$m$个非平凡子空间，我们总可以取到一个不属于任意一个这些子空间的向量(相关的习题在第四章A组第5题已经给出)\autoref{eg:4:A:5}，这样我们就找到了所需要的$\alpha$
+            又因为我们的线性映射是两两不相同的，所以该核空间一定是一个真子空间. 根据覆盖定理，对于$m$个非平凡子空间，我们总可以取到一个不属于任意一个这些子空间的向量，这样我们就找到了所需要的$\alpha$.
         \end{answer}
         \item 设$V$是一个$n$维线性空间，$V=W_1\oplus W_2,\enspace\sigma\in \mathcal{L}(V,V)$. 证明：$\sigma$可逆$\iff V=\sigma(W_1)+\sigma(W_2)$.
         \begin{answer}
@@ -1651,9 +1653,9 @@
                                        & \leqslant \dim \sigma(V_1) + \dim \tau(V_1)
           \end{align*}
         \end{answer}
-        \item 设$\sigma\in \mathcal{L}(V,V)$，$\dim V_1=n$，且$\sigma^2=\sigma$，$I$是$V$上的恒等变换. 证明：
+        \item 设$\sigma\in \mathcal{L}(V,V)$，$\dim V=n$，且$\sigma^2=\sigma$，$I$是$V$上的恒等变换. 证明：
         \begin{enumerate}
-            \item $(I-\sigma)(V) \in \ker\sigma$；
+            \item $(I-\sigma)(V) \subseteq \ker\sigma$；
 
             \item $r(I-\sigma)+r(\sigma)=n$.
         \end{enumerate}
@@ -1668,7 +1670,7 @@
                       \end{gather*}
                       而由于 $ \sigma^2 = \sigma $，所以 $ \sigma(\alpha) = \vec{0} $，于是 $ \alpha \in \ker \sigma $，因此 $ (I - \sigma)(V) \subseteq \ker \sigma $.
 
-                \item 利用 $ r(\sigma + \tau) \leqslant r(\sigma) + r(\tau) $ 和 $ r(\sigma) + \dim \ker \sigma = n $，由 \ref*{item:6:C:4:1} 可得
+                \item 利用 $ r(\sigma + \tau) \leqslant r(\sigma) + r(\tau) $ 和 $ r(\sigma) + \dim \ker \sigma = n $，由 \ref*{item:5:C:6:1} 可得
                       \begin{equation} \label{eq:5:C:6:2:1}
                           r(I - \sigma) + r(\sigma) \leqslant n
                       \end{equation}
@@ -1681,9 +1683,9 @@
         \end{answer}
 
 
-        \item 已知$V$为有限维线性空间，$\sigma\in \mathcal{L}(V,V)$，且$\sigma^2=\theta$（零映射）. 证明：
+        \item 设$V$是一个$n$维线性空间，$\sigma\in \mathcal{L}(V,V)$，且$\sigma^2=\theta$（零映射）. 证明：
         \begin{enumerate}
-            \item $\sigma$的像空间维数不超过$\dfrac{n}{2}$；
+            \item $ \dim \im \sigma \leqslant \dfrac{n}{2} $；
 
             \item 设$A$是$\sigma$在某组基下的矩阵，则方程组$AX=0$的基础解系至少有$\dfrac{n}{2}$个解.
         \end{enumerate}

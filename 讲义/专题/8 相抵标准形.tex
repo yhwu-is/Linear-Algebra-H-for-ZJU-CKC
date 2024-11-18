@@ -19,10 +19,10 @@
     \item 证明矩阵的秩 = 列秩
 
           \begin{proof}
-            我们注意到矩阵作为一个 $\mathbf{F}^m$ 上的 $n$ 元向量组，其像即为列向量组张成的空间，$r = r_{\mathrm{r}}$ 是显然的.
-            %   设$\sigma:V_1\to V_2$，$A$是$\sigma$关于$V_1$和$V_2$的基$B_1=\{\alpha_1,\ldots,\alpha_n\}$和$B_2=\{\beta_1,\ldots,\beta_m\}$的矩阵. 由线性映射矩阵表示的定义可知，矩阵的列向量组就是向量组$S=\{\sigma(\alpha_1),\ldots,\sigma(\alpha_n)\}$在基$B_2$下的坐标按列排列.
+            % 我们注意到矩阵作为一个 $\mathbf{F}^m$ 上的 $n$ 元向量组，其像即为列向量组张成的空间，$r = r_{\mathrm{r}}$ 是显然的.
+            设 $\sigma : V_1 \to V_2$，$A$ 是 $\sigma$ 关于 $V_1$ 和 $V_2$ 的基 $B_1 = \{\alpha_1,\ldots,\alpha_n\}$ 和 $B_2 = \{\beta_1,\ldots,\beta_m\}$ 的矩阵. 由线性映射矩阵表示的定义可知，矩阵的列向量组就是向量组 $S = \{\sigma(\alpha_1),\ldots,\sigma(\alpha_n)\}$ 在基 $B_2$ 下的坐标按列排列.
 
-            %   回忆坐标映射是同构映射，由\autoref{thm:同构保秩}，$S$和$A$的列向量组秩相等. 又根据线性映射像空间的求解，$\dim\im\sigma=r(S)$，且根据矩阵的秩的定义$r(A)=\dim\im\sigma$，而$A$列向量组的秩也就是列秩$r_c$，因此我们有$r(A)=r_c$.
+            回忆坐标映射是同构映射，由\autoref{thm:同构保秩}，$S$ 和 $A$ 的列向量组秩相等. 又根据线性映射像空间的求解，$\dim\im\sigma = r(S)$，且根据矩阵的秩的定义 $r(A) = \dim\im\sigma$，而 $A$ 列向量组的秩也就是列秩 $r_\mathrm{c}$，因此我们有$r(A) = r_\mathrm{c}$.
           \end{proof}
 
     \item 证明矩阵的行秩 = 列秩：行秩等于列秩有四样证法，你知道么？接下来我们先给出两种证明，在介绍相抵标准形后给出\hyperref[pf:11:矩阵行秩=列秩]{第三种证明}，最后一种我们放在内积空间中介绍.
@@ -117,7 +117,19 @@
     \end{itemize}
 \end{proof}
 
-事实上，在学完行列式后这一命题还可以增加一个行列式$|A|\neq 0$的等价条件.
+事实上，在学完行列式后这一命题还可以增加一个行列式$|A|\neq 0$的等价条件. 下面我们来看一个重要的应用，一方面是这一定理的直接应用，更重要的是我们将引入``对角占优矩阵''，这是一个在实际应用中非常常见的矩阵类型.
+\begin{example}{对角占优}{对角占优}
+    设 $A = (a_{ij})_{n \times n}$ 是一个 $n$ 阶矩阵，若 $|a_{ii}| > \displaystyle\sum_{j \neq i}|a_{ij}|$（即满足对角占优条件），证明 $A$ 是可逆矩阵.
+\end{example}
+\begin{proof}
+    采用反证法证明. 设 $A$ 不可逆，则线性方程组 $AX = 0$ 有非零解，设为 $X_0 = (x_1, x_2, \ldots, x_n)^{\mathrm{T}}$，记
+    \[\lvert x_k \rvert = \max \{\lvert x_1 \rvert, \lvert x_2 \rvert, \ldots, \lvert x_n \rvert\}.\]
+    由 $X_0 \neq 0$ 可知 $\lvert x_k \rvert > 0$，考虑 $AX = 0$ 的第 $k$ 个方程，有 $\displaystyle\sum_{j=1}^n a_{kj}x_j = 0$，于是
+    \[\lvert a_{kk} \rvert \lvert x_k \rvert = \lvert -\displaystyle\sum_{j \neq k}a_{kj}x_j \rvert \leqslant \sum_{j \neq k}\lvert a_{kj} \rvert \lvert x_k \rvert.\]
+    这里同时使用了三角不等式和 $x_k$ 的定义. 约去 $\lvert x_k \rvert$ 后可得 $\lvert a_{kk} \rvert \leqslant \displaystyle\sum_{j \neq k} \lvert a_{kj} \rvert$，这与条件矛盾. 所以 $A$ 是可逆矩阵.
+\end{proof}
+
+本题使用了齐次线性方程组只有零解这一等价条件，非常有趣. 实际上这一等价条件是看起来最不能直接应用的，但不得不承认在很多问题中它是最有用的，这也使得这些问题显得十分有趣.
 
 \section{过渡矩阵和基变换}
 
@@ -511,7 +523,35 @@
           总结而言就是$P$为初等矩阵，则$PA$和$AP^\mathrm{T}$表示的变换除了行/列的名字外同名.
 \end{enumerate}
 
-关于初等矩阵我们有一个相当重要的定理，这一定理在之后很多讨论和解题中都扮演关键角色：
+初等矩阵的可逆性结合可逆矩阵的乘积性质表明，任何可逆矩阵乘以初等矩阵后仍然是可逆矩阵. 下面这个例题综合了初等矩阵的性质以及此前学到的矩阵运算性质，是一个有价值的练习：
+\begin{example}{}{}
+    已知矩阵 $A=\begin{pmatrix}a & b & c \\ d & e & f \\ h & x & y\end{pmatrix}$ 的逆是 $A^{-1}=\begin{pmatrix}-1 & -2 & -1 \\ 2 & 1 & 0 \\ 0 & -3 & -1\end{pmatrix}$，\\
+    $B=\begin{pmatrix}a-2b & b-3c & -c \\ d-2e & e-3f & -f \\ h-2x & x-3y & -y\end{pmatrix}$. 求矩阵 $X$ 满足：
+
+    \[X+\left(B(A^\mathrm{T}B^2)^{-1}A^\mathrm{T}\right)^{-1}=X\left(A^2(B^\mathrm{T}A)^{-1}B^\mathrm{T}\right)^{-1}(A+B)\]
+\end{example}
+
+\begin{solution}
+    注意到
+    \[B=A\begin{pmatrix}
+            1 &  & \\ -2 & 1 & \\ & & 1
+        \end{pmatrix} \begin{pmatrix}
+            1 &  & \\ & 1 & \\ & -3 & 1
+        \end{pmatrix} \begin{pmatrix}
+            1 &  & \\ & 1 & \\ & & -1
+        \end{pmatrix},\]
+    从而 $B$ 由 $A$ 经过有限次初等变换得到，因 $A$ 可逆，故 $B$ 可逆. 一方面
+    \[\textbf{LHS}=X+\left(B\left(A^{T} B^{2}\right)^{-1} A^{T}\right)^{-1}=X+B,\]
+    另一方面
+    \[\textbf{RHS}=X\left(A^{2}\left(B^{T} A\right)^{-1} B^{T}\right)^{-1}(A+B)=X A^{-1}(A+B),\]
+    于是 $X=A=(A^{-1})^{-1}=\begin{pmatrix}
+            -\frac{1}{3} & \frac{1}{3} & \frac{1}{3}  \\
+            \frac{2}{3}  & \frac{1}{3} & -\frac{2}{3} \\
+            -2           & -1          & 1
+        \end{pmatrix}$.
+\end{solution}
+
+初等矩阵的可逆性是平凡的结论，但反过来，可逆矩阵是否都可以表达为初等矩阵的乘积则显得更为有趣. 事实上答案是肯定的，我们将其写在下述定理中，这是一个相当重要的定理，在之后很多讨论和解题中都扮演关键角色：
 \begin{theorem}{}{可逆与初等变换}
     任意可逆矩阵都可以被表示为若干个初等矩阵的乘积.
 \end{theorem}
@@ -583,8 +623,8 @@
         \xrightarrow{\substack{[2] \times (1/2) \\ [1] + [2] \times (-1)}}
         \left(
         \begin{array}{ccc:ccc}
-                1 & 0 & 0 & -\frac{1}{2} & -\frac{3}{2} & -\frac{5}{2} \\
-                0 & 1 & 0 & \frac{1}{2}  & \frac{1}{2}  & \frac{1}{2}  \\
+                1 & 0 & 0 & -\dfrac{1}{2} & -\dfrac{3}{2} & -\dfrac{5}{2} \\
+                0 & 1 & 0 & \dfrac{1}{2}  & \dfrac{1}{2}  & \dfrac{1}{2}  \\
                 0 & 0 & 1 & 0            & 1            & 1
             \end{array}
         \right)
@@ -592,8 +632,8 @@
 
     故 $A^{-1} =
         \begin{pmatrix}
-            -\frac{1}{2} & -\frac{3}{2} & -\frac{5}{2} \\
-            \frac{1}{2}  & \frac{1}{2}  & \frac{1}{2}  \\
+            -\dfrac{1}{2} & -\dfrac{3}{2} & -\dfrac{5}{2} \\
+            \dfrac{1}{2}  & \dfrac{1}{2}  & \dfrac{1}{2}  \\
             0            & 1            & 1
         \end{pmatrix}$.
 \end{solution}
@@ -797,13 +837,13 @@
     \end{pmatrix}$是$s\times r$矩阵，且秩为$r$，列满秩. $P$可逆且为$s\times s$矩阵，因此$P_1$仍然是$s\times r$矩阵. 由于可逆矩阵可以写成若干初等矩阵乘积，初等变换不改变矩阵的秩，故$r(P)=r(P_1)=r$，又矩阵列秩=秩，故$P_1$列满秩.
 
 接下来我们来看一个例子进行应用，在介绍这一例子前我们需要首先引入一个概念，即矩阵的迹：
-\begin{definition}{迹}{} \index{ji@迹 (trace)}
+\begin{definition}{迹}{迹} \index{ji@迹 (trace)}
     $A=(a_{ij})_{n\times n}$是$n$阶方阵，$A$的主对角线上的元素之和称为$A$的\term{迹}，记为$\tr(A)$，即
     \[\tr(A)=\sum_{i=1}^n a_{ii}\]
 \end{definition}
 
 \begin{example}{}{相抵分解}
-    已知 $n$ 阶矩阵 $A$ 的秩为 1 ，证明：$A^k=\tr(A)^{k-1}A$.
+    已知 $n$ 阶矩阵 $A$ 的秩为 1 ，证明：$A^k=\tr(A)^{k-1}A$，其中 $k$ 为任意正整数.
 \end{example}
 
 \begin{proof}
@@ -830,7 +870,7 @@
     \[A^{k}=\widetilde{P} \widetilde{Q} \widetilde{P} \widetilde{Q} \cdots \widetilde{P} \widetilde{Q}=\tr(A)^{k-1} \widetilde{P} \widetilde{Q}=\tr(A)^{k-1} A.\]
 \end{proof}
 
-事实上，本题的解答过程给我们了一个很重要的启示，那就是秩为1的矩阵一定可以分解为一个列向量和一个行向量的乘积. 之后我们将利用这一结论来解决一些问题，例如便于矩阵求幂等.
+事实上，本题的解答过程给我们了一个很重要的启示，那就是秩为1的矩阵一定可以分解为一个列向量和一个行向量的乘积. 之后我们将利用这一结论来解决一些问题，例如便于矩阵求幂等. 此外，若 $\tr(A) = 1$，则 $A^k = A$，这表明秩为 1 且迹为 1 的矩阵一定是幂等矩阵.
 
 除此之外，我们还可以利用相抵标准形解决很多问题，例如下一节中部分秩不等式的证明，具体应用见\autoref{ex:分块秩不等式}.
 
@@ -874,7 +914,7 @@
             由此可知
             \[ (\beta_1, \beta_2, \beta_3, \beta_4) = (\varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4) B = (\alpha_1, \alpha_2, \alpha_3, \alpha_4) A^{-1} B \]
             所以由基 $ \alpha_1, \alpha_2, \alpha_3, \alpha_4 $ 到基 $ \beta_1, \beta_2, \beta_3, \beta_4 $ 的过渡矩阵为
-            \[ A^{-1} B = \frac{1}{4} \begin{pmatrix}
+            \[ A^{-1} B = \dfrac{1}{4} \begin{pmatrix}
                     1 & 1  & 1  & 1  \\
                     1 & 1  & -1 & -1 \\
                     1 & -1 & 1  & -1 \\
@@ -884,14 +924,14 @@
                     1 & 1 & 1 & 1  \\
                     0 & 3 & 0 & -1 \\
                     1 & 1 & 0 & -1
-                \end{pmatrix} = \frac{1}{4} \begin{pmatrix}
+                \end{pmatrix} = \dfrac{1}{4} \begin{pmatrix}
                     3  & 7  & 2 & -1 \\
                     1  & -1 & 2 & 3  \\
                     -1 & 3  & 0 & -1 \\
                     1  & -1 & 0 & -1
                 \end{pmatrix} \]
             另外，由于 $ \xi $ 在基 $ \varepsilon_1, \varepsilon_2, \varepsilon_3, \varepsilon_4 $ 下的坐标为 $ X_0 = (1, 0, 0, -1)^{\mathrm{T}} $，所以在 $ \alpha_1, \alpha_2, \alpha_3, \alpha_4 $ 下的坐标为
-            \[ A^{-1} X_0 = \frac{1}{4} \begin{pmatrix}
+            \[ A^{-1} X_0 = \dfrac{1}{4} \begin{pmatrix}
                     1 & 1  & 1  & 1  \\
                     1 & 1  & -1 & -1 \\
                     1 & -1 & 1  & -1 \\
@@ -899,7 +939,7 @@
                 \end{pmatrix} \begin{pmatrix}
                     1 \\ 0 \\ 0 \\ -1
                 \end{pmatrix} = \begin{pmatrix}
-                    0 \\ \frac{1}{2} \\ \frac{1}{2} \\ 0
+                    0 \\ \dfrac{1}{2} \\ \dfrac{1}{2} \\ 0
                 \end{pmatrix} \]
         \end{answer}
 
@@ -917,6 +957,20 @@
     \end{exgroup}
 
     \begin{exgroup}
+        \item 解答有关于初等变换的三个问题：
+        \begin{enumerate}
+            \item 证明：对换变换可以通过若干次倍加和倍减变换实现；
+            \item 将二阶矩阵 $\begin{pmatrix}
+                a & 0 \\ 0 & a^{-1}
+            \end{pmatrix}$ 表示为若干个倍加初等矩阵的乘积；
+            \item 设 $A = \begin{pmatrix}
+                a & b \\ c & d
+            \end{pmatrix}$，$ad - bc = 1$，证明：$A$ 可以表示为若干个倍加初等矩阵的乘积.
+        \end{enumerate}
+        \begin{answer}
+
+        \end{answer}
+
         \item 设$W$是$n$维线性空间$V$的一个非平凡子空间，$W$中取一组基$\delta_1,\ldots,\delta_m$，按如下两种方式将其扩充为$V$的一组基：
         \begin{align*}
             B_1 & =\{\delta_1,\ldots,\delta_m,\alpha_{m+1},\ldots,\alpha_n\} \\
@@ -1119,7 +1173,15 @@
           取 $M=Q_1P_2$ 即可.
         \end{answer}
 
-        \item 设$A$为$n$阶实方阵且$r(A)=r>0$，证明存在秩为$r$的实方阵$B$和$C$使得$AB=CA$. % 新题，需要答案
+        \item 设$A$为$n$阶实方阵且$r(A)=r>0$，证明存在秩为$r$的实方阵$B$和$C$使得$AB=CA$.
+        \begin{answer}
+
+        \end{answer}
+
+        \item 设 $A$ 和 $B$ 是两个 $m \times n$ 矩阵，且存在两个方阵 $C,D$ 使得 $A = BC, B = AD$，证明：存在可逆映射 $M$ 使得 $B = AM$.
+        \begin{answer}
+
+        \end{answer}
     \end{exgroup}
 
     \begin{exgroup}
