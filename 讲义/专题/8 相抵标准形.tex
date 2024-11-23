@@ -2,19 +2,26 @@
 
 推进到现在，我们已经将线性代数中几乎所有的基础知识学习完成，也就是说接下来的内容大都只是前面最基本内容的应用. 事实上，线性代数这门课有两大目标，其一是对线性空间进行分类，这是因为这一目标的实现也宣告了我们对线性空间这一代数结构基本已经研究清楚，此前我们在同构中已经完成了这一目标；第二个目标我们将从本讲开始探讨：我们希望求解线性映射在哪组基下的矩阵表示是简单的，本讲我们将给出这一问题的第一个重要答案，即相抵标准形.
 
-本讲我们将分别从线性映射的角度和矩阵的角度推导相抵标准形的存在性，当然在此之前我们需要定义矩阵的秩作为基础. 线性映射的角度我们主要利用线性映射基本定理，矩阵的角度我们则定义了初等矩阵来辅助我们的工作. 最后我们将介绍相抵标准形的应用，这是基于相抵标准形的分解技巧，此类技巧在此后任意一种标准形的讨论中都是十分重要的.
+本讲我们将分别从线性映射的角度和矩阵的角度推导相抵标准形的存在性，当然在此之前我们需要定义矩阵的秩作为基础. 线性映射的角度主要利用线性映射基本定理，矩阵的角度则定义了初等矩阵来辅助我们的工作. 最后将介绍相抵标准形的应用，这是基于相抵标准形的分解技巧，此类技巧在此后任意一种标准形的讨论中都是十分重要的.
 
 \section{矩阵的秩}
 
-我们已经定义过映射的秩为 $r(\sigma) = \dim \im \sigma$，矩阵作为一种 $\mathbf{F}^n \to \mathbf{F}^m$ 的映射自然继承了一般的映射秩的定义. 由于可逆映射作用下向量组的秩不变，自然也不改变子空间的维数. 故对基 $B_1, B_2$ 有 $\dim \im \sigma = \dim \im (B_2^{-1} \sigma B_1) = \dim \im \mathbf{M}(\sigma)$，所以矩阵的秩等于其可以表示的任意线性映射的秩，接下来我们首先给出矩阵的三个秩的定义：
+首先给出矩阵三个秩的定义：
 \begin{definition}{}{}
-    由于 $A$ 是 $\mathbf{F}^n\to\mathbf{F}^m$ 的线性映射，定义秩 $r(A) = \dim\im A$. 我们将矩阵$A$的所有行向量组成的秩称为$A$的\term{行秩}\index{zhi!hang@行秩 (row rank)}，常记为$r_{\mathrm{r}}$. 所有列向量组成的向量组的秩称为$A$的\term{列秩}\index{zhi!lie@列秩 (column rank)}，常记为$r_{\mathrm{c}}$.
+    设 $A$ 是线性映射 $\sigma$ 对应的矩阵，定义矩阵 $A$ 的秩为 $r(A) = r(\sigma)$. 此外，将矩阵$A$的所有行向量组成的秩称为$A$的\term{行秩}\index{zhi!hang@行秩 (row rank)}，常记为$r_{\mathrm{r}}$；所有列向量组成的向量组的秩称为$A$的\term{列秩}\index{zhi!lie@列秩 (column rank)}，常记为$r_{\mathrm{c}}$.
 \end{definition}
-对于以上定义的三个秩，我们有定理如下，这一定理无论是证明还是结果都非常关键：
+
+这里矩阵的秩的定义存在两个问题：
+\begin{enumerate}
+    \item 同一个矩阵 $A$ 可以是不同线性映射的矩阵表示，那么是否有可能这些线性映射的秩不同？答案是否定的. 回忆线性映射矩阵表示的定义方式，要得到矩阵 $A$，我们需要将线性映射 $\sigma$ 通过两个坐标映射转化为 $\mathbf{F}^n \to \mathbf{F}^m$ 的映射 $\sigma_\mathbf{A}$. 注意无论是什么坐标映射，都是同构映射，而线性映射的秩是线性映射像空间的维数，在同构变换下像空间维数都不变，因此保证了 $\sigma$ 和 $\sigma_\mathbf{A}$ 的秩相等，故所有可以表示 $A$ 的线性映射都有相同的秩；
+    \item 同一个映射 $\sigma$ 可以在不同基下得到不同的矩阵表示，故这里的定义表明，所有的矩阵表示必须有相同的秩. 理由和前一点类似，因为不同基下的矩阵表示无非是使用了不同的坐标映射，不改变导出的 $\mathbf{F}^n \to \mathbf{F}^m$ 映射的秩.
+\end{enumerate}
+
+对于以上定义的三个秩，我们有如下定理，这一定理无论是证明还是结果都非常关键：
 \begin{theorem}{}{}
-    任意矩阵$A=(a_{ij})_{m\times n}$的秩 = 行秩 = 列秩.
+    任意矩阵 $A = (a_{ij})_{m\times n}$ 的秩 = 行秩 = 列秩.
 \end{theorem}
-定理的证明我们分为两步：
+定理的证明分为两步：
 \begin{enumerate}
     \item 证明矩阵的秩 = 列秩
 
@@ -25,7 +32,7 @@
             回忆坐标映射是同构映射，由\autoref{thm:同构保秩}，$S$ 和 $A$ 的列向量组秩相等. 又根据线性映射像空间的求解，$\dim\im\sigma = r(S)$，且根据矩阵的秩的定义 $r(A) = \dim\im\sigma$，而 $A$ 列向量组的秩也就是列秩 $r_\mathrm{c}$，因此我们有$r(A) = r_\mathrm{c}$.
           \end{proof}
 
-    \item 证明矩阵的行秩 = 列秩：行秩等于列秩有四样证法，你知道么？接下来我们先给出两种证明，在介绍相抵标准形后给出\hyperref[pf:11:矩阵行秩=列秩]{第三种证明}，最后一种我们放在内积空间中介绍.
+    \item 证明矩阵的行秩 = 列秩：行秩等于列秩有四样证法，你知道么？接下来我们先给出两种证明，在介绍相抵标准形后给出\hyperref[pf:11:矩阵行秩=列秩]{第三种证明}，最后一种放在内积空间中介绍.
           \begin{enumerate}
               \item 证法一：
                     \begin{proof}
@@ -111,9 +118,7 @@
 
         \item[\ref*{item:11:可逆等价条件:3}$\implies$\ref*{item:11:可逆等价条件:4}] 设$A$的$n$个列向量为$\beta_1,\ldots,\beta_n$，则$AX=0$等价于$x_1\beta_1+\cdots+x_n\beta_n=0$，由于$\beta_1,\ldots,\beta_n$线性无关，故$x_1=\cdots=x_n=0$，即$AX=0$只有零解；
 
-        \item[\ref*{item:11:可逆等价条件:4}$\implies$\ref*{item:11:可逆等价条件:1}] 只有零解表示$A$经过初等行变换$P_1,\ldots,P_s$后得到了单位矩阵$E$，即
-              \[P_s\cdots P_1A=E\]
-              又初等矩阵可逆，则$A=(P_s\cdots P_1)^{-1}$，又由可逆矩阵的乘积仍然可逆，则$A$可逆.
+        \item[\ref*{item:11:可逆等价条件:4}$\implies$\ref*{item:11:可逆等价条件:1}] 只有零解表示 有$A$ 对应的线性映射为单射，根据\autoref{thm:双射等价条件}可知对应的线性映射可逆，故 $A$ 也可逆.
     \end{itemize}
 \end{proof}
 
@@ -129,59 +134,62 @@
     这里同时使用了三角不等式和 $x_k$ 的定义. 约去 $\lvert x_k \rvert$ 后可得 $\lvert a_{kk} \rvert \leqslant \displaystyle\sum_{j \neq k} \lvert a_{kj} \rvert$，这与条件矛盾. 所以 $A$ 是可逆矩阵.
 \end{proof}
 
-本题使用了齐次线性方程组只有零解这一等价条件，非常有趣. 实际上这一等价条件是看起来最不能直接应用的，但不得不承认在很多问题中它是最有用的，这也使得这些问题显得十分有趣.
+本题使用了齐次线性方程组只有零解这一等价条件，非常有趣. 实际上这一等价条件是看起来最不能直接应用的，但不得不承认在很多问题中它是最有用的.
 
 \section{过渡矩阵和基变换}
 
 这一讲我们将讨论和基变换相关的几个定理. 在讨论这些定理前我们首先介绍过渡矩阵（变换矩阵）的概念.
 
-\begin{definition}{}{}
-    设$B_1=\{\alpha_1,\alpha_2,\ldots,\alpha_n\}$与$B_2=\{\beta_1,\beta_2,\ldots,\beta_n\}$是线性空间$V(\mathbf{F})$的任意两组基，$B_2$中每个基向量被基$B_1$表示为
-    \[ \begin{cases} \begin{aligned}
+考虑两个同一线性空间内的向量组 $S_1 = \{\alpha_1,\alpha_2,\ldots,\alpha_n\}$ 和 $S_2 = \{\beta_1,\beta_2,\ldots,\beta_m\}$，且有
+\[ \begin{cases} \begin{aligned}
                 \beta_1 & = a_{11}\alpha_1+a_{21}\alpha_2+\cdots+a_{n1}\alpha_n \\
                 \beta_2 & = a_{12}\alpha_1+a_{22}\alpha_2+\cdots+a_{n2}\alpha_n \\
                         & \vdotswithin{=}                                       \\
-                \beta_n & = a_{1n}\alpha_1+a_{2n}\alpha_2+\cdots+a_{nn}\alpha_n
+                \beta_m & = a_{1m}\alpha_1+a_{2m}\alpha_2+\cdots+a_{nm}\alpha_n
             \end{aligned} \end{cases} \]
-    将上式用矩阵表示为
-    \[(\beta_1,\beta_2,\ldots,\beta_n)=(\alpha_1,\alpha_2,\ldots,\alpha_n)\begin{pmatrix}
-            a_{11} & a_{12} & \cdots & a_{1n} \\
-            a_{21} & a_{22} & \cdots & a_{2n} \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{n1} & a_{n2} & \cdots & a_{nn}
-        \end{pmatrix}\]
-    我们将这一矩阵称为即$B_1$变为基$B_2$的变换矩阵（或过渡矩阵）.
+则上述关系可以用矩阵简单表达为
+\[(\beta_1,\beta_2,\ldots,\beta_m) = (\alpha_1,\alpha_2,\ldots,\alpha_n)\begin{pmatrix}
+        a_{11} & a_{12} & \cdots & a_{1m} \\
+        a_{21} & a_{22} & \cdots & a_{2m} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{n1} & a_{n2} & \cdots & a_{nm}
+    \end{pmatrix}\]
+令 $A = (a_{ij})_{n \times m}$，则上式可以进一步简化为
+\[S_2 = S_1A.\]
+当 $S_1$ 和 $S_2$ 是同一线性空间的两组基时，我们称 $A$ 为 $S_1$ 变为 $S_2$ 的过渡矩阵，下面我们正式地叙述这一定义.
+
+\begin{definition}{}{}
+    设 $B_1 = \{\alpha_1,\alpha_2,\ldots,\alpha_n\}$ 与 $B_2 = \{\beta_1,\beta_2,\ldots,\beta_n\}$ 是线性空间 $V(\mathbf{F})$ 的任意两组基. 若存在矩阵 $A$ 使得 $B_2 = B_1A$，则称矩阵 $A$ 为 $B_1$ 变为基 $B_2$ 的\term{变换矩阵}（或\term{过渡矩阵}）.
 \end{definition}
-简单而言 $B_1$ 变为基 $B_2$ 的过渡矩阵就是将 $B_2$ 中的向量在 $B_1$ 下的坐标按列排列. 关于这一定义，我们有以下几点需要强调：
+
+根据 $B_2 = B_1A$ 的展开式，$B_1$ 变为基 $B_2$ 的过渡矩阵 $A$ 就是将 $B_2$ 中的向量在 $B_1$ 下的坐标按列排列. 关于这一定义，我们有以下几点需要强调：
 \begin{enumerate}
     \item 在之后的讨论或者题目中需要特别注意说的是 $B_1$ 变为基 $B_2$ 的过渡矩阵还是反过来基 $B_2$ 变为基 $B_1$ 的过渡矩阵；
 
-    \item 注意过渡矩阵一定是基与基之间的表示矩阵，一般的向量组之间不称过渡矩阵；
+    \item 注意过渡矩阵一定是基与基之间的表示矩阵，一般的向量组之间不称过渡矩阵. 当然同一线性空间中任意两组长度相等的线性无关向量组之间都可以有过渡矩阵，这是因为我们可以将这两组向量组看作是它们张成的空间的两组基；
 
     \item 根据定义，不难验证 $B_1$ 变为基 $B_2$ 的过渡矩阵实际上就是恒等映射 $I$ 在两组基 $B_2$ 和基 $B_1$ 下的矩阵表示 $\mathbf{M}_{B_2,B_1}(I)$. 根据\autoref{eq:矩阵乘法的定义}，$\mathbf{M}_{B_2,B_1}(I)\mathbf{M}_{B_1,B_2}(I) = \mathbf{M}_{B_1,B_1}(I) = E$，即 $B_1$ 变为基 $B_2$ 的过渡矩阵可逆，并且逆矩阵就是 $B_2$ 变为基 $B_1$ 的过渡矩阵.
 \end{enumerate}
 
-下面我们讨论过渡矩阵作用在向量上带来的一些简单结论：
-\begin{theorem}{}{}
-    设$\alpha_1,\alpha_2,\ldots,\alpha_n$是线性无关的向量组，且
-    \[(\beta_1,\beta_2,\ldots,\beta_s)=(\alpha_1,\alpha_2,\ldots,\alpha_n)A\]
-    则向量组$\beta_1,\beta_2,\ldots,\beta_s$的秩等于矩阵$A$的秩.
+上面的讨论告诉我们，两组基（更一般地，两个相同长度的线性无关向量组）之间的过渡矩阵可逆. 下面我们要讨论的是，如果已知向量组 $S_1, S_2$ 有关系 $S_2 = S_1A$，其中 $A$ 是可逆矩阵，$S_1$ 线性无关，那么 $S_2$ 是否线性无关？答案是肯定的. 我们首先给出一个更一般的定理，其推论就是这一问题的答案.
+\begin{theorem}{}{过渡性质1}
+    设 $S_1 = \{\alpha_1,\alpha_2,\ldots,\alpha_n\}$ 是线性无关的向量组，且
+    \[(\beta_1,\beta_2,\ldots,\beta_s) = (\alpha_1,\alpha_2,\ldots,\alpha_n)A\]
+    则向量组 $S_2 = \{\beta_1,\beta_2,\ldots,\beta_s\}$ 的秩等于矩阵 $A$ 的秩.
 \end{theorem}
 
 \begin{proof}
-    由定义，$A$的各列是向量组$\beta_1,\beta_2,\ldots,\beta_s$在线性无关向量组$\alpha_1,\alpha_2,\ldots,\alpha_n$下的坐标. 我们知道向量和坐标之间存在坐标映射这一同构映射，故向量组$\beta_1,\beta_2,\ldots,\beta_s$的秩等于矩阵$A$的列秩，即$r(\beta_1,\beta_2,\ldots,\beta_s)=r(A)$.
+    由定义，$A$ 的各列是向量组 $S_2$ 在线性无关向量组 $S_1$ 下的坐标. 我们知道向量和坐标之间存在坐标映射这一同构映射，故向量组 $S_2$ 的秩等于矩阵$A$的列秩，即$r(S_2) = r(A)$.
 \end{proof}
 
+因此若 $A$ 可逆，此时 $s = n$，根据定理可知 $r(S_2) = r(A) = n$，即 $S_2$ 也线性无关. 下面的定理扩展了这一结论，讨论了两个不一定线性无关的向量组之间的关系.
+
 \begin{theorem}{}{}
-    已知$\beta_i=a_{1i}\alpha_1+a_{2i}\alpha_2+\cdots+a_{ni}\alpha_n,\enspace i=1,2,\ldots,n$，且$A=(a_{ij})$可逆，则$\alpha_1,\alpha_2,\ldots,\alpha_n$与$\beta_1,\beta_2,\ldots,\beta_n$等价.
+    若线性空间 $V$ 中的两个向量组 $S_1$ 和 $S_2$ 满足 $S_2 = S_1A$，其中 $A$ 可逆，则 $S_1$ 与 $S_2$ 是等价向量组.
 \end{theorem}
 
 \begin{proof}
-    由题意已经可知，向量组$\beta_1,\beta_2,\ldots,\beta_n$可以被向量组$\alpha_1,\alpha_2,\ldots,\alpha_n$线性表示，要证明两个向量组等价，我们只需反过来再证明向量组$\alpha_1,\alpha_2,\ldots,\alpha_n$可以被向量组$\beta_1,\beta_2,\ldots,\beta_n$线性表示即可. 由题意，
-    \[(\beta_1,\beta_2,\ldots,\beta_n)=(\alpha_1,\alpha_2,\ldots,\alpha_n)A,\]
-    由于$A$可逆，故$A^{-1}$存在，因此我们在上式等式两端同时乘以$A^{-1}$，即可得到
-    \[(\alpha_1,\alpha_2,\ldots,\alpha_n)=(\beta_1,\beta_2,\ldots,\beta_n)A^{-1}.\]
-    由此可知向量组$\alpha_1,\alpha_2,\ldots,\alpha_n$也可以被向量组$\beta_1,\beta_2,\ldots,\beta_n$线性表示，得证.
+    根据 $S_2 = S_1A$ 的展开式，向量组 $S_2$ 可以被向量组 $S_1$ 线性表示，要证明两个向量组等价，我们只需反过来再证明向量组 $S_1$ 可以被向量组 $S_2$ 线性表示即可. 由题意，$S_2 = S_1A$，由于 $A$ 可逆，故 $A^{-1}$ 存在，因此我们在等式两端同时乘以 $A^{-1}$ 即可得到 $S_1 = S_2A^{-1}$（可以转化为展开式上的操作来理解），即向量组 $S_1$ 可以被向量组 $S_2$ 线性表示，得证.
 \end{proof}
 
 我们来看一个例子应用上述定理：
@@ -215,20 +223,20 @@
     又由于$\xi$在线性无关向量组$\alpha_1,\ldots,\alpha_n$下的坐标唯一，故我们有$X=AY$，即$Y=A^{-1}X$.
 \end{proof}
 
-事实上这一结论放在交换图上来看也是简单的. 假设向量 $\xi$ 在两个基底下分别有坐标 $X,Y$, 则由于 $A$ 可逆，从图中可以读出 $Y=A^{-1}X:$
-\[
-    \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
-    \begin{tikzcd}
-        & V
-            \arrow[dl, shift left, "\varphi_{B_1}"]
-            \arrow[dr, shift left, "\varphi_{B_2}"]
-        \\ \mathbf{F}^n
-            \arrow[ur, shift left, "\varphi_{B_1}^{-1}"]
-        && \mathbf{F}^n
-            \arrow[ul, shift left, "\varphi_{B_2}^{-1}"]
-            \arrow[ll, "A"]
-    \end{tikzcd}
-\]
+% 事实上这一结论放在交换图上来看也是简单的. 假设向量 $\xi$ 在两个基底下分别有坐标 $X,Y$, 则由于 $A$ 可逆，从图中可以读出 $Y=A^{-1}X:$
+% \[
+%     \tikzcdset{arrow style=tikz, diagrams={>=stealth}}
+%     \begin{tikzcd}
+%         & V
+%             \arrow[dl, shift left, "\varphi_{B_1}"]
+%             \arrow[dr, shift left, "\varphi_{B_2}"]
+%         \\ \mathbf{F}^n
+%             \arrow[ur, shift left, "\varphi_{B_1}^{-1}"]
+%         && \mathbf{F}^n
+%             \arrow[ul, shift left, "\varphi_{B_2}^{-1}"]
+%             \arrow[ll, "A"]
+%     \end{tikzcd}
+% \]
 
 % 我们再来看一个例子：
 % \begin{example}{}{}
@@ -245,7 +253,7 @@
 
 % 事实上，在之后的大量讨论中我们将不区分矩阵和线性映射，其本质也在于任何矩阵$A$都可与$\sigma(X)=AX$等同，这一点在之后我们会深有体会.
 
-有了过渡矩阵的定义，我们可以介绍第二个重要的定理，也是本节的核：我们想知道\textbf{同一个线性映射在不同的基下的矩阵表示之间有什么关系}，下面的定理回答了这一问题：
+有了过渡矩阵的定义，我们可以介绍第二个重要的定理，也是本节的核心：我们想知道\textbf{同一个线性映射在不同的基下的矩阵表示之间有什么关系}，下面的定理回答了这一问题：
 \begin{theorem}{换基公式}{换基公式}
     设 $\sigma \in \mathcal{L}(V_1,V_2)$，$B_1,B_1'$ 是 $V_1$ 的两组基，$B_2,B_2'$ 是 $V_2$ 的两组基. 设 $P$ 是 $B_1$ 变为 $B_1'$ 的过渡矩阵，$Q$ 是 $B_2$ 变为 $B_2'$ 的过渡矩阵，则 $\mathbf{M}_{B_1',B_2'}(\sigma) = Q^{-1}\mathbf{M}_{B_1,B_2}(\sigma)P$.
 \end{theorem}
@@ -317,7 +325,6 @@
               \[(\alpha_{1},\alpha_{2},\alpha_{3})=(\beta_{1},\beta_{2},\beta_{3}) C^{-1},\]
               将上式代入已知条件得
               \[\sigma((\beta_{1}, \beta_{2}, \beta_{3}) C^{-1})=((\beta_{1}, \beta_{2}, \beta_{3}) C^{-1}) A,\]
-              容易验证（只需利用线性变换和矩阵的等价性然后利用矩阵乘法结合律即可）上式左端等于 $(\sigma(\beta_{1}, \beta_{2}, \beta_{3})) C^{-1}$，所以
               \[(\sigma(\beta_{1}, \beta_{2}, \beta_{3})) C^{-1}=(\beta_{1}, \beta_{2}, \beta_{3})(C^{-1} A),\]
               从而得 $\sigma(\beta_{1}, \beta_{2}, \beta_{3})=(\beta_{1}, \beta_{2}, \beta_{3})(C^{-1} A C)$，故 $\sigma$ 关于基 $\beta_{1}, \beta_{2}, \beta_{3}$ 下对应的矩阵为
               \[B=C^{-1} A C = \begin{pmatrix}
@@ -385,36 +392,38 @@
 接下来我们将开始讨论矩阵的第一个标准形——相抵标准形，我们将首先从线性映射的角度展开讨论. 事实上，我们讨论标准形的目标就是使得线性映射矩阵表示越简单越好，这样将便于我们的计算与研究. 所谓的简单，就是我们希望矩阵中尽可能多的 $0$，然后其它的元素也尽可能排列规律. 相抵标准形就是这样一种形式：
 
 \begin{theorem}{}{相抵标准形}
-    设 $A$ 是 $m\times n$ 矩阵，则存在可逆矩阵 $P$ 和 $Q$，使得
+    设 $A$ 是 $m\times n$ 矩阵，则 $r(A) = r$ 的充要条件为存在可逆矩阵 $P$ 和 $Q$，使得
     \[PAQ = \begin{pmatrix}
             E_r & O \\ O & O
         \end{pmatrix} = U_r\]
-    其中 $E_r$ 表示 $r$ 阶单位矩阵，$r = r(A)$.
+    其中 $E_r$ 表示 $r$ 阶单位矩阵.
 \end{theorem}
 
 这一定理也就自然给出了相抵以及相抵标准形的定义：设 $A$ 和 $B$ 是 $m \times n$ 矩阵，如果存在可逆矩阵 $P$ 和 $Q$，使得 $PAQ = B$，则称 $A$ 和 $B$ 是\term{相抵}的. 称 $PAQ = U_r$ 中的 $U_r$ 为矩阵 $A$ 的\term{相抵标准形}，其中 $E_r$ 表示 $r$ 阶单位矩阵，$r = r(A)$. 此后我们还会基于初等变换讨论矩阵的相抵标准形，届时我们再展开讨论``相抵''这一概念.
 
-接下来我们开始证明上面的定理. 回忆线性映射的矩阵表示，如果我们希望矩阵表示出现这么多的 $0$，一个自然的想法就是使得出发空间的基由核空间扩充而来——这又让我们想起了线性映射基本定理，下面的证明也的确基于此：
-
 \begin{proof}
-    我们直接根据线性映射基本定理找出一组基使得线性映射的矩阵表示为 $U_r$，然后利用\autoref{thm:换基公式}找出过渡矩阵 $P$ 和 $Q$ 即可.
+    \begin{enumerate}
+        \item 充分性：设 $A$ 对应于线性映射 $\sigma$ 的矩阵表示. 根据\autoref{thm:换基公式}，对矩阵 $A$ 左右乘可逆矩阵 $P$ 和 $Q$ 实际上得到了 $\sigma$ 在另一组基（根据\autoref{thm:过渡性质1}的推论，对一组基作用任意可逆矩阵后得到的仍然是一组基）下的矩阵表示为 $U_r$，这表明 $r(\sigma) = r$，因此 $\sigma$ 任意基下的矩阵表示 $A$ 的秩都满足 $r(A) = r$.
 
-    设$\sigma:V_1\to V_2$，且$\sigma$在$V_1$和$V_2$的基$B_1=\{\varepsilon_1,\ldots,\varepsilon_n\}$和$B_2=\{\eta_1,\ldots,\eta_m\}$下的矩阵表示为$A$.
+        \item 必要性：必要性直接根据线性映射基本定理找出一组基使得线性映射的矩阵表示为 $U_r$，然后利用\autoref{thm:换基公式}找出过渡矩阵 $P$ 和 $Q$ 即可. 回忆线性映射的矩阵表示，如果我们希望矩阵表示出现这么多的 $0$，一个自然的想法就是使得出发空间的基由核空间扩充而来——这又让我们想起了线性映射基本定理，下面的证明也的确基于此：
 
-    现在我们构造$V_1$和$V_2$的另一组基$B_1'$和$B_2'$使得$\sigma$在这两组基下的矩阵表示为上面的形式. 我们设矩阵的秩为$r$，也就是$\sigma$像空间的维数为$r$，因此核空间维数由线性映射基本定理为$n-r$. 由于$U_r$出现了大量的0，因此我们应当从$\sigma$核空间的基入手. 我们取$\sigma$核空间一组基$\alpha_{r+1},\ldots,\alpha_n$，将其扩充为$V_1$的一组基$B_1'=(\alpha_1,\ldots,\alpha_n)$.
+        设$\sigma:V_1\to V_2$，且$\sigma$在$V_1$和$V_2$的基$B_1=\{\varepsilon_1,\ldots,\varepsilon_n\}$和$B_2=\{\eta_1,\ldots,\eta_m\}$下的矩阵表示为$A$.
 
-    我们进一步观察发现除了0之外，$U_r$中的元素均为1，且它们排列在$E_r$的对角线上. 因此我们可以考虑取像空间的一组基$\sigma(\alpha_1),\ldots,\sigma(\alpha_r)$，将其扩充为$V_2$的一组基$B_2'=(\sigma(\alpha_1),\ldots,\sigma(\alpha_r),\beta_{r+1},\ldots,\beta_m)$. 至于为什么$\sigma(\alpha_1),\ldots,\sigma(\alpha_r)$是像空间的一组基，我们可以回顾线性映射基本定理的证明.
+        现在我们构造$V_1$和$V_2$的另一组基$B_1'$和$B_2'$使得$\sigma$在这两组基下的矩阵表示为上面的形式. 我们设矩阵的秩为$r$，也就是$\sigma$像空间的维数为$r$，因此核空间维数由线性映射基本定理为$n-r$. 由于$U_r$出现了大量的0，因此我们应当从$\sigma$核空间的基入手. 我们取$\sigma$核空间一组基$\alpha_{r+1},\ldots,\alpha_n$，将其扩充为$V_1$的一组基$B_1'=(\alpha_1,\ldots,\alpha_n)$.
 
-    于是我们有
-    \[\begin{cases}
-            \sigma(\alpha_i)=(\sigma(\alpha_1),\ldots,\sigma(\alpha_r),\beta_{r+1},\ldots,\beta_m)e_i & i=1,\ldots,r   \\
-            \sigma(\alpha_i)=0                                                                        & i=r+1,\ldots,n
-        \end{cases}\]
-    其中$e_i$表示第$i$个位置为1，其余位置全为0的列向量. 因此我们根据线性映射矩阵表示的定义得到
-    \[\sigma(\alpha_1,\ldots,\alpha_r,\alpha_{r+1},\alpha_n)=(\sigma(\alpha_1),\ldots,\sigma(\alpha_r),\beta_{r+1},\ldots,\beta_m)\begin{pmatrix}
-            E_r & O \\ O & O
-        \end{pmatrix}.\]
-    根据\autoref{thm:换基公式}，设$B_1$到$B_1'$的过渡矩阵为$Q$，$B_2'$到$B_2$的过渡矩阵为$P$，则有$PAQ=U_r$，其中$P$和$Q$因是过渡矩阵所以可逆，由此得证.
+        我们进一步观察发现除了0之外，$U_r$中的元素均为1，且它们排列在$E_r$的对角线上. 因此我们可以考虑取像空间的一组基$\sigma(\alpha_1),\ldots,\sigma(\alpha_r)$，将其扩充为$V_2$的一组基$B_2'=(\sigma(\alpha_1),\ldots,\sigma(\alpha_r),\beta_{r+1},\ldots,\beta_m)$. 至于为什么$\sigma(\alpha_1),\ldots,\sigma(\alpha_r)$是像空间的一组基，我们可以回顾线性映射基本定理的证明.
+
+        于是我们有
+        \[\begin{cases}
+                \sigma(\alpha_i)=(\sigma(\alpha_1),\ldots,\sigma(\alpha_r),\beta_{r+1},\ldots,\beta_m)e_i & i=1,\ldots,r   \\
+                \sigma(\alpha_i)=0                                                                        & i=r+1,\ldots,n
+            \end{cases}\]
+        其中$e_i$表示第$i$个位置为1，其余位置全为0的列向量. 因此我们根据线性映射矩阵表示的定义得到
+        \[\sigma(\alpha_1,\ldots,\alpha_r,\alpha_{r+1},\alpha_n)=(\sigma(\alpha_1),\ldots,\sigma(\alpha_r),\beta_{r+1},\ldots,\beta_m)\begin{pmatrix}
+                E_r & O \\ O & O
+            \end{pmatrix}.\]
+        根据\autoref{thm:换基公式}，设$B_1$到$B_1'$的过渡矩阵为$Q$，$B_2'$到$B_2$的过渡矩阵为$P$，则有$PAQ=U_r$，其中$P$和$Q$因是过渡矩阵所以可逆，由此得证.
+    \end{enumerate}
 \end{proof}
 
 % 在上面的证明中，找到基 $\alpha = (\alpha_1, \cdots, \alpha_r, \ldots, \alpha_n)$ 的过程相当于构造了一个 $\mathbf{F}^{r}\times \mathbf{F}^{m-r}\to V_1$ 的可逆映射，使得 $\alpha_{r+1}\sim\alpha_n$ 的分量张成的空间等于 $\ker\sigma$，经过映射后变为 $0$. 故映射后的像完全由前 $r$ 个分量决定，原本的 $\alpha_1\sim\alpha_r$ 对应地诱导出 $\im\sigma$ 的基 $\sigma(\alpha_1), \sigma(\alpha_2), \ldots, \sigma(\alpha_r)$. 若将保留前 $r$ 个分量，丢弃后 $n-r$ 个的映射称为投影映射 $\operatorname{proj}$，则可以画出如下的交换图. 图中的 $\exists!$ 表示唯一确定的意思，最右侧的箭头表示嵌入，因为 $\im\sigma$ 是 $V_2$ 的一个子空间，是``嵌入''到 $V_2$ 中的（这里的图画的略微抽象，如果读者一时不能理解可以跳过）
@@ -435,18 +444,14 @@
 %     \end{tikzcd}
 % \]
 
-基于上述定理，我们可以给出矩阵行秩=列秩的第三种证明，我们假定此时已经有了矩阵的秩=列秩这一结论：
+基于上述定理可以给出矩阵行秩=列秩的第三种证明. 假定此时已有矩阵的秩=列秩这一结论：
 
 \begin{proof} \label{pf:11:矩阵行秩=列秩}
-    设$A$是$m\times n$矩阵，$r=r(A)$，则存在可逆矩阵$P$和$Q$，使得
-    \[PAQ=\begin{pmatrix}
+    设 $A$ 是 $m \times n$ 矩阵，$r = r(A)$，则存在可逆矩阵 $P$ 和 $Q$，使得 $PAQ = \begin{pmatrix}
+        E_r & O \\ O & O
+    \end{pmatrix}$. 等式两端都取转置，有 $Q^\mathrm{T}A^\mathrm{T}P^\mathrm{T} = \begin{pmatrix}
             E_r & O \\ O & O
-        \end{pmatrix}.\]
-    我们对上式等式两端都取转置，有
-    \[Q^\mathrm{T}A^\mathrm{T}P^\mathrm{T}=\begin{pmatrix}
-            E_r & O \\ O & O
-        \end{pmatrix}.\]
-    由此我们知道$r(A^\mathrm{T})=r(A)$. 由矩阵的秩=列秩，则$A$的列秩=$A^\mathrm{T}$的列秩=$A$的行秩，得证.
+    \end{pmatrix}$. 故 $r = r(A^\mathrm{T}) = r(A)$. 结合矩阵的秩=列秩，有$A$的列秩=$A^\mathrm{T}$的列秩=$A$的行秩，得证.
 \end{proof}
 
 回顾证明过程：我们利用线性映射像空间与线性映射矩阵表示证明了矩阵的秩=列秩，然后利用线性映射核空间、像空间与线性映射矩阵表示证明了\autoref{thm:相抵标准形}，取转置后综合以上两点证明了行秩=列秩，整个过程更重视从线性映射的角度出发.
@@ -457,6 +462,7 @@
 
 \subsection{基本概念与性质}
 
+我们首先给出三种初等矩阵的定义，其与高斯-若当消元法中的三类初等变换对应.
 \begin{definition}{}{}
     将单位矩阵$E$做一次初等变换得到的矩阵称为初等矩阵，与三种初等行、列变换对应的三类初等矩阵为：
     \begin{enumerate}
@@ -540,13 +546,13 @@
         \end{pmatrix} \begin{pmatrix}
             1 &  & \\ & 1 & \\ & & -1
         \end{pmatrix},\]
-    从而 $B$ 由 $A$ 经过有限次初等变换得到，因 $A$ 可逆，故 $B$ 可逆. 一方面
-    \[\textbf{LHS}=X+\left(B\left(A^{T} B^{2}\right)^{-1} A^{T}\right)^{-1}=X+B,\]
-    另一方面
-    \[\textbf{RHS}=X\left(A^{2}\left(B^{T} A\right)^{-1} B^{T}\right)^{-1}(A+B)=X A^{-1}(A+B),\]
-    于是 $X=A=(A^{-1})^{-1}=\begin{pmatrix}
-            -\frac{1}{3} & \frac{1}{3} & \frac{1}{3}  \\
-            \frac{2}{3}  & \frac{1}{3} & -\frac{2}{3} \\
+    从而 $B$ 由 $A$ 经过有限次初等变换得到，因 $A$ 可逆，故 $B$ 可逆. 一方面，等式左侧可以化简为
+    \[X + \left(B\left(A^{T} B^{2}\right)^{-1} A^{T}\right)^{-1} = X + B,\]
+    另一方面，等式右侧可以化简为
+    \[X\left(A^{2}\left(B^{T} A\right)^{-1} B^{T}\right)^{-1}(A + B) = X A^{-1}(A + B),\]
+    于是 $X = A = (A^{-1})^{-1} = \begin{pmatrix}
+            -\dfrac{1}{3} & \dfrac{1}{3} & \dfrac{1}{3}  \\
+            \dfrac{2}{3}  & \dfrac{1}{3} & -\dfrac{2}{3} \\
             -2           & -1          & 1
         \end{pmatrix}$.
 \end{solution}
@@ -659,9 +665,13 @@
     \end{enumerate}
 \end{proof}
 
-由这一定理我们同样可以证明\autoref{thm:相抵标准形}，因为我们可以通过对任何一个矩阵做一系列初等行变换$P_1,\ldots,P_s$得到（行）简化阶梯矩阵，再做一系列初等列变换$Q_1,\ldots,Q_t$，即可将矩阵化为$U_r$的形式.
-
-令$P=P_1\cdots P_s$，$Q=Q_1\cdots Q_t$，则上述过程可以总结为$PAQ=U_r$，且$P$和$Q$都是可逆矩阵，因为初等矩阵都是可逆矩阵，可逆矩阵的乘积仍然为可逆矩阵. 又我们知道$U_r$的行秩=列秩$=r=$矩阵的秩，由\autoref{thm:初等变换不改变秩} 可知，$U_r$的秩与$A$的秩相等，因此$r=r(A)$成立，综上得证.
+由这一定理我们同样可以证明\autoref{thm:相抵标准形}：
+\begin{proof}
+    \begin{enumerate}
+        \item 充分性：根据\autoref{thm:可逆与初等变换}，可逆矩阵 $P$ 和 $Q$ 都可以分别表示为若干个初等矩阵的乘积，结合\autoref{thm:初等变换不改变秩} 可知 $r(A) = r(U_r) = r$.
+        \item 必要性：我们可以通过对任何一个矩阵做一系列初等行变换 $P_1,\ldots,P_s$ 得到（行）简化阶梯矩阵，再做一系列初等列变换 $Q_1,\ldots,Q_t$，即可将矩阵化为 $U_l$ 的形式（其中 $l$ 为小于等于 $m$ 和 $n$ 的常数）. 令$P = P_1 \cdots P_s$，$Q = Q_1 \cdots Q_t$，则上述过程可以总结为 $PAQ = U_l$，且 $P$ 和 $Q$ 都是可逆矩阵，因为初等矩阵都是可逆矩阵，可逆矩阵的乘积仍然为可逆矩阵. 又我们知道 $U_l$ 的行秩=列秩$=l=$矩阵的秩，由\autoref{thm:初等变换不改变秩} 可知，$U_l$ 的秩与$A$的秩相等，因此 $l = r(A) = r$ 成立，综上得证.
+    \end{enumerate}
+\end{proof}
 
 根据上面的描述，我们可以给出相抵的等价定义：
 \begin{definition}{}{}
@@ -763,11 +773,11 @@
 
 因此矩阵的初等变换实际上并不改变背后的线性映射，因此初等变换不改变矩阵的秩也是显然可以达成的，而我们在线性映射证明相抵标准形的过程中也知道，一定存在一组基使得线性映射在这组基下的矩阵表示是相抵标准形，那么我们可以从任意一组基出发，通过基的初等变换得到目标基，在这一过程中矩阵表示也就实现了初等变换得到相抵标准形的目标.
 
-除此之外，从这一例子我们也可以看出高斯-若当消元法的内涵. 回顾$\sigma(a)=b$和$AX=b$之间的关联，其中$A$是$\sigma$在出发空间和到达空间基$B_1$和$B_2$下的表示矩阵. 我们说解$X$是$b$在$\sigma$下的原像在基$B_1$下的坐标. 我们回顾高斯-若当消元法，高斯-若当消元法都在对矩阵进行初等行变换，事实上根据上面例题这对应于对$B_2$中的向量进行初等变换得到$B_2'$，但没有影响$B_1$中的向量.
+% 除此之外，从这一例子我们也可以看出高斯-若当消元法的内涵. 回顾 $\sigma(a) = \beta$ 和 $AX = b$ 之间的关联，其中 $A$ 是 $\sigma$ 在出发空间和到达空间基 $B_1$ 和 $B_2$ 下的表示矩阵，$b$ 是 $\beta$ 在基 $B_2$ 下的坐标，则解 $X$ 是 $\beta$ 在 $\sigma$ 下的原像在基 $B_1$ 下的坐标. 我们回顾高斯-若当消元法，高斯-若当消元法都在对矩阵进行初等行变换，事实上根据上面例题这对应于对 $B_2$ 中的向量进行初等变换得到 $B_2'$，但没有影响 $B_1$ 中的向量.
 
-因此，对$A$做初等变换得到简化阶梯矩阵$U$后，$U$实际上是$\sigma$在出发空间基$B_1$和到达空间基$B_2'$下的表示矩阵. 因此$UX=b$仍对应于$\sigma(a)=b$，解$X$仍然是$b$在$\sigma$下的原像在基$B_1$下的坐标，因为$B_1$在行变换过程中完全没有变化！这就给高斯-若当消元法使用初等行变换一个合理的解释——从线性映射的角度来看，虽然矩阵在行变换后发生了变化，方程从$AX=b$变为$UX=b'$，但解不会改变. 但如果做列变换则改变了$B_1$得到$B_1'$，这时解$X$将是$b$在$\sigma$下的原像在基$B_1'$下的坐标，因此会发生改变，所以高斯-若当消元法没有采用列变换.
+% 因此，对 $A$ 做初等行变换得到简化阶梯矩阵 $U$ 后，$b$ 也变为了 $b'$. 而$U$ 实际上是 $\sigma$ 在出发空间基 $B_1$ 和到达空间基 $B_2'$ 下的表示矩阵，因此 $UX = b'$ 仍对应于 $\sigma(a) = \beta'$，解 $X$ 仍然是 $\beta'$ 在 $\sigma$ 下的原像在基 $B_1$ 下的坐标，因为 $B_1$ 在行变换过程中完全没有变化！这就给高斯-若当消元法使用初等行变换一个合理的解释——从线性映射的角度来看，虽然矩阵在行变换后发生了变化，方程从 $AX = b$ 变为 $UX = b'$，但解不会改变. 但如果做列变换则改变了 $B_1$ 得到 $B_1'$，这时解 $X$ 将是 $\beta$ 在 $\sigma$ 下的原像在基 $B_1'$ 下的坐标，因此会发生改变，所以高斯-若当消元法没有采用列变换.
 
-除此之外，在后续学习中我们会介绍矩阵的三种标准形，每种标准形都是矩阵在某一特定的基下的矩阵表示. 事实上我们可以首先写出矩阵在任意一组基下的矩阵表示，然后通过对矩阵做初等变换得到标准形，同时对基做``初等变换''即可得到标准形对应的基. 日后我们提到矩阵标准形时再进一步讨论这一点，现在可以只留一个印象.
+在线性代数的学习中我们会介绍矩阵的三种标准形，每种标准形都是矩阵在某一特定的基下的矩阵表示. 事实上我们可以首先写出矩阵在任意一组基下的矩阵表示，然后通过对矩阵做初等变换得到标准形，同时对基做``初等变换''即可得到标准形对应的基. 日后我们提到矩阵标准形时再进一步讨论这一点，现在可以只留一个印象.
 
 \section{相抵标准形的应用}
 
@@ -781,7 +791,7 @@
         E_r & O \\ O & O
     \end{pmatrix}Q'^{-1}$，即$A$可以分解成一个可逆矩阵、一个相抵标准形和另一个可逆矩阵的乘积. 记$P=P'^{-1}$，$Q=Q'^{-1}$，则$A=P\begin{pmatrix}
         E_r & O \\ O & O
-    \end{pmatrix}Q$. 实际上它也可以写成 $P$ 的前 $r$ 列与 $Q$ 的前 $r$ 行的乘积（这样的乘积称为满秩分解）我们接下来给出一些经典的的例子供读者体会.
+    \end{pmatrix}Q$. 我们接下来给出一些经典的的例子供读者体会.
 
 \begin{example}{}{}
     设$A$为$n$阶方阵，证明：
@@ -796,9 +806,9 @@
             E_r & O \\ O & O
         \end{pmatrix}Q$，其中$P$和$Q$都是可逆矩阵.
     \begin{enumerate}
-        \item 第一问难点在于取出这个幂等矩阵，实际上回忆矩阵求幂的技巧，我们可以取$C=Q^{-1}\begin{pmatrix}
+        \item 第一问难点在于取出这个幂等矩阵 $C$，实际上，我们可以取$C=Q^{-1}\begin{pmatrix}
                       E_r & O \\ O & O
-                  \end{pmatrix}Q$，则$C^2=C$（因为中间的$QQ^{-1}$会抵消，而相抵标准形是幂等的），此时$A=BC$，令$B=PQ$即可（因为$P$和$Q$都可逆，其乘积也必定可逆）.
+                  \end{pmatrix}Q$，则$C^2=C$（因为中间的$QQ^{-1}$会抵消，而相抵标准形是幂等的）. 为了使得 $A = BC$，令 $B = PQ$ 即可（因为$P$ 和 $Q$ 都可逆，其乘积也必定可逆）.
 
         \item 第二问难点在于取出这个对称矩阵，但相信读者在经过上一小问的历练后，应该会产生一种取到对称矩阵的直觉. 因为标准形是对称的，我们只需要再多写一个$P^\mathrm{T}$，令$B=P\begin{pmatrix}
                       E_r & O \\ O & O
@@ -871,6 +881,27 @@
 \end{proof}
 
 事实上，本题的解答过程给我们了一个很重要的启示，那就是秩为1的矩阵一定可以分解为一个列向量和一个行向量的乘积. 之后我们将利用这一结论来解决一些问题，例如便于矩阵求幂等. 此外，若 $\tr(A) = 1$，则 $A^k = A$，这表明秩为 1 且迹为 1 的矩阵一定是幂等矩阵.
+
+上面的讨论中我们提到了行、列满秩矩阵，此类矩阵虽然在非方阵情况下不可逆，但有非常好的类似于可逆矩阵的性质：
+
+\begin{example}{}{}
+    设 $A$ 是 $m \times n$ 矩阵，证明：
+    \begin{enumerate}
+        \item 若 $r(A) = n$，即 $A$ 列满秩，则必存在秩等于 $n$ 的 $n \times m$ 矩阵 $B$ 使得 $BA = E_n$（这样的矩阵 $B$ 称为 $A$ 的左逆）；
+        \item 若 $r(A) = m$，即 $A$ 行满秩，则必存在秩等于 $m$ 的 $n \times m$ 矩阵 $C$ 使得 $AC = E_m$（这样的矩阵 $C$ 称为 $A$ 的右逆）.
+    \end{enumerate}
+\end{example}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 由于 $A$ 列满秩，故 $m$ 阶可逆矩阵 $P$ 和 $n$ 阶可逆矩阵 $Q$ 使得 $PAQ = \begin{pmatrix}
+                  E_n \\ O
+              \end{pmatrix}$，故 $(E_n, O)PAQ = E_n$，即 $Q^{-1} = (E_n, O)PA$，故 $Q(E_n, O)PA = E_n$，取 $B = Q(E_n, O)P$ 即可.
+        \item 方法与上一小问相同，略去.
+    \end{enumerate}
+\end{proof}
+
+上述例题的结论可以进一步扩展：列满秩的矩阵满足左消去律，行满秩的矩阵满足右消去律. 简单证明列满秩的情况. 若 $A$ 列满秩且 $AB = AC$，则 $A(B - C) = O$，由于 $A$ 列满秩，故存在矩阵 $D$ 使得 $DA = E$，从而 $D(A(B - C)) = O$，即 $B - C = O$，故 $B = C$.
 
 除此之外，我们还可以利用相抵标准形解决很多问题，例如下一节中部分秩不等式的证明，具体应用见\autoref{ex:分块秩不等式}.
 
@@ -998,6 +1029,21 @@
             \item 基$B_4$变为基$B_6=\{\xi_1+\xi_2,\xi_2+\xi_3,\xi_3+\xi_1\}$的变换矩阵.
         \end{enumerate}
 
+        \item 设 $\alpha_1, \alpha_2, \cdots, \alpha_k$ 和 $\beta_1, \beta_2, \cdots, \beta_m$ 是线性空间 $V$ 的两组向量，且满足
+        \[ \begin{cases}
+                \beta_1 = a_{11} \alpha_1 + a_{12} \alpha_2 + \cdots + a_{1k} \alpha_k \\
+                \beta_2 = a_{21} \alpha_1 + a_{22} \alpha_2 + \cdots + a_{2k} \alpha_k \\
+                \cdots \\
+                \beta_m = a_{m1} \alpha_1 + a_{m2} \alpha_2 + \cdots + a_{mk} \alpha_k
+        \end{cases} \]
+        记 $A = (a_{ij})_{m \times k}$，证明：
+        \begin{enumerate}
+            \item 若 $r(A) = k$，则这两个向量组等价；
+            \item 若 $r(A) = r$，则向量组 $\beta_1, \beta_2, \cdots, \beta_m$ 的秩不超过 $r$.
+        \end{enumerate}
+        \begin{answer}
+
+        \end{answer}
 
         \item 设$P=\begin{pmatrix}
                 1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0
@@ -1025,6 +1071,51 @@
                         &   &        & 1 & 1
                 \end{pmatrix} \]
             满足 $ |A| = 1 + (-1)^{n + 1} = 2 $，所以 $ A $ 可逆. 根据教材命题 3.10.3 可得 $ \alpha_1, \alpha_2, \ldots, \alpha_n $ 与 $ \beta_1, \beta_2, \ldots, \beta_n $ 等价. 当然，这说明 $ \alpha_1, \alpha_2, \ldots, \alpha_n $ 线性无关的充要条件是 $ \beta_1, \beta_2, \ldots, \beta_n $ 线性无关.
+        \end{answer}
+
+        \item 设$B=\{\beta_1,\beta_2,\ldots,\beta_n\}$是实数域$\mathbf{R}$上的线性空间$V$的一组基，$T \in \mathcal{L}(V),\enspace T(\beta_1)=\beta_2,T(\beta_2)=\beta_3,\ldots,T(\beta_{n-1})=T(\beta_n),T(\beta_n)=\displaystyle\sum_{i=1}^{n}a_i\beta_i(a_i \in \mathbf{R})$，求$T$关于基$B$的表示矩阵，并求在什么条件下$T$是同构映射.
+        \begin{answer}
+            $ T(\beta_1, \beta_2, \ldots, \beta_n) = (\beta_1, \beta_2, \ldots, \beta_n)A $，其中
+            \[ A = \begin{pmatrix}
+                      &   &        &   & a_1    \\
+                    1 &   &        &   & a_2    \\
+                      & 1 &        &   & a_3    \\
+                      &   & \ddots &   & \vdots \\
+                      &   &        & 1 & a_n
+                \end{pmatrix} \]
+            是 $ T $ 关于基 $ B $ 的表示矩阵.
+
+            $ T $ 是同构 $ \iff T $ 是双射 $ \iff r(T) = n $，满秩. 所以当 $ a_1 \neq 0 $ 时，$ r(T) = n $ 满秩，此时 $ T $ 是同构映射.
+        \end{answer}
+
+        \item 设矩阵空间$\mathbf{R}^{2\times 2}$的子空间为
+        \[V=\{X=(x_{ij})_{2\times 2} \mid x_{11}+x_{12}+x_{21}=0,\enspace x_{ij}\in \mathbf{R}\}\]
+        V中的线性变换为$\sigma(X)=X+X^\mathrm{T}$，求$V$的一组基，使得$\sigma$在该基下的矩阵表示为对角矩阵.
+
+        \begin{answer}
+            我们可以类比线性空间
+          \[ W = \{ x \in \mathbf{R}^4 \mid x_1 + x_2 + x_3 = 0 \} \]
+          $ W $ 的基只需求解线性方程组 $ x_1 + x_2 + x_3 = 0 $ 即可，得到基础解系为 $ (-1, 0, 1, 0)^{\mathrm{T}},\allowbreak (-1, 1, 0, 0)^{\mathrm{T}},\allowbreak (0, 0, 0, 1)^{\mathrm{T}} $.
+
+          换回 $ V $，即有基为 $ A_1 = \begin{pmatrix} -1 & 0 \\ 1 & 0 \end{pmatrix}, A_2 = \begin{pmatrix} -1 & 1 \\ 0 & 0 \end{pmatrix}, A_3 = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} $. 而
+          \begin{align*}
+                         & \sigma(A_1) = \begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix} = A_1 + A_2                      \\
+                         & \sigma(A_2) = \begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix} = A_1 + A_2                      \\
+                         & \sigma(A_3) = \begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix} = 2 A_3                          \\
+              \implies{} & \sigma(A_1 + A_2) = 2(A_1 + A_2),\enspace \sigma(A_1 - A_2) = 0,\enspace \sigma(A_3) = 2 A_3
+          \end{align*}
+          取基 $ A_1 - A_2, A_1 + A_2, A_3 $，有
+          \[ (\sigma(A_1 - A_2), \sigma(A_1 + A_2), \sigma(A_3)) = (A_1 - A_2, A_1 + A_2, A_3) = \begin{pmatrix}
+                  0 & 0 & 0 \\
+                  0 & 2 & 0 \\
+                  0 & 0 & 2
+              \end{pmatrix} \]
+          为对角矩阵.
+        \end{answer}
+
+        \item 设$A$为$n$阶实反对称矩阵，证明：$E-A$ 可逆.
+        \begin{answer}
+            反证法，假设不可逆，则存在非零实向量$x=(x_1,\cdots,x_n)^\mathrm{T}$使得$(E-A)x=0$，即$Ax=x$，又反对称矩阵有一个性质，即对任意的$x$，$x^\mathrm{T}Ax=0$，而$x^\mathrm{T}Ax=x^\mathrm{T}x=x_1^2+\cdots+x_n^2$，又由实数条件可知$x$为零向量，矛盾.
         \end{answer}
 
         \item 设
@@ -1178,7 +1269,7 @@
 
         \end{answer}
 
-        \item 设 $A$ 和 $B$ 是两个 $m \times n$ 矩阵，且存在两个方阵 $C,D$ 使得 $A = BC, B = AD$，证明：存在可逆映射 $M$ 使得 $B = AM$.
+        \item 设 $A$ 和 $B$ 是两个 $m \times n$ 矩阵，且存在两个方阵 $C,D$ 使得 $A = BC, B = AD$，证明：存在可逆矩阵 $M$ 使得 $B = AM$.
         \begin{answer}
 
         \end{answer}

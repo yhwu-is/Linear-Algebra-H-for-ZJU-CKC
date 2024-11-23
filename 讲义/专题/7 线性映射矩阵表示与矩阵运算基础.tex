@@ -512,10 +512,15 @@
         \sum_{j=1}^n\limits b_{mj} x_j
     \end{pmatrix} \\
     &= \begin{pmatrix}
-        \sum_{k=1}^m\limits a_{1k} b_{kj} x_j \\
-        \sum_{k=1}^m\limits a_{2k} b_{kj} x_j \\
+        \sum_{k=1}^n\limits a_{1k} \sum_{j=1}^n\limits b_{kj} x_j \\
+        \sum_{k=1}^n\limits a_{2k} \sum_{j=1}^n\limits b_{kj} x_j \\
         \vdots \\
-        \sum_{k=1}^m\limits a_{pk} b_{kj} x_j
+        \sum_{k=1}^n\limits a_{pk} \sum_{j=1}^n\limits b_{kj} x_j
+    \end{pmatrix} = \begin{pmatrix}
+        \sum\limits_{j=1}^n\left(\sum\limits_{k=1}^m a_{1k} b_{kj}\right) x_j \\
+        \sum\limits_{j=1}^n\left(\sum\limits_{k=1}^m a_{2k} b_{kj}\right) x_j \\
+        \vdots \\
+        \sum\limits_{j=1}^n\left(\sum\limits_{k=1}^m a_{pk} b_{kj}\right) x_j
     \end{pmatrix} \\
     &= \begin{pmatrix}
         \sum_{k=1}^m\limits a_{1k} b_{k1} & \sum_{k=1}^m\limits a_{1k} b_{k2} & \cdots & \sum_{k=1}^m\limits a_{1k} b_{kn} \\
@@ -711,17 +716,17 @@
                   x_1 \\ x_2 \\ \vdots \\ x_n
               \end{pmatrix}=(\alpha_1,\alpha_2,\ldots,\alpha_m)A\begin{pmatrix}
                   x_1 \\ x_2 \\ \vdots \\ x_n
-              \end{pmatrix}=b
+              \end{pmatrix}=\beta
           \end{equation}
-          即$x_1\sigma(\varepsilon_1)+x_2\sigma(\varepsilon_2)+\cdots+x_n\sigma(\varepsilon_n)=b$，即
+          即 $b$ 是 $\beta$ 在基 $\alpha_1,\alpha_2,\ldots,\alpha_m$ 下的坐标. 由上式可知 $x_1\sigma(\varepsilon_1)+x_2\sigma(\varepsilon_2)+\cdots+x_n\sigma(\varepsilon_n)=\beta$，即
           \begin{equation}\label{eq:7:方程组与核空间2}
-              \sigma(x_1\varepsilon_1+x_2\varepsilon_2+\cdots+x_n\varepsilon_n)=b.
+              \sigma(x_1\varepsilon_1+x_2\varepsilon_2+\cdots+x_n\varepsilon_n)=\beta.
           \end{equation}
-          由此我们将线性方程组的求解问题和找到线性映射到达空间中某个向量在出发空间中原像的坐标联系起来了，即将求解$AX=b$和求解$\sigma(a)=b$联系起来了，只是我们求解后者时通常是对于一般的向量空间而言的，这时求解是通过求出$a$在矩阵表示基下的坐标实现的.
+          由此我们将线性方程组的求解问题和找到线性映射到达空间中某个向量在出发空间中原像的坐标联系起来了，即将求解 $AX = b$ 和求解 $\sigma(a) = \beta$ 联系起来了，只是我们求解后者时通常是对于一般的向量空间而言的.
 
           若前述$b=0$，则我们将齐次线性方程组的解空间与线性映射的核空间联系起来了，即线性映射的核空间中元素在一组基下的向量就是这一线性映射在这组基下的矩阵表示作为系数矩阵的线性方程组的解. 这一联系将在\nameref{chap:朝花夕拾}中有更深入的讨论.
 
-    \item 我们可以更进一步理解矩阵乘法. 假设矩阵$A=(a_{ij})_{m\times n}$与$B=(b_{ij})_{n\times l}$相乘，我们有如下结论：
+    \item 我们可以更进一步理解矩阵乘法. 假设矩阵 $A = (a_{ij})_{m \times n}$ 与 $B = (b_{ij})_{n \times l}$ 相乘，我们有如下结论：
           \begin{enumerate}
               \item 乘积的第$k$列等于$A$乘以$B$的第$k$列，乘积的第$j$行等于$A$的第$j$行乘以$B$，这一点根据矩阵乘法计算方式显然，我们可以利用这一性质证明下面例子的结论：
                     \begin{example}{}{}
@@ -753,21 +758,19 @@
                     由此我们将乘积的列表示成了矩阵$A$各列的线性组合.
           \end{enumerate}
 
-    \item 之后我们会经常看见两种记号，即
+    \item 在不同的教材中我们可能会看见两种记号，即
           \begin{align*}
               (\sigma(\varepsilon_1),\sigma(\varepsilon_2),\ldots,\sigma(\varepsilon_n))
               & =(\alpha_1,\alpha_2,\ldots,\alpha_m)A \\
               \sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)
               & =(\alpha_1,\alpha_2,\ldots,\alpha_m)A
           \end{align*}
-          教材中两个记号是等价的，这只是记号上的差别，含义完全相同. 但是在之后我们还会看到一个很特别的书写方式
+          事实上两个记号是等价的，只有记号上的差别，含义完全相同. 有时我们还会看到一个很特别的书写方式
           \[
             (\sigma(\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n))B
             =\sigma((\varepsilon_1,\varepsilon_2,\ldots,\varepsilon_n)B)
           \]
-          教材不加解释地使用了这一等式，这容易导致读者的困惑，因此我们这里简要说明它们的确是等价的，从而接下来读者可以放心地自由使用这一结论.
-
-          根据上述的第一个性质可知，我们只需要证明对$B$的某一列上式成立即可，因为乘法结果是列与列对应的. 我们设$B$的第$k$列为
+          这容易导致读者的困惑，因此我们这里简要说明它们的确是成立的，从而接下来读者可以放心地自由使用这一结论. 根据上述的第一个性质可知，我们只需要证明对$B$的某一列上式成立即可，因为乘法结果是列与列对应的. 我们设$B$的第$k$列为
           \[B_k=\begin{pmatrix}
                   b_{1k} \\ b_{2k} \\ \vdots \\ b_{nk}
               \end{pmatrix}\]
@@ -799,7 +802,7 @@
     \item \label{item:7:矩阵乘法:3}
           $A\neq O$且$B\neq O$不能推出$AB\neq O$. 例如线性方程组$AX = 0$有非零解，若$B$的各列均为方程非零解，则$AB = O$ 在环上这种元素通常被称为零因子.
 
-    \item 消去律也不一定满足：即$AB = AC$不一定$A = B$. 原因在于$AB=AC \implies A(B-C)=O$，由 \ref*{item:7:矩阵乘法:3} 可知不一定$B = C$.
+    \item 消去律也不一定满足：即$AB = AC$不一定$B = C$. 原因在于$AB=AC \implies A(B-C)=O$，由 \ref*{item:7:矩阵乘法:3} 可知不一定$B = C$.
 \end{enumerate}
 
 \subsection{矩阵多项式}
@@ -981,6 +984,8 @@
     \end{enumerate}
 \end{proof}
 
+需要强调的是，不难发现证明的第一步与 $A$ 和 $B$ 是否为方阵无关，因此对于 $n \times m$ 矩阵 $A$ 和 $m \times n$ 矩阵 $B$，若 $AB = E$，则必有 $B$ 的列向量线性无关. 作转置可得 $B^\mathrm{T}A^\mathrm{T} = E$，则 $A^\mathrm{T}$ 的列向量线性无关，故 $AB = E$ 还可以得到 $A$ 的行向量线性无关.
+
 \subsection{基本性质}
 
 \begin{enumerate}[label=(\arabic*)]
@@ -1003,15 +1008,15 @@
 
 \subsection{逆矩阵的求解（基本方法I）}
 
-在介绍完性质后我们非常关心如何给定一个具体的矩阵求出它的逆的问题，这里我们给出第一种基本方法，即基于解方程的方法. 事实上，我们在矩阵乘法一节中就将$AX=b$和$\sigma(a)=b$联系在一起，其中$\sigma$在某组基下表示矩阵为$A$. 回顾本讲开头引入可逆矩阵的过程，可逆矩阵$A$应当是可逆线性映射$\sigma$关于某组基的表示矩阵. 对于可逆映射而言，首先必须是单射，因此$\sigma(a)=b$只能有唯一解，因此$AX=b$只能有唯一解.
+在介绍完性质后我们非常关心如何给定一个具体的矩阵求出它的逆的问题，这里我们给出第一种基本方法，即基于解方程的方法. 事实上，我们在矩阵乘法一节中就将 $AX = b$ 和 $\sigma(a) = \beta$ 联系在一起，其中 $\sigma$ 在基 $B_1, B_2$ 下表示矩阵为 $A$，$b$ 是 $\beta$ 在基 $B_2$ 下的坐标. 回顾本讲开头引入可逆矩阵的过程，可逆矩阵$A$应当是可逆线性映射 $\sigma$ 关于某组基的表示矩阵. 对于可逆映射而言，首先必须是单射，因此 $\sigma(a) = \beta$ 只能有唯一解，因此 $AX = b$ 只能有唯一解.
 
-事实上我们可以很简便地表达出这个解. 我们在$AX=b$左右同时左乘$A^{-1}$（矩阵乘法不可交换所以必须在同一侧乘），有$A^{-1}AX=A^{-1}b$，即$X=A^{-1}b$. 因此，当$A$可逆时，对于任意的$b$线性方程组都有唯一解，且解可以被表示为$X=A^{-1}b$的形式. 因此我们可以通过解线性方程组的方法求解逆矩阵. 我们将通过下面这个例子详细介绍这种方法的计算过程：
+事实上我们可以很简便地表达出这个解. 我们在$AX=b$左右同时左乘 $A^{-1}$（矩阵乘法不可交换，所以必须在同一侧乘），有 $A^{-1}AX = A^{-1}b$，即 $X = A^{-1}b$. 因此，当 $A$ 可逆时，对于任意的 $b$ 线性方程组都有唯一解，且解可以被表示为 $X = A^{-1}b$ 的形式. 因此我们可以通过解线性方程组的方法求解逆矩阵. 我们将通过下面这个例子详细介绍这种方法的计算过程：
 \begin{example}{}{}
-    用上述方法求矩阵$A=\begin{pmatrix}1 & -1 & 1 \\ 0 & 1 & 2 \\ 1 & 0 & 4\end{pmatrix}$的逆矩阵.
+    用解方程法求矩阵 $A = \begin{pmatrix}1 & -1 & 1 \\ 0 & 1 & 2 \\ 1 & 0 & 4\end{pmatrix}$ 的逆矩阵.
 \end{example}
 
 \begin{solution}
-    以 $A$ 为系数矩阵的非齐次线性方程组 $AX=b$，对于任意的 $b=(b_1,b_2,b_3)$，可以用高斯-若当消元法将其增广矩阵
+    以 $A$ 为系数矩阵的非齐次线性方程组 $AX = b$，对于任意的 $b = (b_1, b_2, b_3)$，可以用高斯-若当消元法将其增广矩阵
 
     \[(A,b)=\left(\begin{array}{ccc:c}
                 1 & -1 & 1 & b_1 \\
@@ -1040,7 +1045,7 @@
         \end{pmatrix}\]
 \end{solution}
 
-关于逆矩阵的求解问题，我们将在介绍完初等变换后介绍第二种基本方法，剩余的进阶解法将在\nameref{chap:矩阵运算进阶}中介绍更多手段，以及我们会介绍矩阵方程求解的方法. 本节我们囿于一些计算技巧和基本概念暂未引入所以无法完全展开这些技巧.
+关于逆矩阵的求解问题，我们将在介绍完初等变换后介绍第二种基本方法，剩余的进阶解法将在\nameref{chap:矩阵运算进阶}中介绍更多手段，以及我们会介绍矩阵方程求解的方法.
 
 \subsection{广义逆矩阵}
 
@@ -1092,9 +1097,9 @@
 
 因此本题的关键在于，求矩阵的幂的时候，中间的项可以直接变成常数. 事实上，在将来讲解矩阵运算技巧时我们还会大量运用本题的技巧.
 
-\subsection{对阵矩阵与反对称矩阵}
+\subsection{对称矩阵与反对称矩阵}
 
-与矩阵转置相关的一个重要的概念是对阵矩阵和反对称矩阵. 我们给出定义：
+与矩阵转置相关的一个重要的概念是对称矩阵和反对称矩阵. 我们给出定义：
 \begin{definition}{}{}
     设$A=(a_{ij})_{n \times n}$，如果$\forall i,j\in\{1,2,\ldots,n\}$均有$a_{ij}=a_{ji}$，则称$A$为对称矩阵. 若均有$a_{ij}=-a_{ji}$，则称$A$为反对称矩阵.
 \end{definition}
@@ -1102,11 +1107,11 @@
 \begin{example}{}{}
     证明以下几点性质：
     \begin{enumerate}
-        \item 反对称矩阵主对角元均为0；
+        \item 反对称矩阵主对角元均为 $0$；
 
-        \item $AA^\mathrm{T}$和$A^\mathrm{T}A$均为对称矩阵；
+        \item $AA^\mathrm{T}$ 和 $A^\mathrm{T}A$ 均为对称矩阵；
 
-        \item 设$A,B$为$n$阶对称和反对称矩阵，则$AB+BA$是反对称矩阵；
+        \item 设 $A, B$ 分别为 $n$ 阶对称和反对称矩阵，则 $AB + BA$ 是反对称矩阵；
 
         \item 对称矩阵的乘积不一定对称；
 
@@ -1116,9 +1121,9 @@
 
 \begin{solution}
     \begin{enumerate}
-        \item 由于$A$为反对称矩阵，因此根据定义有$a_{ii}=-a_{ii}$，即$a_{ii}=0$；
+        \item 由于$A$为反对称矩阵，因此根据定义有 $a_{ii} = -a_{ii}$，即 $a_{ii} = 0$；
 
-        \item 由于$(AA^\mathrm{T})^\mathrm{T}=(A^\mathrm{T})^\mathrm{T}A^\mathrm{T}=AA^\mathrm{T}$，因此$AA^\mathrm{T}$为对称矩阵；同理可证$A^\mathrm{T}A$为对称矩阵；
+        \item 由于 $(AA^\mathrm{T})^\mathrm{T} = (A^\mathrm{T})^\mathrm{T}A^\mathrm{T} = AA^\mathrm{T}$，因此 $AA^\mathrm{T}$ 为对称矩阵；同理可证 $A^\mathrm{T}A$ 为对称矩阵；
 
         \item 由于$A,B$分别为对称和反对称矩阵，因此$(AB+BA)^\mathrm{T}=B^\mathrm{T}A^\mathrm{T}+A^\mathrm{T}B^\mathrm{T}=-AB-BA=-(AB+BA)$，因此$AB+BA$为反对称矩阵；
 
@@ -1217,7 +1222,7 @@
 \begin{enumerate}
     \item $\overline{A+B}=\overline{A}+\overline{B}$
 
-    \item $\overline{\lambda A}=\overline{\lambda}\overline{A}$
+    \item $\overline{\lambda A}=\overline{\lambda} \cdot \overline{A}$
 
     \item $\overline{AB}=\overline{A}\overline{B}$（$n$个矩阵同理）；$\overline{A^m}=\overline{A}^m$
 
@@ -1441,21 +1446,6 @@
     \end{exgroup}
 
     \begin{exgroup}
-        \item 设$B=\{\beta_1,\beta_2,\ldots,\beta_n\}$是实数域$\mathbf{R}$上的线性空间$V$的一组基，$T \in \mathcal{L}(V),\enspace T(\beta_1)=\beta_2,T(\beta_2)=\beta_3,\ldots,T(\beta_{n-1})=T(\beta_n),T(\beta_n)=\displaystyle\sum_{i=1}^{n}a_i\beta_i(a_i \in \mathbf{R})$，求$T$关于基$B$的表示矩阵，并求在什么条件下$T$是同构映射.
-        \begin{answer}
-            $ T(\beta_1, \beta_2, \ldots, \beta_n) = (\beta_1, \beta_2, \ldots, \beta_n)A $，其中
-            \[ A = \begin{pmatrix}
-                      &   &        &   & a_1    \\
-                    1 &   &        &   & a_2    \\
-                      & 1 &        &   & a_3    \\
-                      &   & \ddots &   & \vdots \\
-                      &   &        & 1 & a_n
-                \end{pmatrix} \]
-            是 $ T $ 关于基 $ B $ 的表示矩阵.
-
-            $ T $ 是同构 $ \iff T $ 是双射 $ \iff r(T) = n $，满秩. 所以当 $ a_1 \neq 0 $ 时，$ r(T) = n $ 满秩，此时 $ T $ 是同构映射.
-        \end{answer}
-
         \item 已知$f_1=1-x,f_2=1+x^2,f_3=x+2x^2$是$\mathbf{R}[x]_3$中三个元素，$\sigma$是$\mathbf{R}[x]_3$上的线性变换且满足$\sigma(f_1)=2+x^2,\sigma(f_2)=x,\sigma(f_3)=1+x+x^2$.
         \begin{enumerate}
             \item 证明：$f_1,f_2,f_3$构成$\mathbf{R}[x]_3$的一组基；
@@ -1598,31 +1588,6 @@
                               0 & 0  & 0  & 0
                           \end{pmatrix} $. （答案不唯一）
             \end{enumerate}
-        \end{answer}
-
-        \item 设矩阵空间$\mathbf{R}^{2\times 2}$的子空间为
-        \[V=\{X=(x_{ij})_{2\times 2} \mid x_{11}+x_{12}+x_{21}=0,\enspace x_{ij}\in \mathbf{R}\}\]
-        V中的线性变换为$\sigma(X)=X+X^\mathrm{T}$，求$V$的一组基，使得$\sigma$在该基下的矩阵表示为对角矩阵.
-
-        \begin{answer}
-            我们可以类比线性空间
-          \[ W = \{ x \in \mathbf{R}^4 \mid x_1 + x_2 + x_3 = 0 \} \]
-          $ W $ 的基只需求解线性方程组 $ x_1 + x_2 + x_3 = 0 $ 即可，得到基础解系为 $ (-1, 0, 1, 0)^{\mathrm{T}},\allowbreak (-1, 1, 0, 0)^{\mathrm{T}},\allowbreak (0, 0, 0, 1)^{\mathrm{T}} $.
-
-          换回 $ V $，即有基为 $ A_1 = \begin{pmatrix} -1 & 0 \\ 1 & 0 \end{pmatrix}, A_2 = \begin{pmatrix} -1 & 1 \\ 0 & 0 \end{pmatrix}, A_3 = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} $. 而
-          \begin{align*}
-                         & \sigma(A_1) = \begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix} = A_1 + A_2                      \\
-                         & \sigma(A_2) = \begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix} = A_1 + A_2                      \\
-                         & \sigma(A_3) = \begin{pmatrix} -2 & 1 \\ 1 & 0 \end{pmatrix} = 2 A_3                          \\
-              \implies{} & \sigma(A_1 + A_2) = 2(A_1 + A_2),\enspace \sigma(A_1 - A_2) = 0,\enspace \sigma(A_3) = 2 A_3
-          \end{align*}
-          取基 $ A_1 - A_2, A_1 + A_2, A_3 $，有
-          \[ (\sigma(A_1 - A_2), \sigma(A_1 + A_2), \sigma(A_3)) = (A_1 - A_2, A_1 + A_2, A_3) = \begin{pmatrix}
-                  0 & 0 & 0 \\
-                  0 & 2 & 0 \\
-                  0 & 0 & 2
-              \end{pmatrix} \]
-          为对角矩阵.
         \end{answer}
 
         \item 设 $\mathbf{R}[x]_4$ 是数域 $\mathbf{R}$ 上次数小于 4 的多项式所构成的线性空间（约定零多项式次数为 $-\infty$）. $\mathbf{M}_2(\mathbf{R})$ 是 $\mathbf{R}$ 上 2 阶方阵所构成的线性空间. 定义 $T \colon \mathbf{R}[x]_4 \to \mathbf{M}_2(\mathbf{R})$ 如下：对 $f(x) \in \mathbf{R}[x]_4$，
@@ -1848,11 +1813,6 @@
 
         \end{answer}
 
-        \item 设$A$为$n$阶实反对称矩阵，证明：$E-A$ 可逆.
-        \begin{answer}
-            反证法，假设不可逆，则存在非零实向量$x=(x_1,\cdots,x_n)^\mathrm{T}$使得$(E-A)x=0$，即$Ax=x$，又反对称矩阵有一个性质，即对任意的$x$，$x^\mathrm{T}Ax=0$，而$x^\mathrm{T}Ax=x^\mathrm{T}x=x_1^2+\cdots+x_n^2$，又由实数条件可知$x$为零向量，矛盾.
-        \end{answer}
-
         \item 设 $A, B$ 为 $n$ 阶方阵，证明：
         \begin{enumerate}
             \item 若$A,B$为对称矩阵，则$AB$为对称矩阵的充要条件为$AB=BA$，$AB$为反对称矩阵的充要条件为$AB=-BA$.
@@ -1988,9 +1948,9 @@
     \end{exgroup}
 
     \begin{exgroup}
-        \item 若$n$阶方阵$A_1,A_2,\ldots,A_m$满足$A_i^2\neq O\enspace(i=1,2,\ldots,m)$，且当$i\neq j$时$A_iA_j=O$，证明：$m\leqslant n$.
+        \item 若$n$阶方阵$A_1,A_2,\ldots,A_m$满足$A_i^2\neq O\enspace(i=1,2,\ldots,m)$，且当$i\neq j$时$A_iA_j=O$，证明：$m \leqslant n$.
         \begin{answer}
-            
+
         \end{answer}
 
         \item 设 $A,B,C$ 为二阶复方阵，且 $A,B,C$ 在 $\mathbf{M}_2(\mathbf{C})$ 中线性无关. 证明：存在$z_1,z_2,z_3 \in \mathbf{C}$使得 $z_1A+z_2B+z_3C$ 为可逆矩阵.

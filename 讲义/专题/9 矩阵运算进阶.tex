@@ -295,7 +295,7 @@
     由迹的线性性、对称性、交换性和正定性，我们有
     \begin{align*}
         \tr((A - A^\mathrm{T})(A - A^\mathrm{T})^\mathrm{T}) & = \tr((A - A^\mathrm{T})(A^\mathrm{T} - A)) \\
-        & = \tr(AA^\mathrm{T} - A^2 - A^{\mathrm{T}2} + A^{\mathrm{T}}A) \\
+        & = \tr(AA^\mathrm{T} - A^2 - (A^{\mathrm{T}})^2 + A^{\mathrm{T}}A) \\
         & = 2\tr(AA^{\mathrm{T}}) - 2\tr(A^2) \geqslant 0.
     \end{align*}
     故要证的不等式成立. 等号成立条件由正定性可知必有 $A = A^\mathrm{T}$，即 $A$ 为对称矩阵.
@@ -354,7 +354,7 @@
     \begin{align*}
         E_m &= E_m + BA - BA \\
            & = (E_m + BA) - B(E_n + AB)^{-1}A(E_m + BA) \\
-           & = (E_m + BA)(E_m - B(E_n + AB)^{-1}A).
+           & = (E_m - B(E_n + AB)^{-1}A)(E_m + BA).
     \end{align*}
     因此 $E_m + BA$ 可逆，且 $(E_m + BA)^{-1} = E_m - B(E_n + AB)^{-1}A$.
 \end{proof}
@@ -741,7 +741,7 @@
 
 \subsection{分块矩阵与逆矩阵求解}
 
-分块矩阵初等行变换的一个重要的应用就是``打洞法''，常用于分块矩阵求逆的运算，在之后行列式的一些技巧性处理中也很常见. 这一方法非常形象，因为打洞就是使得矩阵出现一些零分块，成为分块对角矩阵（或者分块三角矩阵）后更加易于处理，例如：
+分块矩阵初等行变换的一个重要的应用就是``打洞法''，常用于分块矩阵求逆，在之后行列式的一些技巧性处理中也很常见. 这一方法非常形象，因为打洞就是使得矩阵出现一些零分块，成为分块对角矩阵（或者分块三角矩阵）后更加易于处理，例如：
 \begin{enumerate}
     \item 当$A$可逆时，我们可以通过初等行变换消去$C$：
           \[ \begin{pmatrix}
@@ -808,7 +808,7 @@
         \end{pmatrix}.\]
 \end{solution}
 
-注意到本例中我们专门给出了条件$A-BD^{-1}C$可逆，然后在结果中也看到这一形式的大量出现. 基于这一性质，我们称其为$P$矩阵中$D$矩阵的Schur补（因为此时$D$可逆，若$A$可逆完全可以定义出$A$的Schur补），记为$P/D$. 于是矩阵$P$的逆可以写成
+注意到本例中我们专门给出了条件$A-BD^{-1}C$可逆，然后在结果中也看到这一形式的大量出现. 基于这一性质，我们称其为$P$矩阵中$D$矩阵的Schur补（因为此时$D$可逆，若$A$可逆也可以定义出$A$的Schur补），记为$P/D$. 于是矩阵$P$的逆可以写成
 \[\begin{pmatrix}
         (P/D)^{-1} & -(P/D)^{-1}BD^{-1} \\ -D^{-1}C(P/D)^{-1} & D^{-1}+D^{-1}C(P/D)^{-1}BD^{-1}
     \end{pmatrix}.\]
@@ -865,7 +865,7 @@
     \end{pmatrix}\]
 需要注意的是，通过这一变换我们也可以知道，当$A_1$可逆时矩阵$\begin{pmatrix}
         A_1 & \alpha \\ \beta & a_{nn}
-    \end{pmatrix}$可逆的充要条件为$a_{nn}\neq \beta A_1^{-1}\alpha$（因为矩阵满秩当且仅当最后一行不等于零）. 我们通过一个例子来体会如何利用上式结合数学归纳法得到一些矩阵分析中的结论：
+    \end{pmatrix}$可逆的充要条件为$a_{nn}\neq \beta A_1^{-1}\alpha$（因为该矩阵满秩当且仅当最后一行不等于零）. 我们通过一个例子来体会如何利用上式结合数学归纳法得到一些矩阵分析中的结论：
 \begin{example}{}{}
     若$n$阶矩阵$A$的各阶左上角子块矩阵都可逆，则存在主对角元全为1的下三角矩阵$L$和上三角矩阵$U$，使得$A=LU$（$LU$分解）.
 \end{example}
@@ -1197,7 +1197,7 @@
               因为$(\tau\sigma)(V_1)=\tau(\sigma(V_1))$，我们知道线性映射不能把低维空间满射到更高维的空间，因此$\dim(\tau\sigma)(V_1)=\dim\tau(\sigma(V_1))\leqslant\dim\sigma(V_1)$，即$r(\tau\sigma)\leqslant r(\sigma)$，综上$r(\tau\sigma)\leqslant \min\{r(\sigma), r(\tau)\}$，得证.
           \end{proof}
 
-          事实上，这一不等式我们将在\nameref{chap:朝花夕拾}中用线性方程组的理论再给出一个证明.
+          这一不等式我们将在\nameref{chap:朝花夕拾}中用线性方程组的理论再给出一个证明.
 
     \item $r(A)=r(A^\mathrm{T})=r(AA^\mathrm{T})=r(A^\mathrm{T}A)$.
 
@@ -1756,11 +1756,6 @@
             \end{enumerate}
         \end{answer}
 
-        \item 当 $A$ 和 $D$ 可逆时，通过分块矩阵初等变换求 $P=\begin{pmatrix}A & B \\ O & D\end{pmatrix}$ 的逆矩阵.
-        \begin{answer}
-            见本章 A 组第 3 题的答案，此处不再赘述.
-        \end{answer}
-
         \item 利用列向量线性相关性，证明矩阵秩不等式：\[|r(A)-r(B)|\leqslant r(A\pm B) \leqslant r(A)+r(B).\]
         \begin{answer}
             我们先证明 $r(A \pm B) \leqslant r(A)+r(B)$：
@@ -2247,6 +2242,11 @@
                     = {} & P_{33} - P_{32} P_{22}^{-1} P_{23} \\
                     = {} & (A/C)/(B/C).
                 \end{align*}
+        \end{answer}
+
+        \item 设 $A_1, A_2, \cdots, A_m$ 为 $n$ 阶方阵，证明：$r(A_1) + r(A_2) + \cdots + r(A_m) \leqslant (m - 1)n + r(A_1A_2 \cdots A_m)$.
+        \begin{answer}
+
         \end{answer}
 
         \item 已知$A$是一个$s \times n$矩阵，证明：$r(E_n-A^\mathrm{T}A)-r(E_s-AA^\mathrm{T})=n-s$.
