@@ -189,7 +189,7 @@
 \end{theorem}
 
 \begin{proof}
-    根据 $S_2 = S_1A$ 的展开式，向量组 $S_2$ 可以被向量组 $S_1$ 线性表示，要证明两个向量组等价，我们只需反过来再证明向量组 $S_1$ 可以被向量组 $S_2$ 线性表示即可. 由题意，$S_2 = S_1A$，由于 $A$ 可逆，故 $A^{-1}$ 存在，因此我们在等式两端同时乘以 $A^{-1}$ 即可得到 $S_1 = S_2A^{-1}$（可以转化为展开式上的操作来理解），即向量组 $S_1$ 可以被向量组 $S_2$ 线性表示，得证.
+    根据 $S_2 = S_1A$ 的展开式，向量组 $S_2$ 可以被向量组 $S_1$ 线性表示，要证明两个向量组等价，我们只需反过来再证明向量组 $S_1$ 可以被向量组 $S_2$ 线性表示即可. 由题意，$S_2 = S_1A$，由于 $A$ 可逆，故 $A^{-1}$ 存在，因此我们在等式两端同时右乘 $A^{-1}$ 即可得到 $S_1 = S_2A^{-1}$（可以转化为展开式上的操作来理解），即向量组 $S_1$ 可以被向量组 $S_2$ 线性表示，得证.
 \end{proof}
 
 我们来看一个例子应用上述定理：
@@ -1010,9 +1010,9 @@
         设基$B_1$到$B_2$的过渡矩阵为$P$，求商空间$V/W$的基$\alpha_{m+1}+W,\ldots,\alpha_n+W$到$\beta_{m+1}+W,\ldots,\beta_n+W$的过渡矩阵.
         \begin{answer}
             $V$ 的基 $B_1$ 到 $B_2$ 的过渡矩阵 $P$ 具有下述形式：
-          \[P=\begin{pmatrix}\im & B_1 \\ 0 & B_2\end{pmatrix}\]
+          \[P=\begin{pmatrix}E_m & B_1 \\ 0 & B_2\end{pmatrix}\]
           其中 $B_1,B_2$ 分别是域 $\mathbf{F}$ 上 $m\times (n-m),(n-m)\times (n-m)$ 矩阵，
-          \[\beta_j=b_{j1}\delta_1+\cdots+b_{jm}\delta_m+b_{j,m+1}\delta_{m+1}+\cdots+b_{jn}a_n\]
+          \[\beta_j=b_{j1}\delta_1+\cdots+b_{jm}\delta_m+b_{j,m+1}\alpha_{m+1}+\cdots+b_{jn}\alpha_n\]
           其中 $j=m+1,\ldots,n$. 于是
           \[\beta_j+W=b_{j,m+1}(\alpha_{m+1}+W)+\cdots+b_{jn}(\alpha_n+W)\]
           因此商空间 $V/W$ 的基 $\alpha_{m+1}+W,\ldots,\alpha_n+W$ 到 $\beta_{m+1}+W,\ldots,\beta_n+W$ 的过渡矩阵是 $B_2$.
