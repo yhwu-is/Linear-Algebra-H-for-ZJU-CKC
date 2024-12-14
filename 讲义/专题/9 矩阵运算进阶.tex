@@ -518,7 +518,7 @@
 
           下面的例子应用了上述结论：
           \begin{example}{}{}
-              求$A=\begin{pmatrix}a & 1 & 0 & 0 \\ 0 & a & 1 & 0 \\ 0 & 0 & a & 0 \\ 0 & 0 & 0 & a \end{pmatrix}^n$.
+              求$A=\begin{pmatrix}a & 1 & 0 & 0 \\ 0 & a & 1 & 0 \\ 0 & 0 & a & 1 \\ 0 & 0 & 0 & a \end{pmatrix}^n$.
           \end{example}
           我们采用将矩阵分为 $A = aE + B$ 的方式，因为这样矩阵 $B$ 为上三角矩阵且对角线上全为 0，甚至是若当块矩阵——我们已经证明这是典型的幂零矩阵.
 
@@ -1153,16 +1153,16 @@
                                 C_{21} & C_{22} & O   & O
                             \end{pmatrix}
                              & \xrightarrow{\text{初等变换}}\begin{pmatrix}
-                                                                E_r & O      & O & O \\
-                                                                O   & E_s    & O & O \\
-                                                                O   & O      & O & O \\
-                                                                O   & C_{22} & O & O
+                                                                E_r & O      & O   & O \\
+                                                                O   & O      & O   & O \\
+                                                                O   & O      & E_s & O \\
+                                                                O   & C_{22} & O   & O
                                                             \end{pmatrix} \\
                              & \xrightarrow{\text{初等变换}}\begin{pmatrix}
-                                                                E_r & O      & O & O \\
-                                                                O   & E_s    & O & O \\
-                                                                O   & C_{22} & O & O \\
-                                                                O   & O      & O & O
+                                                                E_r & O   & O      & O \\
+                                                                O   & E_s & O      & O \\
+                                                                O   & O   & C_{22} & O \\
+                                                                O   & O   & O      & O
                                                             \end{pmatrix},
                         \end{align*}
                         故可以得到$r(A)+r(B)+r(C)\geqslant r\begin{pmatrix}
@@ -1873,9 +1873,9 @@
         \begin{answer}
             \begin{enumerate}
                 \item 该问题可以转换为线性映射的像空间停止收缩的问题：
-                    设 $A_{n \times n} = M(\sigma)$，则 $r(A^m) = r(A^{m+1})$ 等价于 $\dim \im \sigma^m = \dim \im \sigma^{m+1}$.
+                    设 $A = M(\sigma)$，则 $r(A^m) = r(A^{m+1})$ 等价于 $\dim \im \sigma^m = \dim \im \sigma^{m+1}$.
 
-                    任取 $k \geqslant 2$，由于 $\forall \beta \in \im \sigma^{k-1}$，存在 $\alpha \in \mathbf{F}^n$，使得 $\beta = \sigma^k(\alpha) = \sigma^{k-1}(\sigma(\alpha)) \in \im \sigma^{k-1}$，我们有 $\im \sigma^k \subseteq \im \sigma^{k-1}$，即
+                    任取 $k \geqslant 2$，由于 $\forall \beta \in \im \sigma^k$，存在 $\alpha \in \mathbf{F}^n$，使得 $\beta = \sigma^k(\alpha) = \sigma^{k-1}(\sigma(\alpha)) \in \im \sigma^{k-1}$，我们有 $\im \sigma^k \subseteq \im \sigma^{k-1}$，即
                     \[
                         \mathbf{F}^n \supseteq \im \sigma \supseteq \im \sigma^2 \supseteq \cdots \supseteq \im \sigma^m \supseteq \im \sigma^{m+1} \supseteq \cdots,
                     \]
@@ -1969,9 +1969,9 @@
                   \end{pmatrix}.
             \]
 
-            令 $\alpha = (1, 2, 0)^\mathrm{T}, \beta^\mathrm{T} = (1, 0, 2), B=\alpha \beta^\mathrm{T}$，则
+            令 $\alpha = (1, 2, 0)^\mathrm{T}, \beta = (1, 1, 1), B=\alpha \beta$，则
             \[
-                B^n = \left( \alpha \beta^\mathrm{T} \right)^n = \alpha \left( \beta^\mathrm{T} \alpha \right)^{n-1} \beta^\mathrm{T} = \tr(B)^{n-1} B = 3^{n-1} B.
+                B^n = \left( \alpha \beta \right)^n = \alpha \left( \beta \alpha \right)^{n-1} \beta = \tr(B)^{n-1} \alpha \beta = 3^{n-1} B.
             \]
 
             此时我们有
