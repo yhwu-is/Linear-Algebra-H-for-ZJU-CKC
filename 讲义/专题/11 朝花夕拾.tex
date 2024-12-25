@@ -567,7 +567,7 @@
 \end{theorem}
 
 \begin{proof}
-    事实上两个条件分别对应于两方程均有解和均无解的情况，无解情况显然正确，下面讨论有解情况：
+    事实上两个条件分别对应于两方程均无解和均有解的情况，无解情况显然正确，下面讨论有解情况：
     \begin{enumerate}
         \item 必要性：事实上$\begin{pmatrix}
                       A & \vec{b} \\ B & \vec{d}
@@ -636,7 +636,7 @@
 \begin{theorem}{}{}
     对于$n$元齐次线性方程组 (1) $A_{m_1 \times n}X=\vec{0}$与 (2) $B_{m_2 \times n}X=\vec{0}$有
     \begin{enumerate}
-        \item (1) 与 (2) 有非零公共解的充要条件是$r\begin{pmatrix} A \\ B \end{pmatrix}<n$；
+        \item (1) 与 (2) 有非零公共解的充要条件是$r\begin{pmatrix} A \\ B \end{pmatrix} \leq n$；
 
         \item 设$\eta_1,\eta_2,\ldots,\eta_s\enspace(s=n-r(B))$是 (2) 的基础解系，则(1) 与 (2) 有非零公共解的充要条件是$A\eta_1,A\eta_2,\ldots,A\eta_s$线性相关；
 
@@ -825,7 +825,7 @@
                   \end{pmatrix},\]
               利用求解极大线性无关组的思想，对 $A$ 进行初等行变换得到阶梯矩阵
               \[\begin{pmatrix}
-                      1 & 0 & a+2 & 4 \\ 0 & 1 & 1 & a+8 \\ 0 & 0 & 3a+3 & -2a-2 \\ 0 & 0 & -5a-5 & 3a+3
+                      1 & 0 & a+2 & 4 \\ 0 & 1 & 1 & a+8 \\ 0 & 0 & 3a+3 & -2a-2 \\ 0 & 0 & 0 & -\frac{1}{3}a-\frac{1}{3}
                   \end{pmatrix},\]
               使得 $\alpha_1,\alpha_2,\beta_1,\beta_2$ 线性相关，则必有 $r(A) < 4$，即 $|A| = 0$，不难解得 $a = -1$. 此时阶梯矩阵为
               \[\begin{pmatrix}
@@ -1113,7 +1113,7 @@
             $AB=0\implies r(A)+r(B)\leqslant n,r(B)=n\implies r(A)\leqslant 0\implies A=O$.
         \end{answer}
 
-        \item 设$A \in \mathbf{F}^{m \times n},B \in \mathbf{F}^{(n-m) \times n}\enspace(m<n)$，$V_1,V_2$分别为齐次线性方程组$AX=\vec{0}$和$BX=\vec{0}$的解空间，证明：$\mathbf{F}^n=V_1\oplus V_2$的解的充要条件是$\begin{pmatrix} A \\ B \end{pmatrix}X=\vec{0}$只有零解.
+        \item 设$A \in \mathbf{F}^{m \times n},B \in \mathbf{F}^{(n-m) \times n}\enspace(m<n)$，$V_1,V_2$分别为齐次线性方程组$AX=\vec{0}$和$BX=\vec{0}$的解空间，证明：$\mathbf{F}^n=V_1\oplus V_2$的充要条件是$\begin{pmatrix} A \\ B \end{pmatrix}X=\vec{0}$只有零解.
         \begin{answer}
             必要性. 有条件可知$V_1\cap V_2=\{0\}$，$\begin{pmatrix}A\\B\end{pmatrix}\in\mathbf{F}^{n\times n}$，而$\begin{pmatrix}A\\B\end{pmatrix}x=0$只有零解，故$\begin{pmatrix}A\\B\end{pmatrix}$可逆，从而$r(A)=m,r(B)=n-m$，于是
           \begin{align*}
@@ -1209,9 +1209,9 @@
         \begin{answer}
             必要性：设$AX=b$有无穷多解，则$r(A)<n$，从而$|A|=0$，于是$A^*b=A^*AX=|A|X=0$.
 
-          充分性：设$A^*b=0$，即方程组$A^*b=0$有非零解，则$r(A^*)<n$，又$A_{11}\neq 0$，所以$r(A)=n-1$.
+          充分性：设$A^*b=0$，即方程组$A^*X=0$有非零解，则$r(A^*)<n$，又$A_{11}\neq 0$，所以$r(A)=n-1$.
 
-          令$A=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，因为$A^*A=|A|E=O$，所以$\alpha_1,\alpha_2,\ldots,\alpha_n$为方程组$A^*X=0$的解，又因为$A_{11}\neq 0$，所以$\alpha_1,\alpha_2,\ldots,\alpha_n$线性无关.
+          令$A=(\alpha_1,\alpha_2,\ldots,\alpha_n)$，因为$A^*A=|A|E=O$，所以$\alpha_1,\alpha_2,\ldots,\alpha_n$为方程组$A^*X=0$的解，又因为$A_{11}\neq 0$，所以$\alpha_2,\alpha_3,\ldots,\alpha_n$线性无关.
 
           由$r(A^*)=1$，得方程组$A^*X=0$的基础解系含有$n-1$个线性无关的解向量，所以$\alpha_2,\alpha_3,\ldots,\alpha_n$为方程组$A^*X=0$的一个基础解系.
 
@@ -1278,7 +1278,8 @@
 
                 \item \begin{align*}
                           \dim(V_1+V_2) & =\dim V_1+\dim V_2-\dim(V_1\cap V_2) \\
-                                        & =n(n-r)+n(n-s)-n(n-k).
+                                        & =n(n-r)+n(n-s)-n(n-k) \\
+                                        & =n^2-nr-ns+nk.
                       \end{align*}
             \end{enumerate}
         \end{answer}
@@ -1295,7 +1296,7 @@
             \item 求行列式$|aE+bA|$，其中$a,b$为实常数；
 
             \item 已知$1<r(aE+bA)<n$，试确定$a,b$满足的条件，并求下列线性子空间的维数：
-                  \[W=\{x \mid (aE+bA)x=0,\enspace x\in\mathbf{R}\}.\]
+                  \[W=\{X \mid (aE+bA)X=0,\enspace X\in\mathbf{R}^n\}.\]
         \end{enumerate}
         \begin{answer}
             \begin{enumerate}
@@ -1454,7 +1455,7 @@
                 -3x_1-3x_2-3bx_3+bx_4+(a+2)x_5=0
             \end{cases}\]的解空间是3维的，试求$a,b$的值与解空间的基. 解空间可能为2维吗？
         \begin{answer}
-            增广矩阵$A=\begin{pmatrix}
+            系数矩阵$A=\begin{pmatrix}
                 1  & 1  & b   & -1 & 1   \\
                 2  & 3  & 1   & 1  & -2  \\
                 0  & 1  & a   & 3  & -4  \\
@@ -1481,7 +1482,7 @@
                 -2 \\
                 -4 \\
                 a+2
-            \end{pmatrix}=k_1\beta_1+k_2\beta_2\implies k_1=5,k_2=1\implies a=-25$. \\
+            \end{pmatrix}=k_1\beta_1+k_2\beta_2\implies k_1=5,k_2=1\implies a=-5$. \\
         而$\alpha_1=\begin{pmatrix}
                 b \\
                 1 \\
@@ -1586,7 +1587,7 @@
             \end{cases}$.
         \end{answer}
 
-        \item 设有两个非齐次线性方程组 (1) 和 (2)，它们的通解分别是$X=\gamma+t_1\eta_1+t_2\eta_2=\delta+k_1\xi_1+k_2\xi_2$. 其中$\gamma=(5,-3,0,0)^\mathrm{T},\eta_1=(-6,5,1,0)^\mathrm{T},\eta_2=(-5,4,0,1)^\mathrm{T},\delta=(-11,3,0,0)^\mathrm{T},\xi_1=(8,-1,1,0)^\mathrm{T},\xi_2=(10,-2,0,1)^\mathrm{T}$，求这两个方程组的公共解.
+        \item 设有两个非齐次线性方程组 (1) 和 (2)，它们的通解分别是$X=\gamma+t_1\eta_1+t_2\eta_2, X=\delta+k_1\xi_1+k_2\xi_2$. 其中$\gamma=(5,-3,0,0)^\mathrm{T},\eta_1=(-6,5,1,0)^\mathrm{T},\eta_2=(-5,4,0,1)^\mathrm{T},\delta=(-11,3,0,0)^\mathrm{T},\xi_1=(8,-1,1,0)^\mathrm{T},\xi_2=(10,-2,0,1)^\mathrm{T}$，求这两个方程组的公共解.
         \begin{answer}
             注意如果$X$是两个方程组的公共解，这等价于存在$t_1,t_2,k_1,k_2$使得
           \[ X=\gamma+t_1\eta_1+t_2\eta_2=\delta+k_1\xi_1+k_2\xi_2. \]
@@ -1606,8 +1607,8 @@
                   0 & 0 & 1  & 1  & 1  \\
                   0 & 0 & 0  & 1  & 2.
               \end{pmatrix} \]
-          故$(t_1,t_2,k_1,k_2)'$有唯一解$(-1,2,-1,2)'$. 因此公共解为
-          \[ X=\gamma-\eta_1+2\eta_2=\delta-\xi_1+2\xi_2=(1,0,-1,2)'. \]
+          故$(t_1,t_2,k_1,k_2)^\mathrm{T}$有唯一解$(-1,2,-1,2)^\mathrm{T}$. 因此公共解为
+          \[ X=\gamma-\eta_1+2\eta_2=\delta-\xi_1+2\xi_2=(1,0,-1,2)\mathrm{T}. \]
         \end{answer}
 
         \item 若方程组$\begin{cases}
@@ -1623,7 +1624,7 @@
                 x_1+2x_2+x_3=a-1
             \end{cases}$有解，对其增广矩阵进行初等行变换，
         \begin{align*}
-            \bar{A}= & \begin{pmatrix}
+            (A,\vec{b})= & \begin{pmatrix}
                            1 & 1 & 1   & 0   \\
                            1 & 2 & a   & 0   \\
                            1 & 4 & a^2 & 0   \\
@@ -1650,7 +1651,7 @@
         \end{align*}
         当$a\neq 1$且$a\neq 2$时，方程组 (1)、(2) 没有公共解.
 
-        当$a=1$时，$\bar{A}\rightarrow\begin{pmatrix}
+        当$a=1$时，$(A,\vec{b})\rightarrow\begin{pmatrix}
                 1 & 1 & 1 & 0 \\
                 0 & 1 & 0 & 0 \\
                 0 & 0 & 0 & 0 \\
@@ -1660,9 +1661,9 @@
                 0 & 1 & 0 & 0 \\
                 0 & 0 & 0 & 0 \\
                 0 & 0 & 0 & 0
-            \end{pmatrix}$，因为$r(A)=r(\bar{A})=2$，所以方程组 (1)、(2) 有公共解，公共解为$X=C\begin{pmatrix} -1 \\ 0  \\ 1 \end{pmatrix}$（其中$C$为任意常数）.
+            \end{pmatrix}$，因为$r(A)=r(A,\vec{b})=2$，所以方程组 (1)、(2) 有公共解，公共解为$X=k\begin{pmatrix} -1 \\ 0  \\ 1 \end{pmatrix}$（其中$k$为任意常数）.
 
-        当$a=2$时，$\bar{A}\rightarrow\begin{pmatrix}
+        当$a=2$时，$(A,\vec{b})\rightarrow\begin{pmatrix}
                 1 & 1 & 1  & 0 \\
                 0 & 1 & 1  & 0 \\
                 0 & 0 & -1 & 1 \\
