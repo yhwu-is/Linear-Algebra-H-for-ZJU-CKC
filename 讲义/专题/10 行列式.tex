@@ -1821,12 +1821,12 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 如果满足条件 $i_1 = j_1, i_2 = j_2, \cdots, i_r = j_r$，则称为主子式.
 
 \begin{corollary}{}{}
-    设 $A$ 是 $m \times n$ 实矩阵，则矩阵 $AA\mathrm{T}$ 的任一主子式都非负.
+    设 $A$ 是 $m \times n$ 实矩阵，则矩阵 $AA^\mathrm{T}$ 的任一主子式都非负.
 \end{corollary}
 
 \begin{proof}
     若 $r \leqslant n$，则由 \autoref{thm:Cauchy-Binet 公式推广} 得到：
-    \[ AA\mathrm{T}
+    \[ AA^\mathrm{T}
     \begin{pmatrix}
         i_1 & i_2 & \cdots & i_r \\
         i_1 & i_2 & \cdots & i_r
@@ -1918,7 +1918,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 \begin{proof}
     \begin{enumerate}
         \item 由\autoref{eq:13:递归式定义3} 和\autoref{eq:13:递归式定义4}，$AA^*$的第$i$行第$j$列元素为
-              \[\sum_{k=1}^{n}a_{ik}A_{kj}=\begin{cases}
+              \[\sum_{k=1}^{n}a_{ik}A_{jk}=\begin{cases}
                       |A| & i=j      \\
                       0   & i \neq j
                   \end{cases}\]
@@ -1936,7 +1936,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 
               由$(kA)^*=|kA|(kA)^{-1}=k^n|A|\cdot k^{-1}A^{-1}=k^{n-1}A^*$.
 
-        \item 由$(A^*)^*=|A^*|A^{*-1}$，$|A^*|=|A|^{n-1}$，$(A^*)^{-1}=|A|^{-1}A$，可知$(A^*)^*=|A|^{n-2}A$. 由$|(A^*)^*|=||A|^{n-2}A|^{n-1}=|A|^{n(n-2)+1}=|A|^{(n-1)^2}$.
+        \item 由$(A^*)^*=|A^*|(A^{*})^{-1}$，$|A^*|=|A|^{n-1}$，$(A^*)^{-1}=|A|^{-1}A$，可知$(A^*)^*=|A|^{n-2}A$. 由$|(A^*)^*|=||A|^{n-2}A|^{n-1}=|A|^{n(n-2)+1}=|A|^{(n-1)^2}$.
 
         \item 由$(A^k)^*=|A^k|(A^k)^{-1}=|A|^k(A^{-1})^k=(|A|A^{-1})^k=(A^*)^k$.
 
@@ -2697,8 +2697,8 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                                      &       & \ddots &     \\
                                      &       &        & a_n
                            \end{vmatrix}                       \\
-                          =     & \left(\prod_{k=1}^{n} a_{k}+\frac{1}{a_{2}}
-                          \prod_{k=1}^{n} a_{k}\right)\left(1+\sum_{i=1}^{n}\limits \frac{1}{a_{i}}\right).
+                          =     & \left(\prod_{k=1}^na_k\right)
+                          \left(1+\sum_{i=1}^n\frac{1}{a_i}\right).
                       \end{align*}
             \end{enumerate}
         \end{answer}
@@ -2822,7 +2822,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
             \end{enumerate}
         \end{answer}
 
-        \item 记$a_{ij}=|i-j|$，且$A=(a_{ij})_{n\times n}$，计算$A$的行列式.
+        \item 记$a_{ij}=i-j$，且$A=(a_{ij})_{n\times n}$，计算$A$的行列式.
         \begin{answer}
             \begin{enumerate}
                 \item 若 $n=1$，则 $|A| = |0| = 0$；
@@ -3173,7 +3173,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                 \alpha_2^{\mathrm{T}}\alpha_1 & \alpha_2^{\mathrm{T}}\alpha_2 & \cdots & \alpha_2^{\mathrm{T}}\alpha_n \\
                 \vdots                        & \vdots                        & \ddots & \vdots                        \\
                 \alpha_n^{\mathrm{T}}\alpha_1 & \alpha_n^{\mathrm{T}}\alpha_2 & \cdots & \alpha_n^{\mathrm{T}}\alpha_n \\
-            \end{pmatrix}$，显然 $B = A^{\mathrm{T}}A$，由 {11.4 秩不等式第 4 个} 有 $r(B) = r(A)$. 进而 $n$ 维向量组 $(\alpha_1, \alpha_2, \ldots, \alpha_n)$ 线性无关等价于 $r(A) = n$，也就等价于 $r(B) = n$，进而等价于 $\lvert B \rvert \neq 0$，命题得证. % FIXME: xref
+            \end{pmatrix}$，显然 $B = A^{\mathrm{T}}A$，由 {11.3 秩不等式第 4 个} 有 $r(B) = r(A)$. 进而 $n$ 维向量组 $(\alpha_1, \alpha_2, \ldots, \alpha_n)$ 线性无关等价于 $r(A) = n$，也就等价于 $r(B) = n$，进而等价于 $\lvert B \rvert \neq 0$，命题得证. % FIXME: xref
         \end{answer}
 
         \item 设$a_1,\ldots,a_n$为$n$个$n$维向量，证明：向量组$a_1,\ldots,a_n$线性无关的充要条件是任一个$n$维向量都可以由其线性表示（不使用线性空间维数的方式完成）.
@@ -3222,7 +3222,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
         \begin{enumerate}
             \item $T$为$\mathbf{F}^{n \times n}$上的线性变换；
 
-            \item 当$C=D=0$时，$T$可逆的充要条件是$|AB| \neq 0$.
+            \item 当$C=D=O$时，$T$可逆的充要条件是$|AB| \neq 0$.
         \end{enumerate}
         \begin{answer}
             \begin{enumerate}
@@ -3510,7 +3510,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                         \end{vmatrix}
                         = b^{2n}.
                     \]
-                \item 若 $b \neq 0$，我们将第 $i$ 列乘以 $-\dfrac{b}{a}$ 后加到第 $2n-i+1$ 列，化为下三角矩阵：
+                \item 若 $a \neq 0$，我们将第 $i$ 列乘以 $-\dfrac{b}{a}$ 后加到第 $2n-i+1$ 列，化为下三角矩阵：
                     \[
                         D = \begin{vmatrix}
                             a &         &   &                   &         & 0                 \\
