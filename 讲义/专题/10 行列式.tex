@@ -574,7 +574,10 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
     \end{align}
 \end{theorem}
 
+我们简要说一下定理的证明. 虽然这一定理看着下标满天飞，似乎很难证明，但如果我们首先将第$i$列元素替换为第$j$列元素，然后根据\autoref{def:递归式定义} 按第$i$列展开求行列式，这一结果一定是0，因为此时矩阵第$i$和$j$两列完全相同. 同时我们发现，我们上面展开写出的式子就是\autoref{eq:13:递归式定义3}（注意此时$a_{ki}=a_{kj}$），由此得证.
+
 到目前为止，读者可能对\crefrange*{eq:13:递归式定义1}{eq:13:递归式定义4} 式繁杂的下标感到陌生，因此安排了\autoref{ex:递归式定义2} 希望大家熟悉这些公式.
+
 \begin{example}{}{递归式定义2}
     对\autoref{ex:余子式} 中的矩阵验证\autoref{thm:递归性质} 的正确性.
 \end{example}
@@ -1158,7 +1161,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 \begin{proof}
     \begin{enumerate}
         \item 由\autoref{eq:13:递归式定义3} 和\autoref{eq:13:递归式定义4}，$AA^*$的第$i$行第$j$列元素为
-              \[\sum_{k=1}^{n}a_{ik}A_{kj}=\begin{cases}
+              \[\sum_{k=1}^{n}a_{ik}A_{jk}=\begin{cases}
                       |A| & i=j      \\
                       0   & i \neq j
                   \end{cases}\]
@@ -2126,7 +2129,6 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 
 \begin{enumerate}
     \item 通过初等变换以及上面提到的行列式降阶方法，将原行列式 $D_n$ 化为一个关于更低阶的、与原行列式有相同结构的行列式的表达式，即
-
         \[
             D_n = f(D_{n-1}, D_{n-2}, \cdots).
         \]
@@ -2266,7 +2268,6 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
     按第一列展开, 得
     \[ D_n=9 D_{n-1}-20 D_{n-2}, \]
     即 $ D_n-9 D_{n-1}+20 D_{n-2}=0 $.
-
     作特征方程
     \[ x^{2}-9 x+20=0, \]
     解得 $ x_1=4,\enspace x_2=5 $. 则
@@ -2338,7 +2339,6 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
 
     \[|A| = \dfrac{\prod\limits_{1 \leqslant i < j \leqslant n}(a_j - a_i)(b_j - b_i)}{\prod\limits_{i,j=1}^{n}(a_i + b_j)}.\]
 \end{solution}
-
 
 \subsubsection{其他方法}
 
@@ -3134,8 +3134,8 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                                      &       & \ddots &     \\
                                      &       &        & a_n
                            \end{vmatrix}                       \\
-                          =     & \left(\prod_{k=1}^{n} a_{k}+\frac{1}{a_{2}}
-                          \prod_{k=1}^{n} a_{k}\right)\left(1+\sum_{i=1}^{n}\limits \frac{1}{a_{i}}\right).
+                          =     & \left(\prod_{k=1}^na_k\right)
+                          \left(1+\sum_{i=1}^n\frac{1}{a_i}\right).
                       \end{align*}
             \end{enumerate}
         \end{answer}
@@ -3259,7 +3259,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
             \end{enumerate}
         \end{answer}
 
-        \item 记$a_{ij}=|i-j|$，且$A=(a_{ij})_{n\times n}$，计算$A$的行列式.
+        \item 记$a_{ij}=i-j$，且$A=(a_{ij})_{n\times n}$，计算$A$的行列式.
         \begin{answer}
             \begin{enumerate}
                 \item 若 $n=1$，则 $|A| = |0| = 0$；
@@ -3610,7 +3610,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                 \alpha_2^{\mathrm{T}}\alpha_1 & \alpha_2^{\mathrm{T}}\alpha_2 & \cdots & \alpha_2^{\mathrm{T}}\alpha_n \\
                 \vdots                        & \vdots                        & \ddots & \vdots                        \\
                 \alpha_n^{\mathrm{T}}\alpha_1 & \alpha_n^{\mathrm{T}}\alpha_2 & \cdots & \alpha_n^{\mathrm{T}}\alpha_n \\
-            \end{pmatrix}$，显然 $B = A^{\mathrm{T}}A$，由 {11.4 秩不等式第 4 个} 有 $r(B) = r(A)$. 进而 $n$ 维向量组 $(\alpha_1, \alpha_2, \ldots, \alpha_n)$ 线性无关等价于 $r(A) = n$，也就等价于 $r(B) = n$，进而等价于 $\lvert B \rvert \neq 0$，命题得证. % FIXME: xref
+            \end{pmatrix}$，显然 $B = A^{\mathrm{T}}A$，由 {11.3 秩不等式第 4 个} 有 $r(B) = r(A)$. 进而 $n$ 维向量组 $(\alpha_1, \alpha_2, \ldots, \alpha_n)$ 线性无关等价于 $r(A) = n$，也就等价于 $r(B) = n$，进而等价于 $\lvert B \rvert \neq 0$，命题得证. % FIXME: xref
         \end{answer}
 
         \item 设$a_1,\ldots,a_n$为$n$个$n$维向量，证明：向量组$a_1,\ldots,a_n$线性无关的充要条件是任一个$n$维向量都可以由其线性表示（不使用线性空间维数的方式完成）.
@@ -3659,7 +3659,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
         \begin{enumerate}
             \item $T$为$\mathbf{F}^{n \times n}$上的线性变换；
 
-            \item 当$C=D=0$时，$T$可逆的充要条件是$|AB| \neq 0$.
+            \item 当$C=D=O$时，$T$可逆的充要条件是$|AB| \neq 0$.
         \end{enumerate}
         \begin{answer}
             \begin{enumerate}
@@ -3947,7 +3947,7 @@ a_{11}' = \frac{\Delta_1}{\Delta_0},\quad a_{22}' = \frac{\Delta_2}{\Delta_1},\q
                         \end{vmatrix}
                         = b^{2n}.
                     \]
-                \item 若 $b \neq 0$，我们将第 $i$ 列乘以 $-\dfrac{b}{a}$ 后加到第 $2n-i+1$ 列，化为下三角矩阵：
+                \item 若 $a \neq 0$，我们将第 $i$ 列乘以 $-\dfrac{b}{a}$ 后加到第 $2n-i+1$ 列，化为下三角矩阵：
                     \[
                         D = \begin{vmatrix}
                             a &         &   &                   &         & 0                 \\
