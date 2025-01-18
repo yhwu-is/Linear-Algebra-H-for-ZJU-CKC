@@ -819,21 +819,21 @@
         \item 直接给出结论：方程组 (1) 的一个基础解系为
               \[\beta_1=(5,-3,1,0)^{\mathrm{T}},\enspace\beta_2=(-3,2,0,1)^{\mathrm{T}}.\]
 
-        \item 根据前述定理，两方程由非零公共解当且仅当$\alpha_1,\alpha_2,\beta_1,\beta_2$线性相关，事实上我们可以将这$\beta_1,\beta_2,\alpha_1,\alpha_2$按列排成矩阵
-              \[A=\begin{pmatrix}
+        \item 根据前述定理，两方程有非零公共解当且仅当$\alpha_1,\alpha_2,\beta_1,\beta_2$线性相关，可以将这$\beta_1,\beta_2,\alpha_1,\alpha_2$按列排成矩阵
+              \[A = \begin{pmatrix}
                       5 & -3 & 2 & -1 \\ -3 & 2 & -1 & 2 \\ 1 & 0 & a+2 & 4 \\ 0 & 1 & 1 & a+8
                   \end{pmatrix},\]
-              事实上，要求两方程组公共解事实上就是求两个子空间$W_1=\spa(\beta_1,\beta_2)$和$W_2=\spa(\alpha_1,\alpha_2)$的交集. 回顾我们在之前所学习的知识，我们可以利用求解极大线性无关组的思想，首先对$A$进行初等行变换得到阶梯矩阵
+              利用求解极大线性无关组的思想，对 $A$ 进行初等行变换得到阶梯矩阵
               \[\begin{pmatrix}
                       1 & 0 & a+2 & 4 \\ 0 & 1 & 1 & a+8 \\ 0 & 0 & 3a+3 & -2a-2 \\ 0 & 0 & -5a-5 & 3a+3
                   \end{pmatrix},\]
-              使得$\alpha_1,\alpha_2,\beta_1,\beta_2$线性相关，则必有$r(A)<4$，即$|A|=0$，由此解得$a=-1$. 此时阶梯矩阵为
+              使得 $\alpha_1,\alpha_2,\beta_1,\beta_2$ 线性相关，则必有 $r(A) < 4$，即 $|A| = 0$，不难解得 $a = -1$. 此时阶梯矩阵为
               \[\begin{pmatrix}
                       1 & 0 & 1 & 4 \\ 0 & 1 & 1 & 7 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0
                   \end{pmatrix},\]
-              不难看出$\beta_1,\beta_2$是向量组$\beta_1,\beta_2,\alpha_1,\alpha_2$的极大线性无关组，因此$\alpha_1,\alpha_2$可以完全由$\beta_1,\beta_2$线性表示，故$W_1\cap W_2=W\spa(\alpha_1,\alpha_2)$，即公共解为$\alpha_1,\alpha_2$的线性组合，即
-              \[k_1\alpha_1+k_2\alpha_2=(2k_1-k_2,-k_1+2k_2,2k_1+4k_2,k_1+k_2)^\mathrm{T},\]
-              其中$k_1,k_2$为任意常数.
+              不难看出 $\beta_1,\beta_2$ 是向量组 $\beta_1,\beta_2,\alpha_1,\alpha_2$ 的极大线性无关组，因此 $\alpha_1,\alpha_2$ 可以完全由 $\beta_1,\beta_2$ 线性表示，故 $W_1 \cap W_2 = \spa(\beta_1,\beta_2)$. 而求两方程组公共解就是求两子空间 $W_1$ 和 $W_2$ 的交集，故公共解为 $\beta_1,\beta_2$ 的线性组合，即
+              \[k_1\beta_1 + k_2\beta_2 = k_1(5,-3,1,0)^{\mathrm{T}} + k_2(-3,2,0,1)^{\mathrm{T}}.\]
+              其中 $k_1,k_2$ 为任意常数.
     \end{enumerate}
 \end{solution}
 

@@ -79,11 +79,12 @@
                   \end{pmatrix}.\]
           \end{proof}
 
-    \item 与幂等矩阵相似的仍幂等，与对合矩阵相似的仍对合，与幂零矩阵相似的仍幂零（但与正交矩阵相似的不一定正交，但与正交矩阵正交相似的是正交矩阵）.
+    \item 与数量矩阵相似的仍为其自身，与幂等矩阵相似的仍幂等，与对合矩阵相似的仍对合，与幂零矩阵相似的仍幂零（但与正交矩阵相似的不一定正交，但与正交矩阵正交相似的是正交矩阵）.
 
           \begin{proof}
               我们一边回顾上面这些特殊矩阵的定义一边证明结论：
               \begin{enumerate}
+                  \item 设 $A$ 是数量矩阵，则 $A = kE$，设 $B = P^{-1}AP$，则 $B = kP^{-1}EP = kE = A$，因此与数量矩阵相似的仍为其自身；
                   \item 设$A$是幂等矩阵，则$A^2=A$，设$B=P^{-1}AP$，则$B^2=P^{-1}A^2P=P^{-1}AP=B$，因此$B$也是幂等矩阵，即与幂等矩阵相似的仍幂等；
 
                   \item 设$A$是对合矩阵，则$A^2=E$，设$B=P^{-1}AP$，则$B^2=P^{-1}A^2P=P^{-1}EP=P^{-1}P=E$，因此$B$也是对合矩阵，即与对合矩阵相似的仍对合；
@@ -358,7 +359,7 @@
 
 因此$\lambda\in\mathbf{F}$是$\sigma$的特征值等价于$|\lambda E-A|=0$，故我们可以通过$|\lambda E-A|=0$求解特征值，其中$A$为$\sigma$在某组基下的矩阵，$E$为单位矩阵. 对于特征向量的求解，求出$(\lambda E-A)X=0$的非零解就是特征向量在基$\alpha_1,\ldots,\alpha_n$下的坐标，如果是矩阵的特征向量，那么$X$就是解.
 
-上述求解特征向量的方法需要我们求解$f(\lambda)=|\lambda E-A|$的根，事实上$f(\lambda)=|\lambda E-A|$是在之后的讨论中有核心地位的概念，我们称其为矩阵$A$的\term{特征多项式}{tezhengduoxiangshi@特征多项式 (characteristic polynomial)}，其$k$重根称为$k$重特征值（称$k$为代数重数），该特征值对应的特征子空间维数称为该特征值的几何重数.
+上述求解特征向量的方法需要我们求解$f(\lambda)=|\lambda E-A|$的根，事实上$f(\lambda)=|\lambda E-A|$是在之后的讨论中有核心地位的概念，我们称其为矩阵$A$的\term{特征多项式}\index{tezhengduoxiangshi@特征多项式 (characteristic polynomial)}，其$k$重根称为$k$重特征值（称$k$为代数重数），该特征值对应的特征子空间维数称为该特征值的几何重数.
 
 \begin{example}{}{}
     设$A=\begin{pmatrix}
@@ -669,11 +670,6 @@
     \end{enumerate}
 \end{solution}
 
-当然在本题中，我们看到了一些特殊的矩阵，如对合矩阵，幂等矩阵，幂零矩阵等，我们在之后还会讨论它们的一些性质，特别是幂等矩阵和幂零矩阵，因此我们很有必要为这些矩阵写下一个定义. 当然这些名词还有对应的线性变换版本，下面我们给出正式的定义：
-\begin{definition}{}{}
-    一个矩阵$A$（或线性变换$\sigma$）称为\textbf{对合矩阵}（或\textbf{对合变换}），如果$A^2=E$（或$\sigma^2=I$）；称为\textbf{幂等矩阵}（或\textbf{幂等变换}），如果$A^2=A$（或$\sigma^2=\sigma$）；称为\textbf{幂零矩阵}（或\textbf{幂零变换}），如果存在自然数$k$使得$A^k=O$（或$\sigma^k=O$）.
-\end{definition}
-
 基于上面给出的性质和例子，我们可以进一步运用特征值的性质来求解一些问题，下面是一些例子：
 \begin{example}{}{}
     回答以下问题：
@@ -809,13 +805,12 @@
 \end{example}
 
 \begin{proof}
-    由于$\alpha_1$是$A$属于特征值$\lambda$的特征向量，故有$(A-\lambda E)\alpha_1=0$.
-
-    设$\displaystyle\sum_{i=1}^{s}k_i\alpha_i=0$，两边同时左乘$A-\lambda E$可知$(A-\lambda E)\displaystyle\sum_{i=1}^{s}k_i\alpha_i=\displaystyle\sum_{i=1}^{s}k_i(A-\lambda E)\alpha_i=k_1(A-\lambda E)\alpha_1+\displaystyle\sum_{i=1}^{s-1}k_{i+1}\alpha_i=\displaystyle\sum_{i=1}^{s-1}k_{i+1}\alpha_i=0$.
-
-    以此类推，在等式两边不断左乘$(A-\lambda E)$可知：对于$\forall r \in \{1,\cdots,s-1\}$都有$\displaystyle\sum_{i=1}^{s-r}k_{i+r}\alpha_i=0$.
-
-    令$r=s-1$得到$k_s\alpha_1=0,k_s=0$. 再依次代回不难得到$k_i=0,\forall i \in \{1,\cdots,s\}$，从而向量组$\alpha_1,\cdots,\alpha_s$线性无关.
+    由于$\alpha_1$是$A$属于特征值$\lambda$的特征向量，故有$(A-\lambda E)\alpha_1=0$. 设$\displaystyle\sum_{i=1}^{s}k_i\alpha_i=0$，两边同时左乘$A-\lambda E$可知
+    \begin{align*}
+        (A-\lambda E)\displaystyle\sum_{i=1}^{s}k_i\alpha_i &= \displaystyle\sum_{i=1}^{s}k_i(A-\lambda E)\alpha_i \\
+        &= k_1(A-\lambda E)\alpha_1+\displaystyle\sum_{i=1}^{s-1}k_{i+1}\alpha_i=\displaystyle\sum_{i=1}^{s-1}k_{i+1}\alpha_i=0.
+    \end{align*}
+    以此类推，在等式两边不断左乘 $(A-\lambda E)$ 可知：对于 $\forall r \in \{1,\cdots,s-1\}$ 都有 $\displaystyle\sum_{i=1}^{s-r}k_{i+r}\alpha_i=0$. 令$r=s-1$得到$k_s\alpha_1=0,k_s=0$. 再依次代回不难得到$k_i=0,\forall i \in \{1,\cdots,s\}$，从而向量组$\alpha_1,\cdots,\alpha_s$线性无关.
 \end{proof}
 
 \section{实数域与复数域的讨论}
