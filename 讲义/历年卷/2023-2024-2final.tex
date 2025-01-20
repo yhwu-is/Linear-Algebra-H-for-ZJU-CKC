@@ -1,0 +1,70 @@
+\documentclass{ctexbook}
+\usepackage{amsmath, amsfonts, amssymb, geometry, enumitem, romannum}
+
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=3cm}
+
+\begin{document}
+\centering
+\section*{2023-2024 学年线性代数 II (H) 期末}
+\subsection*{任课老师: 统一命卷 \hfil 考试时长: 120分钟}
+
+\begin{enumerate}[leftmargin=*, labelwidth=!, labelsep=0pt]
+    \item[一、 (10分) ]
+    求 $x$ 使得矩阵 $\left(
+    \begin{array}{ccc}
+        1 & 1 & 0 \\
+        0 & 1 & 1 \\
+        1 & 0 & x
+    \end{array}
+    \right)$ 是正规矩阵,当其是正规矩阵时求出相似的对角矩阵.
+
+    \item[二、 (10分) ]
+    设 $U = \operatorname{span}\{(1,1,0,0)^\top,(1,1,-1,2)^\top\}$ 是 $\mathbb{R}^4$ 的子空间,求 $u \in U^\perp$ 使得 $\|u - (1,1,2,2)^\top\|$ 最小.
+
+    \item[三、 (10分) ]
+    设 $T$ 为复数域上的 $n$ 维线性空间 $V$ 上的线性变换,$T$ 在某组基下对应的矩阵是 $\left(
+    \begin{array}{ccc}
+        -6 & 2 & 3 \\
+        2 & 0 & -1 \\
+        -12 & 4 & 6
+    \end{array}
+    \right)$,是否存在线性变换 $S$ 满足 $S^2 = T$.假如存在,求 $S$;假如不存在,说明理由,并求 $T$ 的极小多项式以及Jordan(若当)标准型.
+
+    \item[四、 (10分) ]
+    设 $T$ 是 $\mathbb{R}^3$ 到 $\mathbb{R}^4$ 的线性映射,在自然基下对应的矩阵为 $\left(
+    \begin{array}{ccc}
+        1 & -1 & 2 \\
+        4 & -3 & 1 \\
+        3 & 4 & -2 \\
+        6 & 2 & -1
+    \end{array}
+    \right)$,$f(x,y,z,w) = x - y + z + 2w$ 是 $\mathbb{R}^4$ 上的线性泛函,求对偶映射 $T'$ 在相应对偶基下的矩阵以及 $T'(f)$.
+
+    \item[五、 (10分) ]
+    定义 $T(x,y,z) = (z,2x,3y)$,求 $T$ 的奇异值.
+
+    \item[六、 (10分) ]
+    求过直线 $\begin{cases}
+        x - y + z + 4 = 0 \\
+        x + y - 3z = 0
+    \end{cases}$ 和点 $(1,-1,-1)$ 的平面方程,并求该点到直线的距离.
+
+    \item[七、 (10分) ]
+    设 $V$ 是由 $1, \cos x, \sin x$ 所张成的线性空间,求 $V$ 中的向量 $f(x)$,使得等式
+    \[
+    \int_{-\pi}^{\pi} f(x)g(x) \, \mathrm{d}x = \int_{-\pi}^{\pi} (2x-1)g(x) \, \mathrm{d}x
+    \]
+    对所有 $V$ 中所有 $g(x)$ 都成立.
+
+    \item[八、 (10分) ]
+    设 $T$ 是 $n$ 维线性空间 $V$ 到 $m$ 维线性空间 $W$ 的线性变换,证明 $U = \{(v,Tv) \mid v \in V\}$ 是 $V \times W$ 的子空间,并求 $U$ 的维数和 $V \times W/U$ 的维数.
+
+    \item[九、 (20分) ]
+    判断正误,并说明理由.
+        \item[(1) ] 正算子一定可以对角化,即存在一组基,使得该算子在这组基下为对角矩阵.
+        \item[(2) ] 对于线性变换 $T$ 以及其伴随 $T^*$,有 $\text{null} T^* = \text{range} T$.
+        \item[(3) ] 设 $T$ 是实线性空间 $V$ 上的线性变换,线性空间 $\text{null}(T^2 + T + I)$ 的维数都是偶数维的.
+        \item[(4) ] 设 $S$,$T$ 是有限维内积空间上的等距变换,证明 $S$ 相似于 $T$ 当且仅当它们有相同的本征(特征)多项式.
+\end{enumerate}
+
+\end{document}
