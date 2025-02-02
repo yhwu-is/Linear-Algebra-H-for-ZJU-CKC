@@ -6,13 +6,16 @@
 
 \begin{enumerate}
     \item $A$是复（实）正规矩阵的充要条件是：存在复（实）矩阵$S_1,S_2$满足$\overline{S}_1^{\mathrm{T}}=S_1$，$\overline{S}_2^{\mathrm{T}}=-S_2$，$S_1S_2=S_2S_1$，$A=S_1+S_2$. 另外，$A$的如上分解是唯一的.
-	\item 证明：$A$是实正规矩阵的充要条件是存在镜面映像$\pi_1,\pi_2,\ldots,\pi_t$使得
+
+    \item 证明：$A$是实正规矩阵的充要条件是存在镜面映像$\pi_1,\pi_2,\ldots,\pi_t$使得
     \[A^\mathrm{T}=\pi_t\cdots\pi_2\pi_1A.\]
-	\item 将如下$\mathbf{R}^3$上变换$T$表示为两个镜面映像之积：
+
+    \item 将如下$\mathbf{R}^3$上变换$T$表示为两个镜面映像之积：
 
     $T\colon$ 先绕$x$轴旋转$\varphi$角度，再绕$z$轴旋转$\theta$角度（右手系，$0<\varphi,\enspace\theta < {\pi}/{2}$）.
-	\item 求下列变换的所有不变子空间：
-	\begin{enumerate}
+
+    \item 求下列变换的所有不变子空间：
+    \begin{enumerate}
         \item $\sigma_A\in\mathcal{L}(\mathbf{R}^2)$，$A=\begin{pmatrix}
             0 & 1 \\ a & 0
         \end{pmatrix}$；
@@ -23,10 +26,12 @@
             0 & 0 & 0 & 0 & 0 \\ 1 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 & -3 \\ 0 & 0 & 0 & 1 & 3
         \end{pmatrix}$，$\det(\lambda E-A)=\lambda^2(\lambda-1)^3$.
     \end{enumerate}
-	\item 设$A=\begin{pmatrix}
+
+    \item 设$A=\begin{pmatrix}
         0 & 20 & 23 & 0 \\ 0 & 0 & 6 & 28 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0
     \end{pmatrix}$，证明：不存在复矩阵$B$使得$B^2=A$.
-	\item 已知$\alpha_1=(1,2,0)$，$\alpha_2=(0,1,2)$，$\alpha_3=(2,0,1)\in\mathbf{R}^3$. 设$T\in\mathcal{L}(\mathbf{R}^3)$，且有$T(\alpha_1)=(-1,0,-2)$，$T(\alpha_2)=(-2,-1,0)$，$T(\alpha_3)=(0,-2,-1)$. 证明：$T$是一个镜面映像.
+
+    \item 已知$\alpha_1=(1,2,0)$，$\alpha_2=(0,1,2)$，$\alpha_3=(2,0,1)\in\mathbf{R}^3$. 设$T\in\mathcal{L}(\mathbf{R}^3)$，且有$T(\alpha_1)=(-1,0,-2)$，$T(\alpha_2)=(-2,-1,0)$，$T(\alpha_3)=(0,-2,-1)$. 证明：$T$是一个镜面映像.
 
     \item 定义在 $ V = \mathbf{R}^3 $ 上的运算
     \[ \langle \vec{x}, \vec{y} \rangle_V = a(x_2-x_1)(y_2-y_1)+bx_2y_2+x_3y_3, \quad a,b>0. \]
@@ -39,7 +44,7 @@
         \item 求 $ \vec{\beta} \in V $ 使得 $ \forall \vec{x} \in V,\enspace x_1 + x_2 + x_3 = \langle \vec{x}, \vec{\beta} \rangle_V $.
     \end{enumerate}
 
-\item 考虑二直线
+    \item 考虑二直线
     \[l_1\colon \begin{cases}
         x=t \\ y=-t-1 \\ z=3t
     \end{cases},\enspace l_2\colon \begin{cases}
