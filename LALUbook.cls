@@ -52,7 +52,7 @@
 
 \RequirePackage{graphicx}
 \RequirePackage{float}
-\RequirePackage{enumitem}
+\RequirePackage[inline]{enumitem}
 \RequirePackage{multicol}
 \RequirePackage{pdfpages}
 \RequirePackage{indentfirst}
