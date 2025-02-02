@@ -115,7 +115,7 @@
 
 \begin{solution}
     首先求出特征多项式为 $f(\lambda) = |\lambda E - J_0| = (\lambda - \lambda_0)^r$，因此 $J_0$ 只有一个特征值 $\lambda_0$，且代数重数为 $r$.
-    
+
     接下来求几何重数，即 $J_0X = \lambda_0X$ 的解空间维数，即 $(\lambda_0 E - J_0)X = 0$的解空间维数，事实上由于 $r(\lambda_0 E - J_0) = r - 1$，因此解空间维数为 $r - (r - 1) = 1$，即几何重数为 $1 < r$，因此不可对角化.
 \end{solution}
 
@@ -409,7 +409,7 @@
     设$\sigma\in\mathcal{L}(V)$，设$n=\dim V$，则$V=\ker \sigma^n\oplus \im \sigma^n$.
 \end{theorem}
 \begin{proof}
-    设 $v \in \ker \sigma^n \cap \im \sigma^n$，则$\exists u \in V$，使得$是v=\sigma^n(u)$，从而$u \in \ker \sigma^{2n}$，进而$u \in \ker \sigma^{n}$， $v=\sigma^n(u)=0$，这表明$\ker \sigma^n \cap \im \sigma^n=\{0\}$.
+    设 $v \in \ker \sigma^n \cap \im \sigma^n$，则$\exists u \in V$，使得$v=\sigma^n(u)$，从而$u \in \ker \sigma^{2n}$，进而$u \in \ker \sigma^{n}$， $v=\sigma^n(u)=0$，这表明$\ker \sigma^n \cap \im \sigma^n=\{0\}$.
 
     结合$\dim \ker\sigma^n+\dim \im\sigma^n=n=\dim V$可知$V=\ker\sigma^n\oplus\im\sigma^n$.
 \end{proof}
