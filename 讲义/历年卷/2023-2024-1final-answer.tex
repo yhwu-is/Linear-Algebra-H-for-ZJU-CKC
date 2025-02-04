@@ -1,86 +1,94 @@
-\section{2023-2024学年线性代数I（H）期末}
-\begin{enumerate}
-    \item[一、]增广矩阵为：
-    \[
-    \left(\begin{array}{cccc|c}
-    2 & 1 & -3 & -5 & 6 \\
-    2 & 1 & -2 & -6 & 7 \\
-    -3 & 2 & 1 & 4 & 5 \\
-    -1 & 3 & 2 & b & 11
-    \end{array}\right) \to
-    \left(\begin{array}{cccc|c}
-    2 & 1 & -3 & -5 & 6 \\
-    0 & 0 & 1 & -1 & 1 \\
-    -1 & 3 & -2 & -1 & 11 \\
-    -1 & 3 & 2 & b & 11
-    \end{array}\right) \to
-    \left(\begin{array}{cccc|c}
-    2 & 1 & -3 & -5 & 6 \\
-    0 & 0 & 1 & -1 & 1 \\
-    -1 & 3 & -2 & -1 & 11 \\
-    0 & 0 & 4 & b+1 & 0
-    \end{array}\right)
-    \]
-    故当 \(b+1=-4\) 即 \(b=-5\) 时，方程组无解；\par
-    当 \(b+1\neq -4\)时 \(\Rightarrow \left(b+5\right)x_3=b+1,\left(b+5\right)x_4=-4 \Rightarrow x_3=\dfrac{b+1}{b+5},x_4=-\dfrac{4}{b+5}\),\par
-    代回有 \(
-            \begin{cases}
-                2x_1+x_2=\dfrac{9b+13}{b+5}\\
-                -3x_1+2x_2=\dfrac{4b+40}{b+5}
-            \end{cases}
-            \),
-    解得 \(x_1=\dfrac{2b-2}{b+5},x_2=\dfrac{5b+17}{b+5}\).\par
+\section{2023-2024学年线性代数I（H）期末答案}
 
+\begin{enumerate}
+    \item 增广矩阵为：
+    \begin{align*}
+        \begin{pmatrix}[cccc|c]
+        2 & 1 & -3 & -5 & 6 \\
+        2 & 1 & -2 & -6 & 7 \\
+        -3 & 2 & 1 & 4 & 5 \\
+        -1 & 3 & 2 & b & 11
+        \end{pmatrix} & \to
+        \begin{pmatrix}[cccc|c]
+        2 & 1 & -3 & -5 & 6 \\
+        0 & 0 & 1 & -1 & 1 \\
+        -1 & 3 & -2 & -1 & 11 \\
+        -1 & 3 & 2 & b & 11
+        \end{pmatrix} \\
+        & \to
+        \begin{pmatrix}[cccc|c]
+        2 & 1 & -3 & -5 & 6 \\
+        0 & 0 & 1 & -1 & 1 \\
+        -1 & 3 & -2 & -1 & 11 \\
+        0 & 0 & 4 & b+1 & 0
+        \end{pmatrix}
+    \end{align*}
+    故当 \(b+1=-4\) 即 \(b=-5\) 时，方程组无解；
+
+    当 \(b+1\neq -4\)时，由\((b+5)x_3=b+1,(b+5)x_4=-4\)得
+    \[ x_3=\frac{b+1}{b+5},\enspace x_4=-\frac{4}{b+5}, \]
+    代回有\( \begin{cases}
+        2x_1+x_2=\dfrac{9b+13}{b+5} \\[1.2em]
+        -3x_1+2x_2=\dfrac{4b+40}{b+5}
+    \end{cases} \)，解得 \(x_1=\dfrac{2b-2}{b+5},x_2=\dfrac{5b+17}{b+5}\).
+
+    故当 \(b=-5\) 时，方程组无解. 当 \(b\neq -5\) 时，方程组有唯一解
+    \[(x_1,x_2,x_3,x_4)^\mathrm{T}=\left(\frac{2b-2}{b+5},\frac{5b+17}{b+5},\frac{b+1}{b+5},-\frac{4}{b+5}\right)^\mathrm{T}.\]
+
+    \item
     \begin{enumerate}
-        \item[故]当 \(b=-5\) 时，方程组无解.
-        \item[] 当 \(b\neq -5\) 时，方程组有唯一解 \((x_1,x_2,x_3,x_4)^{T}=(\dfrac{2b-2}{b+5},\dfrac{5b+17}{b+5},\dfrac{b+1}{b+5},-\dfrac{4}{b+5})^{T}\).
+        \item 由于 \(W_1,W_2\) 中的元素均属于 \(\mathbf{R}^4\)，故 \(W_1,W_2\) 关于加法封闭.
+
+        对 \(\forall \alpha=(x_1,-x_1,y_1,z_1),\beta=(x_2,-x_2,y_2,z_2) \in W_1\) 及 \(\forall \lambda,\mu\in \mathbf{R}\)，有
+        \[\lambda\alpha+\mu\beta=(\lambda x_1+\mu x_2,-\lambda x_1-\mu x_2,\lambda y_1+\mu y_2,\lambda z_1+\mu z_2)\in W_1, \]
+        因此 \(W_1\) 关于数乘封闭，故 \(W_1\) 是 \(\mathbf{R}^4\) 的子空间. 同理可证 \(W_2\)是\(\mathbf{R}^4\) 的子空间.
+
+        \item 由条件可知，\(\forall \alpha=(x_1,x_2,x_3,x_4)\)，
+        \begin{gather*}
+            \alpha\in W_1 \iff x_1=-x_2, \\
+            \alpha\in W_2 \iff x_1=-x_3,
+        \end{gather*}
+        故 \(\alpha\in W_1\cap W_2 \iff \alpha=(a,-a,-a,b),\enspace a,b\in \mathbf{R}\)，从而 \(W_1\cap W_2\) 维数为 \(2\)，一组基为 \((1,-1,-1,0),(0,0,0,1)\).
+
+        对 \(\forall \alpha=(x_1,-x_1,y_1,z_1)\in W_1,\beta=(x_2,y_2,-x_2,z_2) \in W_1\)，
+        \[ \alpha+\beta=(x_1+x_2,-x_1+y_2,y_1-x_2,z_1+z_2), \]
+        由于 \(y_1,y_2\) 均为自由变量，不难知 \(W_1+W_2\) 的维数为 \(4\)，一组基为 \((1,0,0,0),\allowbreak(0,1,0,0),\allowbreak(0,0,1,0),\allowbreak(0,0,0,1)\).
     \end{enumerate}
-    \item[二、]
+
+    \item
     \begin{enumerate}
-        \item[(1)] 由于 \(W_1,W_2\) 中的元素均属于 \(\mathbf{R}^4\)，故 \(W_1,W_2\) 关于加法封闭；\par
-        对 \(\forall \alpha=(x_1,-x_1,y_1,z_1),\beta=(x_2,-x_2,y_2,z_2) \in W_1\) 及 \(\forall \lambda,\mu\in \mathbf{R}\)，有\par
-        \(\lambda\alpha+\mu\beta=(\lambda x_1+\mu x_2,-\lambda x_1-\mu x_2,\lambda y_1+\mu y_2,\lambda z_1+\mu z_2)\in W_1\),\par
-        \(\Rightarrow W_1\) 关于数乘封闭，故 \(W_1\) 是 \(\mathbf{R}^4\) 的子空间.同理可证 \(W_2\)是\(\mathbf{R}^4\) 的子空间.\par
-        \item[(2)] 由条件可知，\(\forall \alpha=(x_1,x_2,x_3,x_4),\alpha\in W_1 \Leftrightarrow x_1=-x_2,\alpha\in W_2 \Leftrightarrow x_1=-x_3\),\par
-        故 \(\alpha\in W_1\cap W_2 \Leftrightarrow \alpha=(a,-a,-a,b),a,b\in \mathbf{R}\),\par
-        从而 \(W_1\cap W_2\) 维数为 \(2\)，一组基为 \((1,-1,-1,0),(0,0,0,1)\).\par
-        对 \(\forall \alpha=(x_1,-x_1,y_1,z_1)\in W_1,\beta=(x_2,y_2,-x_2,z_2) \in W_1\),\par
-        \(\alpha+\beta=(x_1+x_2,-x_1+y_2,y_1-x_2,z_1+z_2)\),\par
-        由于 \(y_1,y_2\) 均为自由变量，不难知 \(W_1+W_2\) 的维数为 \(4\)，一组基为 \((1,0,0,0),(0,1,0,0),(0,0,1,0),(0,0,0,1)\).\par
-    \end{enumerate}
-    \item[三、]
-    \begin{enumerate}
-        \item[(1)] 由条件 \(\sigma(1,0,0)=\sigma(\alpha_3)=(3,7,1),\sigma(0,1,0)=\sigma(\alpha_2)-\sigma(\alpha_3)=(-1,-4,2)\),\par
-        \(\sigma(0,0,1)=\sigma(\alpha_1)-\sigma(\alpha_2)=(-1,-1,-2)\),\par
-        解线性方程组 \(\begin{cases}
+        \item 由条件 \(\sigma(1,0,0)=\sigma(\alpha_3)=(3,7,1),\enspace\sigma(0,1,0)=\sigma(\alpha_2)-\sigma(\alpha_3)=(-1,-4,2),\enspace\allowbreak\sigma(0,0,1)=\sigma(\alpha_1)-\sigma(\alpha_2)=(-1,-1,-2)\)，解线性方程组
+        \[ \begin{cases}
             3a-b-c=3\\
             7a-4b-c=6\\
             a+2b-2c=2
-            \end{cases}\) 得 \(a=0,b=-1,c=-2\), \par
-            即 \(-\sigma(0,1,0)-2\sigma(0,0,1)=(3,6,2)\), 即所求 \(\alpha=(0,-1,-2)\).
-        \item[(2)] 解线性方程组 \(\begin{cases}
+        \end{cases}\]
+        得 \(a=0,\enspace b=-1,\enspace c=-2\)，即 \(-\sigma(0,1,0)-2\sigma(0,0,1)=(3,6,2)\), 即所求 \(\alpha=(0,-1,-2)\).
+
+        \item 解线性方程组 \(\begin{cases}
             a+2b+c=0\\
             2a+3b+3c=0\\
             3a+7b-c=0
-            \end{cases}\) , 用增广矩阵：
+            \end{cases}\)，用增广矩阵：
             \[
-            \left(\begin{array}{ccc|c}
+            \begin{pmatrix}[ccc|c]
             1 & 2 & 1 & 0 \\
             2 & 3 & 3 & 0 \\
             3 & 7 & -1 & 0
-            \end{array}\right) \to
-            \left(\begin{array}{ccc|c}
+            \end{pmatrix} \to
+            \begin{pmatrix}[ccc|c]
             1 & 2 & 1 & 0 \\
             0 & -1 & 1 & 0 \\
             0 & 1 & -4 & 0
-            \end{array}\right) \to
-            \left(\begin{array}{ccc|c}
+            \end{pmatrix} \to
+            \begin{pmatrix}[ccc|c]
             1 & 2 & 1 & 0 \\
             0 & -1 & 1 & 0 \\
             0 & 0 & -3 & 0
-            \end{array}\right)
-            \] \(\Rightarrow\) 解得 \(a=b=c=0\)，故 \(\beta_1,\beta_2,\beta_3\) 线性无关.
-        \item[(3)] 由 (1) 知 \(\sigma\) 在自然基下的矩阵表示为
+            \end{pmatrix}
+            \]
+            解得 \(a=b=c=0\)，故 \(\beta_1,\beta_2,\beta_3\) 线性无关.
+        \item 由 (1) 知 \(\sigma\) 在自然基下的矩阵表示为
         \[
         A=\begin{pmatrix}
             3 & -1 & -1\\
@@ -100,18 +108,19 @@
             -18 & 7 & 5\\
             5 & -2 & -1\\
             3 & -1 & -1
-        \end{pmatrix}\),\par
-        故 \(\sigma\) 在 \(\beta_1,\beta_2,\beta_3\) 下的矩阵表示为 \(P^{-1}AP=\begin{pmatrix}
+        \end{pmatrix}\)，故 \(\sigma\) 在 \(\beta_1,\beta_2,\beta_3\) 下的矩阵表示为
+        \[ P^{-1}AP=\begin{pmatrix}
             1 & 3 & 1\\
             1 & 0 & 6\\
             -1 & -1 & -4
-        \end{pmatrix}\).
+        \end{pmatrix}\]
     \end{enumerate}
-    \item[四、]
+
+    \item
     \begin{enumerate}
-        \item[(1)] 由 \(p'(x)\)也关于加法和数乘封闭，易知 \(\sigma(p(x))=(2x+1)p'(x)+p(1)\) 也关于加法和数乘封闭，故 \(\sigma\) 是线性映射.
-        \item[(2)] 由 \(\sigma(p(x))=(2x+1)p'(x)+p(1)\) 可知 \(\sigma(1)=1,\sigma(x)=2x+2,\sigma(x^2)=4x^2+2x+1\),\par
-        由此知 \(\sigma\) 在 \(\{1,x,x^2\}\) 下的矩阵表示为
+        \item 由 \(p'(x)\)也关于加法和数乘封闭，易知 \(\sigma(p(x))=(2x+1)p'(x)+p(1)\) 也关于加法和数乘封闭，故 \(\sigma\) 是线性映射.
+
+        \item 由 \(\sigma(p(x))=(2x+1)p'(x)+p(1)\) 可知 \(\sigma(1)=1,\enspace\sigma(x)=2x+2,\enspace\sigma(x^2)=4x^2+2x+1\)，由此知 \(\sigma\) 在 \(\{1,x,x^2\}\) 下的矩阵表示为
         \[
         A=\begin{pmatrix}
             1 & 2 & 1\\
@@ -119,20 +128,22 @@
             0 & 0 & 4
         \end{pmatrix}
         \]
-        \(|\lambda E-A|=(\lambda-1)(\lambda-2)(\lambda-4) \Rightarrow\) 三个特征值为 \(1,2,4\),\par
-        对应的三个特征向量为 \((1,0,0)^{T},(2,1,0)^{T},(1,1,1)^{T}\).
-        \item[(3)] 由 (2) 知自然基到所求基的过渡矩阵为
+        计算 \(|\lambda E-A|=(\lambda-1)(\lambda-2)(\lambda-4) \) 得三个特征值为 \(1,2,4\)，对应的三个特征向量为 \((1,0,0)^\mathrm{T},(2,1,0)^\mathrm{T},(1,1,1)^\mathrm{T}\).
+        \item 由 (2) 知自然基到所求基的过渡矩阵为
         \(P=\begin{pmatrix}
             1 & 2 & 1\\
             0 & 1 & 1\\
             0 & 0 & 1
-        \end{pmatrix}\),\par
-        故所求基在 \(\{1,x,x^2\}\) 这组基下的三个坐标 \(\left(\epsilon_1,\epsilon_2,\epsilon_3\right)=\left((1,0,0)^{T},(0,1,0)^{T},(0,0,1)^{T}\right)P\)\par
-        \(=\left((1,0,0)^{T},(2,1,0)^{T},(1,1,1)^{T}\right)\).\par
+        \end{pmatrix}\)，故所求基在 \(\{1,x,x^2\}\) 这组基下的三个坐标
+        \begin{align*}
+            (\varepsilon_1,\varepsilon_2,\varepsilon_3) &= \left((1,0,0)^\mathrm{T},(0,1,0)^\mathrm{T},(0,0,1)^\mathrm{T}\right) P \\
+            &= \left((1,0,0)^\mathrm{T},(2,1,0)^\mathrm{T},(1,1,1)^\mathrm{T}\right)
+        \end{align*}
         故所求基为 \(\{1,2+x,1+x+x^2\}\).
     \end{enumerate}
-    \item[五、]
-    \[
+
+    \item
+    \begin{gather*}
     \begin{vmatrix}
     1 & 1 & 1 & 1 \\
     a & b & c & d \\
@@ -145,25 +156,29 @@
     0 & b - a & c - a & d - a \\
     0 & b(b - a^2) & c(c^2 - a^2) & d(d^2 - a^2) \\
     0 & b^3(b - a) & c^3(c - a) & d^3(d - a)
-    \end{vmatrix}\]
-    \[
-    =(b - a)(c - a)(d - a)
+    \end{vmatrix} \\
+    = (b - a)(c - a)(d - a)
     \begin{vmatrix}
     1 & 1 & 1 \\
     b(b + a) & c(c + a) & d(d + a) \\
     b^3 & c^3 & d^3
     \end{vmatrix}
-    \]
-    对后一个行列式直接展开得 \(
-        \begin{vmatrix}
+    \end{gather*}
+    对后一个行列式直接展开得
+    \begin{align*}
+        &\begin{vmatrix}
         1 & 1 & 1 \\
         b(b + a) & c(c + a) & d(d + a) \\
         b^3 & c^3 & d^3
-        \end{vmatrix}\)\par
-    \(=a(bc^3-b^c+cd^3-c^3d+db^3-d^3b)+b^2c^3-b^3c^2+c^2d^3-c^3d^2+d^2b^3-d^3b^2\)\par
-    \(=a(b+c+d)(bc^2-b^2c+cd^2-c^2d+db^2-d^2b)+(bc+cd+db)(bc^2-b^2c+cd^2-c^2d+db^2-d^2b)\)\par
-    \(=(ab+bc+cd+bc+cd+db)(c-b)(d-b)(d-c)\).\par
-    故结果为 \((ab+ac+ad+bc+bd+cd)(a-b)(a-c)(a-d)(b-c)(b-d)(c-d)\).\par
+        \end{vmatrix} \\
+        ={}& a(bc^3-b^c+cd^3-c^3d+db^3-d^3b)+b^2c^3-b^3c^2+c^2d^3-c^3d^2+d^2b^3-d^3b^2 \\
+        ={}& a(b+c+d)(bc^2-b^2c+cd^2-c^2d+db^2-d^2b) \\
+           &+(bc+cd+db)(bc^2-b^2c+cd^2-c^2d+db^2-d^2b) \\
+        ={}& (ab+bc+cd+bc+cd+db)(c-b)(d-b)(d-c)
+    \end{align*}
+
+    故结果为 \((ab+ac+ad+bc+bd+cd)(a-b)(a-c)(a-d)(b-c)(b-d)(c-d)\).
+
     （本题也可以采用升阶的方式，将原行列式补成\(
         \begin{vmatrix}
             1 & 1 & 1 & 1 & 1 \\
@@ -173,28 +188,30 @@
             a^4 & b^4 & c^4 & d^4 & x^4
             \end{vmatrix}
     \)并按最后一列展开成\(x\)的四次多项式，再用韦达定理求解.）
-    \item[六、]
+
+    \item
     \begin{enumerate}
-        \item[(1)] 由条件 \(\left(A-E\right)\left(A-2E\right)=O\),\par
-        且对\(\forall \lambda \neq 1,2\)，有 \(\left(A-\lambda E\right)\left(A-\left(3-\lambda\right)E\right)=\left(-\lambda^2+3\lambda-2\right)E\),\par
-        由Sylvester不等式得 \(\mathrm{r}(A-E)+\mathrm{r}(2E-A) \leq n\). \par
-        由于右边不为零矩阵，故\(A-\lambda E\) 可逆，即 \(\lambda\) 不是 \(A\) 的特征值,
-        故 \(A\) 的特征值只能为 \(1\) 或 \(2\).\par
-        由秩不等式 \(\mathrm{r}(A-E)+\mathrm{r}(2E-A)\geq \mathrm{r}(2E-A + A-E)=n\). \par
-        故 \(\mathrm{r}(A-E)+\mathrm{r}(2E-A)=n\), 即 \(A\) 有 \(n\) 个线性无关的特征向量.故 \(A\) 可对角化.
-        \item[(2)] 由于 \(A\) 的特征值只能为 \(1\) 或 \(2\) 且 \(A\) 可对角化，\par
-        故 \(A\) 的特征值为 \(1\) 或 \(2\) ，且二者的代数重数之和为 \(n\),\par
-        由 \(\mathrm{tr}(A)=\sum\limits_{i=1}^n \lambda_i\) 知 \(n=\sum\limits_{i=1}^n 1 \leq \mathrm{tr}(A) \leq \sum\limits_{i=1}^n 2=2n\).得证.
+        \item 由条件 \(\left(A-E\right)\left(A-2E\right)=O\)，且对\(\forall \lambda \neq 1,2\)，有 \(\left(A-\lambda E\right)\left(A-\left(3-\lambda\right)E\right)=\left(-\lambda^2+3\lambda-2\right)E\)，由Sylvester不等式得 \(r(A-E)+r(2E-A) \leqslant n\).
+
+        由于右边不为零矩阵，故\(A-\lambda E\) 可逆，即 \(\lambda\) 不是 \(A\) 的特征值，故 \(A\) 的特征值只能为 \(1\) 或 \(2\).
+
+        由秩不等式 \(r(A-E)+r(2E-A)\geqslant r(2E-A + A-E)=n\)，故 \(r(A-E)+r(2E-A)=n\), 即 \(A\) 有 \(n\) 个线性无关的特征向量.故 \(A\) 可对角化.
+
+        \item 由于 \(A\) 的特征值只能为 \(1\) 或 \(2\) 且 \(A\) 可对角化，故 \(A\) 的特征值为 \(1\) 或 \(2\) ，且二者的代数重数之和为 \(n\)，由 \(\tr A=\sum\limits_{i=1}^n \lambda_i\) 知 \(n=\sum\limits_{i=1}^n 1 \leqslant \tr A \leqslant \sum\limits_{i=1}^n 2=2n\).得证.
     \end{enumerate}
-    \item[七、]
+
+    \item
     设 \(C=P\begin{pmatrix}
         E_r & O\\
         O & O
-        \end{pmatrix}Q\), 其中 \(P,Q\) 为可逆矩阵，\par
-    故 \(AC=CB \Leftrightarrow AP\begin{pmatrix}E_r & O\\O & O\end{pmatrix}Q=P\begin{pmatrix}E_r & O\\O & O\end{pmatrix}QB\)\par
-    \(\Leftrightarrow P^{-1}AP\begin{pmatrix}E_r & O\\O & O\end{pmatrix}=\begin{pmatrix}E_r & O\\O & O\end{pmatrix}QBQ^{-1}\) \par
-    由于 \(P^{-1}AP\) 与 \(A\) 的特征值相同，\(QBQ^{-1}\) 与 \(B\) 的特征值相同，\par
-    故可令 \(C=P^{-1}AP,D=QBQ^{-1}\)，证明 \(C,D\) 至少有 \(r\) 个特征值相同.\par
+        \end{pmatrix}Q\)，其中 \(P,Q\) 为可逆矩阵，故
+    \begin{align*}
+        AC=CB &\iff AP\begin{pmatrix}E_r & O\\O & O\end{pmatrix}Q=P\begin{pmatrix}E_r & O\\O & O\end{pmatrix}QB \\
+        &\iff P^{-1}AP\begin{pmatrix}E_r & O\\O & O\end{pmatrix}=\begin{pmatrix}E_r & O\\O & O\end{pmatrix}QBQ^{-1}
+    \end{align*}
+
+    由于 \(P^{-1}AP\) 与 \(A\) 的特征值相同，\(QBQ^{-1}\) 与 \(B\) 的特征值相同，故可令 \(C=P^{-1}AP,\allowbreak D=QBQ^{-1}\)，证明 \(C,D\) 至少有 \(r\) 个特征值相同.
+
     设 \(C=\begin{pmatrix}
         C_1 & C_2\\
         C_3 & C_4
@@ -202,16 +219,14 @@
         D=\begin{pmatrix}
         D_1 & D_2\\
         D_3 & D_4
-        \end{pmatrix}\) ,其中 \(C\) 与 \(D\) 的分块均与 \(\begin{pmatrix}E_r & O\\O & O\end{pmatrix}\) 相同.\par
-        带入上述等式有 \(\begin{pmatrix}
+        \end{pmatrix}\) ,其中 \(C\) 与 \(D\) 的分块均与 \(\begin{pmatrix}E_r & O\\O & O\end{pmatrix}\) 相同. 带入上述等式有 \(\begin{pmatrix}
             C_1 & O\\
             C_3 & O
             \end{pmatrix}=
             \begin{pmatrix}
             D_1 & D_2\\
             O & O
-            \end{pmatrix}\),\par
-        由此知 \(C_1=D_1,C_3=O,D_2=O\), 故
+            \end{pmatrix}\)，由此知 \(C_1=D_1,C_3=O,D_2=O\)，故
         \(C=\begin{pmatrix}
         C_1 & C_2\\
         O & C_4
@@ -219,20 +234,29 @@
         D=\begin{pmatrix}
         C_1 & O\\
         D_3 & D_4
-        \end{pmatrix}\).\par
-        由分块三角矩阵的性质知 \(|\lambda E_n-C|=|\lambda E_r-C_1||\lambda E_{n-r}-C_4|,|\lambda E_n-D|=|\lambda E_r-C_1||\lambda E_{n-r}-D_4|\),\par
+        \end{pmatrix}\).
+
+        由分块三角矩阵的性质知
+        \begin{gather*}
+            |\lambda E_n-C|=|\lambda E_r-C_1||\lambda E_{n-r}-C_4|,\\
+            |\lambda E_n-D|=|\lambda E_r-C_1||\lambda E_{n-r}-D_4|,
+        \end{gather*}
         故 \(C,D\) 共同占有 \(C_1\) 的 \(r\) 个特征值，从而 \(C,D\) 至少有 \(r\) 个特征值相同.
-    \item[八、] \(f(x,y,z)=5(x+\dfrac{2}{5}y-\dfrac15 z)^2+\dfrac15(y-3z)^2+(t-2)z^2\).\par
-    故 \(t>2\) 时 \(f(x,y,z)\) 为正定二次型，\par
-    \(t=2\) 时 \(f(x,y,z)\) 为半正定二次型，\par
-    \(t<2\) 时 \(f(x,y,z)\) 为不定二次型，且负惯性指数为 \(1\).
-    \item[九、]
+
+    \item
+    \[f(x,y,z)=5\left(x+\frac{2}{5}y-\frac15 z\right)^2+\frac15(y-3z)^2+(t-2)z^2. \]
+
+    故 \(t>2\) 时 \(f(x,y,z)\) 为正定二次型，\(t=2\) 时 \(f(x,y,z)\) 为半正定二次型，\(t<2\) 时 \(f(x,y,z)\) 为不定二次型，且负惯性指数为 \(1\).
+
+    \item
     \begin{enumerate}
-        \item[(1)] 错误，\(\alpha=\begin{pmatrix} 0 \\ 1 \end{pmatrix},\beta=\begin{pmatrix} 1 \\ 0 \end{pmatrix}\) 即为反例.
-        \item[(2)] 正确。取 \(V\) 上的一组基 \(\alpha_1,\alpha_2,\cdots,\alpha_n\) 与 \(W\) 上的一个非零向量 \(\beta\)，\par
-        令 \(\sigma(\alpha_i)=\beta,i=1,2,\cdots,n\)，则 \(\sigma\) 即满足要求.
-        \item[(3)] 正确。由于复对称矩阵相合于它的相抵标准型，故两复对称矩阵相合当且仅当它们的秩相等，而复对称矩阵等秩即是相抵。
-        \item[(4)] 错误，取 \(A=1,C=\begin{pmatrix} 0 & 1 \end{pmatrix}\) 即为反例 (\(C^{T}AC\)半正定).
+        \item 错误，\(\alpha=(0, 1)^\mathrm{T},\beta=(1, 0)^\mathrm{T}\) 即为反例.
+
+        \item 正确. 取 \(V\) 上的一组基 \(\alpha_1,\alpha_2,\ldots,\alpha_n\) 与 \(W\) 上的一个非零向量 \(\beta\)，令 \(\sigma(\alpha_i)=\beta,\enspace\allowbreak i=1,2,\ldots,n\)，则 \(\sigma\) 即满足要求.
+
+        \item 正确. 由于复对称矩阵相合于它的相抵标准型，故两复对称矩阵相合当且仅当它们的秩相等，而复对称矩阵等秩即是相抵.
+
+        \item 错误，取 \(A=1,C=(0, 1)\) 即为反例（\(C^\mathrm{T}AC\)半正定）.
     \end{enumerate}
 \end{enumerate}
 

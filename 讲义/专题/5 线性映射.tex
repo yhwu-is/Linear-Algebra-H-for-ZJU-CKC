@@ -197,7 +197,7 @@
      \]
      故 \( r_{\theta} \) 是 \( \mathbf{R}^2 \) 上的一个线性变换.
 
-    \item 证明涉及内积的知识，我们放在\autoref{ex:镜像变换}中讨论.
+    \item 证明涉及内积的知识，我们放在\autoref{ex:镜像变换} 中讨论.
     \item 读者可以自行验证.
     \end{enumerate}
 
@@ -342,7 +342,7 @@
     上述定义的逆映射 $\sigma^{-1}$ 为线性映射.
 \end{theorem}
 
-\autoref{thm:复合映射是线性映射}和\autoref{thm:逆映射是线性映射}的证明是非常基本的，在阅读详细的证明之前，读者可以先自行尝试，如果不会证明则说明对于线性空间和线性映射的定义熟悉程度仍需提高，因为这里的证明都只需要机械地套用定义.
+\autoref{thm:复合映射是线性映射} 和\autoref{thm:逆映射是线性映射} 的证明是非常基本的，在阅读详细的证明之前，读者可以先自行尝试，如果不会证明则说明对于线性空间和线性映射的定义熟悉程度仍需提高，因为这里的证明都只需要机械地套用定义.
 
 \begin{proof}
 \begin{enumerate}
@@ -1527,16 +1527,16 @@
                   a + bc_3 + cc_3^3 = d_3
               \end{cases} \]
           方程组是关于未知元 $ a, b, c $ 的三元线性非齐次方程组，其中 $ c_1, c_2, c_3 $ 是互异的实常数. 用高斯-若当消元法，易将其增广矩阵变换为下列阶梯形矩阵，即
-          \begin{align} % TODO 增广矩阵
-                             & \begin{pmatrix}
-                                   1 & c_1 & c_1^2 & \Bigm| & d_1 \\
-                                   1 & c_2 & c_2^2 & \Bigm| & d_2 \\
-                                   1 & c_3 & c_3^3 & \Bigm| & d_3
+          \begin{align}
+                             & \begin{pmatrix}[ccc|c]
+                                   1 & c_1 & c_1^2 & d_1 \\
+                                   1 & c_2 & c_2^2 & d_2 \\
+                                   1 & c_3 & c_3^3 & d_3
                                \end{pmatrix} \notag                                                                    \\
-              \implies \quad & \begin{pmatrix}
-                                   1 & c_1 & c_1^2     & \Bigm| & d_1                                                         \\[1ex]
-                                   0 & 1   & c_2 + c_1 & \Bigm| & \dfrac{d_1 - d_2}{c_1 - c_2}                                \\[2ex]
-                                   0 & 0   & c_3 - c_2 & \Bigm| & \dfrac{d_3 - d_1}{c_3 - c_1} - \dfrac{d_2 - d_1}{c_2 - c_1}
+              \implies \quad & \begin{pmatrix}[ccc|c]
+                                   1 & c_1 & c_1^2     & d_1                                                         \\[1ex]
+                                   0 & 1   & c_2 + c_1 & \dfrac{d_1 - d_2}{c_1 - c_2}                                \\[2ex]
+                                   0 & 0   & c_3 - c_2 & \dfrac{d_3 - d_1}{c_3 - c_1} - \dfrac{d_2 - d_1}{c_2 - c_1}
                                \end{pmatrix} \label{item:6:B:6:1}
           \end{align}
           阶梯性矩阵 \ref*{item:6:B:6:1}（其中 $ c_3 - c_2, c_3 - c_1, c_2 - c_1 $ 均为非零常数）对应的方程组有唯一解 $ a, b, c $，即存在唯一的

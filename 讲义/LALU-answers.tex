@@ -82,7 +82,7 @@
 \ctexset{
     section={format={\raggedright\Large\bfseries},name={,},number={}},
 }
-\renewcommand*{\thesection}{}
+\renewcommand*{\thesection}{} % FIXME: this breaks equation numbering
 
 % 嵌套 enumerate 环境的 label
 \setlist[enumerate,1]{label=\chinese*、}
@@ -115,6 +115,10 @@
 \input{./历年卷/2021-2022-1final.tex}
 \input{./历年卷/2022-2023-1final.tex}
 \input{./历年卷/2023-2024-1final.tex}
+
+% 线代I期末答案
+\chapter{线性代数I（H）期末历年卷答案}
+\input{./历年卷/2023-2024-1final-answer.tex}
 
 % 线代II期中/练习
 \chapter{线性代数II（H）期中/小测历年卷试题集}
