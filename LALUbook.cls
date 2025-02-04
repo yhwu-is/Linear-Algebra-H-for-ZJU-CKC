@@ -221,6 +221,14 @@
     \newcommand{\tcb@cnt@axiomautorefname}{公理}
     \makeatother
 
+    % https://tex.stackexchange.com/a/2244/316373
+    \makeatletter
+    \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+    \hskip -\arraycolsep
+    \let\@ifnextchar\new@ifnextchar
+    \array{#1}}
+    \makeatother
+
     \crefrangeformat{equation}{式~#3#1#4--#5#2#6}
     \crefrangeformat{example}{例~#3#1#4--#5#2#6}
 }
